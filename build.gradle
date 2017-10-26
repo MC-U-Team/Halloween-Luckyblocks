@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = "1.0.0"
+group= "de.luckycrew.luckyblocks.halloween"
+archivesBaseName = "halloween"
+
+sourceCompatibility = targetCompatibility = "1.8"
+
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+minecraft {
+    version = "1.8-11.14.4.1563"
+    runDir = "run"
+    mappings = "snapshot_20141130"
+    makeObfSourceJar = false
+}
+
+jar {
+    from "LICENSE"
+    
+    manifest.mainAttributes(
+       	"Implementation-Title": "Halloween LuckyBlocks",
+    	"Implementation-Version": project.version,
+		"Built-On": minecraft.version
+	)
+}
+
+dependencies {
+}
+
+processResources {
+	from(sourceSets.main.resources.srcDirs) {
+        exclude '*'
+	}
+}
