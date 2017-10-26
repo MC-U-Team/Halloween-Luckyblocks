@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "luckyblock_halloween:blocks/luckyblock_halloween"
+	}
+}

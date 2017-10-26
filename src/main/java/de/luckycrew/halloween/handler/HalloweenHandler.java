@@ -10,16 +10,16 @@ public class HalloweenHandler {
 	public static LuckyHandler handler;
 	
 	public HalloweenHandler() {
-		setupHandlers();
-		registerEvents();
+		luckyhandler();
+		luckyevent();
 	}
 	
-	private void setupHandlers() {
+	private void luckyhandler() {
 		handler = new LuckyHandler();
 		CommonRegistry.registerEventHandler(new BreakBlockListener(HalloweenBlocks.luckyblock, handler));
 	}
 	
-	private void registerEvents() {
+	private void luckyevent() {
 		handler.add(new LuckyEventTest());
 	}
 	

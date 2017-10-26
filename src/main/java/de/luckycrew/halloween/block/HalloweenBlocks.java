@@ -8,6 +8,10 @@ public class HalloweenBlocks {
 	public static DefaultLuckyBlock luckyblock;
 	
 	public HalloweenBlocks() {
+		luckyblock();
+	}
+	
+	private void luckyblock() {
 		luckyblock = new DefaultLuckyBlock("luckyblock_halloween", HalloweenTabs.tab);
 		HalloweenTabs.tab.setIcon(luckyblock);
 	}
