@@ -1,6 +1,7 @@
 package de.luckycrew.halloween.item;
 
 import de.luckycrew.halloween.tab.HalloweenTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -11,7 +12,10 @@ public class HalloweenItems {
 	
 	public static ItemArmorBase[] scarecrow, slender;
 	
+	public static Item candy, teleporter;
+	
 	public HalloweenItems() {
+		item();
 		amormaterial();
 		armor();
 	}
@@ -26,6 +30,12 @@ public class HalloweenItems {
 		slender = createArmor(slender_material, "slender");
 	}
 	
+	private void item() {
+		candy = new ItemCandy("candy", HalloweenTabs.tab);
+		teleporter = new ItemTeleporter("teleporter", HalloweenTabs.tab);
+	}
+	
+	// Methods
 	private String[] armor = new String[] { "helmet", "chestplate", "leggings", "boots" };
 	
 	private ItemArmorBase[] createArmor(ArmorMaterial material, String name) {

@@ -23,6 +23,9 @@ public class HalloweenModelRegistry {
 		for (ItemArmorBase item : HalloweenItems.slender) {
 			ClientRegistry.registerModel(item);
 		}
+		
+		ClientRegistry.registerModel(HalloweenItems.candy);
+		ClientRegistry.registerModel(HalloweenItems.teleporter);
 	}
 	
 }
