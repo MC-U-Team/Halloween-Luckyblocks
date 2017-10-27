@@ -4,6 +4,7 @@ import java.util.List;
 
 import info.u_team.u_team_core.creativetab.UCreativeTab;
 import info.u_team.u_team_core.item.UItem;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -38,8 +39,9 @@ public class ItemCandy extends UItem {
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (stack.getTagCompound().getInteger("cooldown") == 0) {
-			stack.getTagCompound().setInteger("cooldown", 200);
+		NBTTagCompound compound = stack.getTagCompound();
+		if (compound.getInteger("cooldown") == 0) {
+			compound.setInteger("cooldown", 200);
 			player.motionY = 0.88D;
 			float f = player.rotationYaw * 0.017453292F;
 			player.motionX -= (double) (MathHelper.sin(f) * 2.2F);
@@ -59,12 +61,11 @@ public class ItemCandy extends UItem {
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
 		if (stack.hasTagCompound()) {
 			NBTTagCompound compound = stack.getTagCompound();
-			tooltip.add("");
-			int cooldown = compound.getInteger("cooldown") / 20;
-			if (cooldown == 0) {
-				tooltip.add("\u00A7bNo Cooldown");
+			int seconds = compound.getInteger("cooldown") / 20;
+			if (seconds == 0) {
+				tooltip.add(I18n.format("item.candy.cooldown.no"));
 			} else {
-				tooltip.add("\u00A7cCooldown: \u00A76" + cooldown + " \u00A7cseconds");
+				tooltip.add(I18n.format("item.candy.cooldown.yes", seconds));
 			}
 		}
 	}

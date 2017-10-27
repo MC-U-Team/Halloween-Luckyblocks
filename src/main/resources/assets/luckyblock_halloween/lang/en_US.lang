@@ -1,3 +1,31 @@
+#Tab
 itemGroup.luckyblock_halloween_tab=Halloween LuckyBlock Tab
 
+#Tile
 tile.luckyblock_halloween.name=Halloween LuckyBlock
+
+#Item
+item.slender_helmet.name=Slender Helmet
+item.slender_chestplate.name=Slender Chestplate
+item.slender_leggings.name=Slender Leggings
+item.slender_boots.name=Slender Boots
+
+item.scarecrow_helmet.name=Scarecrow Helmet
+item.scarecrow_chestplate.name=Scarecrow Chestplate
+item.scarecrow_leggings.name=Scarecrow Leggings
+item.scarecrow_boots.name=Scarecrow Boots
+
+item.candy.name=Flying Candy
+item.teleporter.name=Teleporter
+
+item.killerknive.name=Killer Knive
+
+#Custom
+
+item.candy.cooldown.no=§bReady to use
+item.candy.cooldown.yes=§cNext use in §6%s §cseconds
+
+item.teleporter.nolocation=§cLocation out of range
+
+tile.pumpkinbomb.place=§4Run! Run! Only 6 seconds till explosion!
+

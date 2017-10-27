@@ -22,7 +22,7 @@ public class ItemTeleporter extends UItem {
 		
 		if (objectposition == null || objectposition.getBlockPos() == null || world.getBlockState(objectposition.getBlockPos()).getBlock() == Blocks.air) {
 			if (!world.isRemote) {
-				player.addChatComponentMessage(new ChatComponentText("\u00A7cNo Location in range!"));
+				player.addChatComponentMessage(new ChatComponentTranslation("item.teleporter.nolocation"));
 			}
 			return itemstack;
 		}

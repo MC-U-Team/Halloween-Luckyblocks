@@ -1,8 +1,9 @@
 package de.luckycrew.halloween.models;
 
+import static info.u_team.u_team_core.util.registry.ClientRegistry.registerModel;
+
 import de.luckycrew.halloween.block.HalloweenBlocks;
 import de.luckycrew.halloween.item.*;
-import info.u_team.u_team_core.util.registry.ClientRegistry;
 
 public class HalloweenModelRegistry {
 	
@@ -12,20 +13,22 @@ public class HalloweenModelRegistry {
 	}
 	
 	private void block() {
-		ClientRegistry.registerModel(HalloweenBlocks.luckyblock);
+		registerModel(HalloweenBlocks.luckyblock);
 	}
 	
 	private void item() {
 		for (ItemArmorBase item : HalloweenItems.scarecrow) {
-			ClientRegistry.registerModel(item);
+			registerModel(item);
 		}
 		
 		for (ItemArmorBase item : HalloweenItems.slender) {
-			ClientRegistry.registerModel(item);
+			registerModel(item);
 		}
 		
-		ClientRegistry.registerModel(HalloweenItems.candy);
-		ClientRegistry.registerModel(HalloweenItems.teleporter);
+		registerModel(HalloweenItems.candy);
+		registerModel(HalloweenItems.teleporter);
+		
+		registerModel(HalloweenItems.killerknive);
 	}
 	
 }

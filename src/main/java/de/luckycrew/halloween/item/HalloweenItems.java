@@ -1,23 +1,28 @@
 package de.luckycrew.halloween.item;
 
-import de.luckycrew.halloween.tab.HalloweenTabs;
+import static de.luckycrew.halloween.tab.HalloweenTabs.tab;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class HalloweenItems {
 	
-	public ArmorMaterial scarecrow_material;
-	public ArmorMaterial slender_material;
+	public static ArmorMaterial scarecrow_material;
+	public static ArmorMaterial slender_material;
 	
-	public static ItemArmorBase[] scarecrow, slender;
+	public static ToolMaterial killerknive_material;
 	
 	public static Item candy, teleporter;
 	
+	public static ItemArmorBase[] scarecrow, slender;
+	
+	public static Item killerknive;
+	
 	public HalloweenItems() {
-		item();
 		amormaterial();
-		armor();
+		toolmaterial();
+		item();
 	}
 	
 	private void amormaterial() {
@@ -25,14 +30,24 @@ public class HalloweenItems {
 		slender_material = EnumHelper.addArmorMaterial("slender", "", 200, new int[] { 6, 16, 12, 6 }, 20);
 	}
 	
+	private void toolmaterial() {
+		killerknive_material = EnumHelper.addToolMaterial("killerknive", 1, 120, 1, 7, 20);
+	}
+	
+	private void item() {
+		candy = new ItemCandy("candy", tab);
+		teleporter = new ItemTeleporter("teleporter", tab);
+		armor();
+		tool();
+	}
+	
 	private void armor() {
 		scarecrow = createArmor(scarecrow_material, "scarecrow");
 		slender = createArmor(slender_material, "slender");
 	}
 	
-	private void item() {
-		candy = new ItemCandy("candy", HalloweenTabs.tab);
-		teleporter = new ItemTeleporter("teleporter", HalloweenTabs.tab);
+	private void tool() {
+		killerknive = new ItemKillerKnive(killerknive_material, "killerknive", tab);
 	}
 	
 	// Methods
@@ -42,7 +57,7 @@ public class HalloweenItems {
 		ItemArmorBase[] basearmor = new ItemArmorBase[4];
 		
 		for (int i = 0; i < basearmor.length; i++) {
-			basearmor[i] = new ItemArmorBase(material, i, name, armor[i], HalloweenTabs.tab);
+			basearmor[i] = new ItemArmorBase(material, i, name, armor[i], tab);
 		}
 		return basearmor;
 	}
