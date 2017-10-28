@@ -18,6 +18,12 @@ public class HalloweenModelRegistry {
 	}
 	
 	private void item() {
+		registerModel(HalloweenItems.candy);
+		registerModel(HalloweenItems.teleporter);
+		registerModel(HalloweenItems.candybag);
+		registerModel(HalloweenItems.candybag, 1);
+		registerModel(HalloweenItems.witchsbroomstick);
+		
 		for (ItemArmorBase item : HalloweenItems.scarecrow) {
 			registerModel(item);
 		}
@@ -26,13 +32,18 @@ public class HalloweenModelRegistry {
 			registerModel(item);
 		}
 		
+		for (ItemArmorBase item : HalloweenItems.witch) {
+			registerModel(item);
+		}
+		
+		for (ItemArmorBase item : HalloweenItems.zombie) {
+			registerModel(item);
+		}
+		
+		for (ItemArmorBase item : HalloweenItems.clown) {
+			registerModel(item);
+		}
+		
 		registerModel(HalloweenItems.killerknive);
-		
-		registerModel(HalloweenItems.candy);
-		registerModel(HalloweenItems.teleporter);
-		registerModel(HalloweenItems.candybag);
-		registerModel(HalloweenItems.candybag, 1);
-		registerModel(HalloweenItems.witchsbroomstick);
-		
 	}
 }

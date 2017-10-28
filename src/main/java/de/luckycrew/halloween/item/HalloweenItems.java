@@ -8,14 +8,13 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class HalloweenItems {
 	
-	public static ArmorMaterial scarecrow_material;
-	public static ArmorMaterial slender_material;
+	public static ArmorMaterial scarecrow_material, slender_material, witch_material, zombie_material, clown_material;
 	
 	public static ToolMaterial killerknive_material;
 	
 	public static Item candy, teleporter, candybag, witchsbroomstick;
 	
-	public static ItemArmorBase[] scarecrow, slender;
+	public static ItemArmorBase[] scarecrow, slender, witch, zombie, clown;
 	
 	public static Item killerknive;
 	
@@ -28,6 +27,9 @@ public class HalloweenItems {
 	private void amormaterial() {
 		scarecrow_material = EnumHelper.addArmorMaterial("scarecrow", "", 200, new int[] { 3, 8, 6, 3 }, 20);
 		slender_material = EnumHelper.addArmorMaterial("slender", "", 200, new int[] { 6, 16, 12, 6 }, 20);
+		witch_material = EnumHelper.addArmorMaterial("witch", "", 200, new int[] { 3, 10, 6, 1 }, 20);
+		zombie_material = EnumHelper.addArmorMaterial("zombie", "", 200, new int[] { 2, 8, 7, 3 }, 20);
+		clown_material = EnumHelper.addArmorMaterial("clown", "", 50, new int[] { 20, 20, 20, 20 }, 20);
 	}
 	
 	private void toolmaterial() {
@@ -46,6 +48,9 @@ public class HalloweenItems {
 	private void armor() {
 		scarecrow = createArmor(scarecrow_material, "scarecrow");
 		slender = createArmor(slender_material, "slender");
+		witch = createArmor(witch_material, "witch");
+		zombie = createArmor(zombie_material, "zombie");
+		clown = createArmor(clown_material, "clown");
 	}
 	
 	private void tool() {
