@@ -14,6 +14,7 @@ public class HalloweenModelRegistry {
 	
 	private void block() {
 		registerModel(HalloweenBlocks.luckyblock);
+		registerModel(HalloweenBlocks.pumpkinbomb);
 	}
 	
 	private void item() {
@@ -25,10 +26,13 @@ public class HalloweenModelRegistry {
 			registerModel(item);
 		}
 		
+		registerModel(HalloweenItems.killerknive);
+		
 		registerModel(HalloweenItems.candy);
 		registerModel(HalloweenItems.teleporter);
+		registerModel(HalloweenItems.candybag);
+		registerModel(HalloweenItems.candybag, 1);
+		registerModel(HalloweenItems.witchsbroomstick);
 		
-		registerModel(HalloweenItems.killerknive);
 	}
-	
 }

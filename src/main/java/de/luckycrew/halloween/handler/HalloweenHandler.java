@@ -3,8 +3,9 @@ package de.luckycrew.halloween.handler;
 import de.luckycrew.core.*;
 import de.luckycrew.halloween.block.HalloweenBlocks;
 import de.luckycrew.halloween.event.LuckyEventTest;
-import de.luckycrew.halloween.listener.ListenerKillerKniveAttack;
-import info.u_team.u_team_core.util.registry.CommonRegistry;
+import de.luckycrew.halloween.listener.*;
+
+import static info.u_team.u_team_core.util.registry.CommonRegistry.registerEventHandler;
 
 public class HalloweenHandler {
 	
@@ -17,12 +18,13 @@ public class HalloweenHandler {
 	}
 	
 	private void event() {
-		CommonRegistry.registerEventHandler(new ListenerKillerKniveAttack());
+		registerEventHandler(new ListenerKillerKniveAttack());
+		registerEventHandler(new ListenerWitchsBroomstickFly());
 	}
-
+	
 	private void luckyhandler() {
 		handler = new LuckyHandler();
-		CommonRegistry.registerEventHandler(new BreakBlockListener(HalloweenBlocks.luckyblock, handler));
+		registerEventHandler(new BreakBlockListener(HalloweenBlocks.luckyblock, handler));
 	}
 	
 	private void luckyevent() {

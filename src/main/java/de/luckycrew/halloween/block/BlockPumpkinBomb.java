@@ -15,6 +15,7 @@ public class BlockPumpkinBomb extends UBlockTileEntity {
 	
 	public BlockPumpkinBomb(String name, UCreativeTab tab) {
 		super(TileEntityPumpkinBomb.class, Material.rock, name, tab);
+		setBlockUnbreakable();
 	}
 	
 	@Override
@@ -22,6 +23,16 @@ public class BlockPumpkinBomb extends UBlockTileEntity {
 		if (placer instanceof EntityPlayer && !world.isRemote) {
 			placer.addChatMessage(new ChatComponentTranslation("tile.pumpkinbomb.place"));
 		}
+	}
+	
+	@Override
+	public boolean isFullCube() {
+		return false;
+	}
+	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
 	}
 	
 }

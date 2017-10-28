@@ -13,7 +13,7 @@ public class HalloweenItems {
 	
 	public static ToolMaterial killerknive_material;
 	
-	public static Item candy, teleporter;
+	public static Item candy, teleporter, candybag, witchsbroomstick;
 	
 	public static ItemArmorBase[] scarecrow, slender;
 	
@@ -37,6 +37,8 @@ public class HalloweenItems {
 	private void item() {
 		candy = new ItemCandy("candy", tab);
 		teleporter = new ItemTeleporter("teleporter", tab);
+		candybag = new ItemCandyBag("candybag", tab);
+		witchsbroomstick = new ItemWitchsBroomstick("witchsbroomstick", tab);
 		armor();
 		tool();
 	}

@@ -3,8 +3,14 @@ itemGroup.luckyblock_halloween_tab=Halloween LuckyBlock Tab
 
 #Tile
 tile.luckyblock_halloween.name=Halloween LuckyBlock
+tile.pumpkinbomb.name=Pumpkin Bomb
 
 #Item
+item.candy.name=Flying Candy
+item.teleporter.name=Teleporter
+item.candybag.name=Candy Bag
+item.witchsbroomstick.name=Witch's Broomstick
+
 item.slender_helmet.name=Slender Helmet
 item.slender_chestplate.name=Slender Chestplate
 item.slender_leggings.name=Slender Leggings
@@ -14,9 +20,6 @@ item.scarecrow_helmet.name=Scarecrow Helmet
 item.scarecrow_chestplate.name=Scarecrow Chestplate
 item.scarecrow_leggings.name=Scarecrow Leggings
 item.scarecrow_boots.name=Scarecrow Boots
-
-item.candy.name=Flying Candy
-item.teleporter.name=Teleporter
 
 item.killerknive.name=Killer Knive
 
