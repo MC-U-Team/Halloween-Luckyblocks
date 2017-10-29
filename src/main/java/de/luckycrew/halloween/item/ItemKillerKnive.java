@@ -19,4 +19,9 @@ public class ItemKillerKnive extends ItemSword {
 		setUnlocalizedName(name);
 		GameRegistry.registerItem(this, name);
 	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.UNCOMMON;
+	}
 }

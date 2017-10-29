@@ -21,6 +21,21 @@ item.scarecrow_chestplate.name=Scarecrow Chestplate
 item.scarecrow_leggings.name=Scarecrow Leggings
 item.scarecrow_boots.name=Scarecrow Boots
 
+item.witch_helmet.name=Witch Helmet
+item.witch_chestplate.name=Witch Chestplate
+item.witch_leggings.name=Witch Leggings
+item.witch_boots.name=Witch Boots
+
+item.zombie_helmet.name=Zombie Helmet
+item.zombie_chestplate.name=Zombie Chestplate
+item.zombie_leggings.name=Zombie Leggings
+item.zombie_boots.name=Zombie Boots
+
+item.clown_helmet.name=Clown Helmet
+item.clown_chestplate.name=Clown Chestplate
+item.clown_leggings.name=Clown Leggings
+item.clown_boots.name=Clown Boots
+
 item.killerknive.name=Killer Knive
 
 #Custom

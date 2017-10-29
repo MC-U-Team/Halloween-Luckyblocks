@@ -7,7 +7,7 @@ import info.u_team.u_team_core.item.UItem;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -19,6 +19,11 @@ public class ItemCandy extends UItem {
 		super(name, tab);
 		this.setMaxDamage(20);
 		this.setMaxStackSize(1);
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.RARE;
 	}
 	
 	@Override

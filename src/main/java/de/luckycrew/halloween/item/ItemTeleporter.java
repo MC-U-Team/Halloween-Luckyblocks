@@ -4,7 +4,7 @@ import info.u_team.u_team_core.creativetab.UCreativeTab;
 import info.u_team.u_team_core.item.UItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
@@ -14,6 +14,11 @@ public class ItemTeleporter extends UItem {
 		super(name, tab);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(5);
+	}
+	
+	@Override
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.RARE;
 	}
 	
 	@Override
