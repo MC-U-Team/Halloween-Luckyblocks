@@ -1,7 +1,7 @@
 package de.luckycrew.halloween;
 
 import de.luckycrew.halloween.proxy.CommonProxy;
-import info.u_team.u_team_core.sub.*;
+import info.u_team.u_team_core.sub.USubMod;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;

@@ -12,7 +12,7 @@ public class ListenerWitchsBroomstickFly {
 	private boolean flying = false;
 	
 	@SubscribeEvent
-	public void onEntityUpdate(LivingUpdateEvent event) {
+	public void on(LivingUpdateEvent event) {
 		Entity entity = event.entityLiving;
 		if (!(entity instanceof EntityPlayer)) {
 			return;

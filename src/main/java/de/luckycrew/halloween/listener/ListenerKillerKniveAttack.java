@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ListenerKillerKniveAttack {
 	
 	@SubscribeEvent
-	public void onEntityUpdatedEventSword(LivingAttackEvent event) {
+	public void on(LivingAttackEvent event) {
 		Entity entity = event.source.getEntity();
 		if (entity == null || !(entity instanceof EntityPlayerMP)) {
 			return;

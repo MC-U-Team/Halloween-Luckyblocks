@@ -3,13 +3,18 @@ package de.luckycrew.halloween.models;
 import static info.u_team.u_team_core.util.registry.ClientRegistry.registerModel;
 
 import de.luckycrew.halloween.block.HalloweenBlocks;
+import de.luckycrew.halloween.entity.EntityPumpkinGrenade;
 import de.luckycrew.halloween.item.*;
+import info.u_team.u_team_core.util.registry.ClientRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 
-public class HalloweenModelRegistry {
+public class HalloweenRenderRegistry {
 	
-	public HalloweenModelRegistry() {
+	public HalloweenRenderRegistry() {
 		item();
 		block();
+		entity();
 	}
 	
 	private void block() {
@@ -23,6 +28,7 @@ public class HalloweenModelRegistry {
 		registerModel(HalloweenItems.candybag);
 		registerModel(HalloweenItems.candybag, 1);
 		registerModel(HalloweenItems.witchsbroomstick);
+		registerModel(HalloweenItems.pumpkingrenade);
 		
 		for (ItemArmorBase item : HalloweenItems.scarecrow) {
 			registerModel(item);
@@ -45,5 +51,9 @@ public class HalloweenModelRegistry {
 		}
 		
 		registerModel(HalloweenItems.killerknive);
+	}
+	
+	private void entity() {
+		ClientRegistry.registerEntityRenderingHandler(EntityPumpkinGrenade.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), HalloweenItems.pumpkingrenade, Minecraft.getMinecraft().getRenderItem()));
 	}
 }

@@ -1,6 +1,7 @@
 package de.luckycrew.halloween.proxy;
 
 import de.luckycrew.halloween.block.HalloweenBlocks;
+import de.luckycrew.halloween.entity.HalloweenEntities;
 import de.luckycrew.halloween.handler.HalloweenHandler;
 import de.luckycrew.halloween.item.HalloweenItems;
 import de.luckycrew.halloween.tab.HalloweenTabs;
@@ -12,6 +13,7 @@ public class CommonProxy {
 		new HalloweenTabs();
 		new HalloweenBlocks();
 		new HalloweenItems();
+		new HalloweenEntities();
 	}
 	
 	public void init(FMLInitializationEvent event) {

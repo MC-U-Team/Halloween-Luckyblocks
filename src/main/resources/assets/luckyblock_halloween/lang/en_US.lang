@@ -10,6 +10,7 @@ item.candy.name=Flying Candy
 item.teleporter.name=Teleporter
 item.candybag.name=Candy Bag
 item.witchsbroomstick.name=Witch's Broomstick
+item.pumpkingrenade.name=Pumpkin Grenade
 
 item.slender_helmet.name=Slender Helmet
 item.slender_chestplate.name=Slender Chestplate
@@ -37,6 +38,9 @@ item.clown_leggings.name=Clown Leggings
 item.clown_boots.name=Clown Boots
 
 item.killerknive.name=Killer Knive
+
+#Entity
+entity.pumpkingrenade.name=PumpkinGrenade
 
 #Custom
 

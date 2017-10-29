@@ -1,6 +1,6 @@
 package de.luckycrew.core;
 
-import info.u_team.u_team_core.block.*;
+import info.u_team.u_team_core.block.UBlock;
 import info.u_team.u_team_core.creativetab.UCreativeTab;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

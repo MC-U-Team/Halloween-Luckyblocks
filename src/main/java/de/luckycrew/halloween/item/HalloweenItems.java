@@ -1,6 +1,7 @@
 package de.luckycrew.halloween.item;
 
 import static de.luckycrew.halloween.tab.HalloweenTabs.tab;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -12,7 +13,7 @@ public class HalloweenItems {
 	
 	public static ToolMaterial killerknive_material;
 	
-	public static Item candy, teleporter, candybag, witchsbroomstick;
+	public static Item candy, teleporter, candybag, witchsbroomstick, pumpkingrenade;
 	
 	public static ItemArmorBase[] scarecrow, slender, witch, zombie, clown;
 	
@@ -41,6 +42,7 @@ public class HalloweenItems {
 		teleporter = new ItemTeleporter("teleporter", tab);
 		candybag = new ItemCandyBag("candybag", tab);
 		witchsbroomstick = new ItemWitchsBroomstick("witchsbroomstick", tab);
+		pumpkingrenade = new ItemPumpkinGrenade("pumpkingrenade", tab);
 		armor();
 		tool();
 	}

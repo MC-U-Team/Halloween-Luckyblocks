@@ -1,6 +1,7 @@
 package de.luckycrew.halloween.block;
 
 import static de.luckycrew.halloween.tab.HalloweenTabs.tab;
+
 import de.luckycrew.core.DefaultLuckyBlock;
 
 public class HalloweenBlocks {

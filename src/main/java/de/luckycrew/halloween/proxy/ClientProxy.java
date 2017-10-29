@@ -1,6 +1,6 @@
 package de.luckycrew.halloween.proxy;
 
-import de.luckycrew.halloween.models.HalloweenModelRegistry;
+import de.luckycrew.halloween.models.HalloweenRenderRegistry;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.relauncher.*;
 
@@ -13,7 +13,7 @@ public class ClientProxy extends CommonProxy {
 	
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		new HalloweenModelRegistry();
+		new HalloweenRenderRegistry();
 	}
 	
 	public void postinit(FMLPostInitializationEvent event) {

@@ -32,6 +32,9 @@ public class TileEntityPumpkinBomb extends UTileEntity implements IUpdatePlayerL
 			}
 		} else {
 			worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + 0.5D, pos.getY() + 0.9D, pos.getZ() + 0.5D, 0.0D, 0.2D, 0.0D, new int[0]);
+			if (fuse % 20 == 0) {
+				worldObj.playSound(pos.getX(), pos.getY(), pos.getZ(), "game.tnt.primed", 0.8F, 0.4F / (worldObj.rand.nextFloat() * 2F + 4F), true);
+			}
 			fuse--;
 		}
 		

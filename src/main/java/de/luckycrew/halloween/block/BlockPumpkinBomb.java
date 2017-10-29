@@ -1,5 +1,6 @@
 package de.luckycrew.halloween.block;
 
+import de.luckycrew.halloween.item.ItemBlockEpic;
 import de.luckycrew.halloween.tileentity.TileEntityPumpkinBomb;
 import info.u_team.u_team_core.block.UBlockTileEntity;
 import info.u_team.u_team_core.creativetab.UCreativeTab;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 public class BlockPumpkinBomb extends UBlockTileEntity {
 	
 	public BlockPumpkinBomb(String name, UCreativeTab tab) {
-		super(TileEntityPumpkinBomb.class, Material.rock, name, tab);
+		super(TileEntityPumpkinBomb.class, Material.rock, name, tab, ItemBlockEpic.class);
 		setBlockUnbreakable();
 	}
 	
