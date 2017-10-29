@@ -3,7 +3,8 @@ package de.luckycrew.halloween.models;
 import static info.u_team.u_team_core.util.registry.ClientRegistry.registerModel;
 
 import de.luckycrew.halloween.block.HalloweenBlocks;
-import de.luckycrew.halloween.entity.EntityPumpkinGrenade;
+import de.luckycrew.halloween.entity.*;
+import de.luckycrew.halloween.entity.render.RenderCreepyZombie;
 import de.luckycrew.halloween.item.*;
 import info.u_team.u_team_core.util.registry.ClientRegistry;
 import net.minecraft.client.Minecraft;
@@ -55,5 +56,6 @@ public class HalloweenRenderRegistry {
 	
 	private void entity() {
 		ClientRegistry.registerEntityRenderingHandler(EntityPumpkinGrenade.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), HalloweenItems.pumpkingrenade, Minecraft.getMinecraft().getRenderItem()));
+		ClientRegistry.registerEntityRenderingHandler(EntityCreepyZombie.class, new RenderCreepyZombie());
 	}
 }

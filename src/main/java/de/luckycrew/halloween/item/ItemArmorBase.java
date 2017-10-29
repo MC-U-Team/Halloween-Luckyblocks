@@ -3,6 +3,7 @@ package de.luckycrew.halloween.item;
 import de.luckycrew.halloween.HalloweenConstants;
 import info.u_team.u_team_core.creativetab.UCreativeTab;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.*;
@@ -36,5 +37,23 @@ public class ItemArmorBase extends ItemArmor {
 		} else {
 			return null;
 		}
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public static int getArmorBaseCount(EntityPlayer player, String name) {
+		int count = 0;
+		ItemStack[] inventory = player.inventory.armorInventory;
+		for (int i = 0; i < inventory.length; ++i) {
+			if (inventory[i] != null && inventory[i].getItem() instanceof ItemArmorBase) {
+				ItemArmorBase item = (ItemArmorBase) inventory[i].getItem();
+				if (item.name.equals(name)) {
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 }

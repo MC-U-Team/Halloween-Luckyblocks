@@ -12,6 +12,9 @@ public class HalloweenEntities {
 	private void throwable() {
 		EntityRegistry.registerGlobalEntityID(EntityPumpkinGrenade.class, "pumpkingrenade", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerModEntity(EntityPumpkinGrenade.class, "pumpkingrenade", 0, USub.getID(), 64, 1, true);
+		
+		EntityRegistry.registerGlobalEntityID(EntityCreepyZombie.class, "creepyzombie", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityCreepyZombie.class, "creepyzombie", 1, USub.getID(), 64, 1, true, 0x2ecc71, 0xe67e22);
 	}
 	
 }

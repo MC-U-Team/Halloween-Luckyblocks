@@ -20,6 +20,7 @@ public class HalloweenHandler {
 	private void event() {
 		registerEventHandler(new ListenerKillerKniveAttack());
 		registerEventHandler(new ListenerWitchsBroomstickFly());
+		registerEventHandler(new ListenerZombieArmor());
 	}
 	
 	private void luckyhandler() {
