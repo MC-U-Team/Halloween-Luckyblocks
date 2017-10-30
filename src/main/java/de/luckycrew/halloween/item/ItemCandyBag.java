@@ -49,7 +49,7 @@ public class ItemCandyBag extends ItemFood {
 	@Override
 	public void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		if (!worldIn.isRemote) {
-			if (stack.getMetadata() > 0) {
+			if (stack.getMetadata() == 0) {
 				player.addPotionEffect(new PotionEffect(Potion.absorption.id, 1200, 1));
 			} else {
 				player.addPotionEffect(new PotionEffect(Potion.absorption.id, 2400, 4));
