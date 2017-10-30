@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
 
-@Mod(modid = HalloweenConstants.MODID, name = HalloweenConstants.NAME, version = HalloweenConstants.VERSION, acceptedMinecraftVersions = HalloweenConstants.MCVERSION)
+@Mod(modid = HalloweenConstants.MODID, name = HalloweenConstants.NAME, version = HalloweenConstants.VERSION, acceptedMinecraftVersions = HalloweenConstants.MCVERSION, dependencies = HalloweenConstants.DEPENDENCIES)
 public class HalloweenMod extends USubMod {
 	
 	public HalloweenMod() {
