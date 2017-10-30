@@ -47,7 +47,7 @@ public class TileEntityPumpkinBomb extends UTileEntity implements IUpdatePlayerL
 		BlockPos highpos = new BlockPos(pos.getX(), pos.getY() + 5, pos.getZ());
 		for (int i = 0; i < 35; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-8, 8), MathUtil.getRandomNumberInRange(1, 10), MathUtil.getRandomNumberInRange(-8, 8));
-			EntityFallingBlock falling = new EntityFallingBlock(worldObj, newpos.getX(), newpos.getY(), newpos.getZ(), (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.pumpkin : Blocks.lit_pumpkin).getDefaultState());
+			EntityFallingBlock falling = new EntityFallingBlock(worldObj, newpos.getX(), newpos.getY(), newpos.getZ(), (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.pumpkin : Blocks.lit_pumpkin).getStateFromMeta(MathUtil.getRandomNumberInRange(0, 3)));
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

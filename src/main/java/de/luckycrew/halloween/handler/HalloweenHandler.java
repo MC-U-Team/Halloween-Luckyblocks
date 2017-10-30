@@ -21,6 +21,7 @@ public class HalloweenHandler {
 		registerEventHandler(new ListenerKillerKniveAttack());
 		registerEventHandler(new ListenerWitchsBroomstickFly());
 		registerEventHandler(new ListenerZombieArmor());
+		registerEventHandler(new ListenerGhostFlash());
 	}
 	
 	private void luckyhandler() {

@@ -1,6 +1,6 @@
 package de.luckycrew.halloween.proxy;
 
-import de.luckycrew.halloween.models.HalloweenRenderRegistry;
+import de.luckycrew.halloween.render.HalloweenRenderRegistry;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.relauncher.*;
 

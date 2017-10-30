@@ -22,6 +22,7 @@ public class EntityPumpkinGrenade extends EntityThrowable {
 		super(world, x, y, z);
 	}
 	
+	@Override
 	public void onImpact(MovingObjectPosition movingobjectposition) {
 		if (movingobjectposition.entityHit != null) {
 			movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10F);
@@ -42,7 +43,7 @@ public class EntityPumpkinGrenade extends EntityThrowable {
 		BlockPos highpos = new BlockPos(pos.getX(), pos.getY() + 5, pos.getZ());
 		for (int i = 0; i < 20; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-6, 6), MathUtil.getRandomNumberInRange(-5, 2), MathUtil.getRandomNumberInRange(-6, 6));
-			EntityFallingBlock falling = new EntityFallingBlock(worldObj, newpos.getX(), newpos.getY(), newpos.getZ(), (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.pumpkin : Blocks.lit_pumpkin).getDefaultState());
+			EntityFallingBlock falling = new EntityFallingBlock(worldObj, newpos.getX(), newpos.getY(), newpos.getZ(), (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.pumpkin : Blocks.lit_pumpkin).getStateFromMeta(MathUtil.getRandomNumberInRange(0, 3)));
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

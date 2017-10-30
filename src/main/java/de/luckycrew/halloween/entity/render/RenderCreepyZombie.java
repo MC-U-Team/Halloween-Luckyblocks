@@ -2,8 +2,7 @@ package de.luckycrew.halloween.entity.render;
 
 import de.luckycrew.halloween.HalloweenConstants;
 import de.luckycrew.halloween.entity.model.ModelCreepyZombie;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.*;
@@ -11,8 +10,8 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class RenderCreepyZombie extends RenderLiving {
 	
-	public RenderCreepyZombie() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelCreepyZombie(), 0);
+	public RenderCreepyZombie(RenderManager rendermanager) {
+		super(rendermanager, new ModelCreepyZombie(), 0);
 	}
 	
 	@Override
