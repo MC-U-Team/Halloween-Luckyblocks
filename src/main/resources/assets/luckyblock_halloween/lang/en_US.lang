@@ -40,7 +40,8 @@ item.clown_boots.name=Clown Boots
 item.killerknive.name=Killer Knive
 
 #Entity
-entity.pumpkingrenade.name=PumpkinGrenade
+entity.pumpkingrenade.name=Pumpkin Grenade
+entity.creepyzombie.name=Creepy Zombie
 
 #Custom
 
