@@ -42,6 +42,8 @@ item.killerknive.name=Killer Knive
 #Entity
 entity.pumpkingrenade.name=Pumpkin Grenade
 entity.creepyzombie.name=Creepy Zombie
+entity.ghost.name=Ghost
+entity.vampire.name=Vampire
 
 #Custom
 
@@ -51,4 +53,6 @@ item.candy.cooldown.yes=§cNext use in §6%s §cseconds
 item.teleporter.nolocation=§cLocation out of range
 
 tile.pumpkinbomb.place=§4Run! Run! Only 6 seconds till explosion!
+
+luckyevent.rainingpumkin=§e<HyCraftHD> §6Look into the sky ... :)
 

@@ -21,10 +21,10 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
-		new HalloweenHandler();
 	}
 	
 	public void postinit(FMLPostInitializationEvent event) {
+		new HalloweenHandler();
 	}
 	
 }

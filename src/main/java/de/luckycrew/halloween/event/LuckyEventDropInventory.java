@@ -4,15 +4,15 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-public class LuckyEventTest extends LuckyEventCustom {
+public class LuckyEventDropInventory extends LuckyEventCustom {
 	
-	public LuckyEventTest() {
-		super("test", 1);
+	public LuckyEventDropInventory() {
+		super("Drop Inventory", 1);
 	}
 	
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
-		System.out.println(player + " - " + world + " - " + pos);
+		player.inventory.dropAllItems();
 	}
 	
 }

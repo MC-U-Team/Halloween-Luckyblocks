@@ -4,7 +4,7 @@ import static info.u_team.u_team_core.util.registry.CommonRegistry.registerEvent
 
 import de.luckycrew.core.*;
 import de.luckycrew.halloween.block.HalloweenBlocks;
-import de.luckycrew.halloween.event.LuckyEventTest;
+import de.luckycrew.halloween.event.*;
 import de.luckycrew.halloween.listener.*;
 
 public class HalloweenHandler {
@@ -30,7 +30,19 @@ public class HalloweenHandler {
 	}
 	
 	private void luckyevent() {
-		handler.add(new LuckyEventTest());
+		handler.add(new LuckyEventBlocks());
+		handler.add(new LuckyEventBoom());
+		handler.add(new LuckyEventChest());
+		handler.add(new LuckyEventDeath());
+		handler.add(new LuckyEventDropInventory());
+		handler.add(new LuckyEventEnchant());
+		handler.add(new LuckyEventGeneration());
+		handler.add(new LuckyEventItems());
+		handler.add(new LuckyEventMerchant());
+		handler.add(new LuckyEventRainingPumkin());
+		handler.add(new LuckyEventSound());
+		handler.add(new LuckyEventSpawnCreature());
+		handler.add(new LuckyEventThunder());
 	}
 	
 }
