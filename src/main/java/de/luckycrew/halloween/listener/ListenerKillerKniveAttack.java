@@ -34,6 +34,9 @@ public class ListenerKillerKniveAttack {
 			if (differx < 0.4 && differz < 0.4) {
 				base.onKillCommand();
 				stack.damageItem(40, player);
+				if (stack.getItemDamage() >= stack.getMaxDamage()) {
+					player.destroyCurrentEquippedItem();
+				}
 			}
 		}
 	}

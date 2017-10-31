@@ -32,7 +32,7 @@ public class ItemTeleporter extends UItem {
 			return itemstack;
 		}
 		BlockPos pos = objectposition.getBlockPos();
-		player.setLocationAndAngles(pos.getX(), pos.getY(), pos.getZ(), player.rotationYaw, player.rotationPitch);
+		player.setLocationAndAngles(pos.getX(), pos.getY() + 1, pos.getZ(), player.rotationYaw, player.rotationPitch);
 		itemstack.damageItem(1, player);
 		return itemstack;
 	}
