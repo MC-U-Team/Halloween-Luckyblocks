@@ -4,6 +4,7 @@ import de.luckycrew.halloween.item.HalloweenItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -31,6 +32,9 @@ public class ListenerWitchsBroomstickFly {
 		}
 		player.capabilities.isFlying = true;
 		player.fallDistance = 0.0F;
+		if (!MinecraftServer.getServer().isFlightAllowed()) {
+			MinecraftServer.getServer().setAllowFlight(true);
+		}
 		flying = true;
 		if (!player.worldObj.isRemote) {
 			stack.damageItem(1, player);

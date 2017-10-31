@@ -7,11 +7,11 @@ import de.luckycrew.halloween.block.HalloweenBlocks;
 import de.luckycrew.halloween.event.*;
 import de.luckycrew.halloween.listener.*;
 
-public class HalloweenHandler {
+public class HalloweenCommonHandler {
 	
 	public static LuckyHandler handler;
 	
-	public HalloweenHandler() {
+	public HalloweenCommonHandler() {
 		event();
 		luckyhandler();
 		luckyevent();
@@ -21,7 +21,6 @@ public class HalloweenHandler {
 		registerEventHandler(new ListenerKillerKniveAttack());
 		registerEventHandler(new ListenerWitchsBroomstickFly());
 		registerEventHandler(new ListenerZombieArmor());
-		registerEventHandler(new ListenerGhostFlash());
 	}
 	
 	private void luckyhandler() {

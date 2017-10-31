@@ -2,7 +2,7 @@ package de.luckycrew.halloween.proxy;
 
 import de.luckycrew.halloween.block.HalloweenBlocks;
 import de.luckycrew.halloween.entity.HalloweenEntities;
-import de.luckycrew.halloween.handler.HalloweenHandler;
+import de.luckycrew.halloween.handler.HalloweenCommonHandler;
 import de.luckycrew.halloween.item.HalloweenItems;
 import de.luckycrew.halloween.network.HalloweenNetwork;
 import de.luckycrew.halloween.sound.HalloweenSounds;
@@ -24,7 +24,7 @@ public class CommonProxy {
 	}
 	
 	public void postinit(FMLPostInitializationEvent event) {
-		new HalloweenHandler();
+		new HalloweenCommonHandler();
 	}
 	
 }
