@@ -97,11 +97,17 @@ curseforge {
 
     	mainArtifact(jar) {
       		displayName = config.curse.display + "-" + minecraft.version + "-" + version
+      		relations {
+        		requiredLibrary 'u-team-core'
+        	}
     	}
     	
     	addArtifact(deobfJar) {
     		displayName = config.curse.display + "-" + minecraft.version + "-" + version + "-dev"
-    		 changelog = "Mappings: " + config.forge.mappings
+    		changelog = "Mappings: " + config.forge.mappings
+    		relations {
+        		requiredLibrary 'u-team-core'
+        	}
     	}
   	}
 }
