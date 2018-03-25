@@ -2,9 +2,10 @@ package de.luckycrew.halloween.event;
 
 import java.util.*;
 
-import de.luckycrew.halloween.item.*;
+import de.luckycrew.halloween.item.HalloweenItems;
 import de.luckycrew.halloween.sound.HalloweenSounds;
 import de.luckycrew.halloween.util.ItemStackEntry;
+import info.u_team.u_team_core.item.armor.UItemArmor;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -24,19 +25,19 @@ public class LuckyEventChest extends LuckyEventCustom {
 	}
 	
 	private void additems() {
-		for (ItemArmorBase item : HalloweenItems.scarecrow) {
+		for (UItemArmor item : HalloweenItems.scarecrow) {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
-		for (ItemArmorBase item : HalloweenItems.slender) {
+		for (UItemArmor item : HalloweenItems.slender) {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
-		for (ItemArmorBase item : HalloweenItems.witch) {
+		for (UItemArmor item : HalloweenItems.witch) {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
-		for (ItemArmorBase item : HalloweenItems.zombie) {
+		for (UItemArmor item : HalloweenItems.zombie) {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
-		for (ItemArmorBase item : HalloweenItems.clown) {
+		for (UItemArmor item : HalloweenItems.clown) {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
 		
@@ -61,7 +62,7 @@ public class LuckyEventChest extends LuckyEventCustom {
 			TileEntityChest chest = (TileEntityChest) tile;
 			for (int i = 0; i < chest.getSizeInventory(); i++) {
 				if (MathUtil.getRandomNumberInRange(0, MathUtil.getRandomNumberInRange(0, 3)) == 0) {
-					chest.setInventorySlotContents(i, stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size()-1)).getItemStack());
+					chest.setInventorySlotContents(i, stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
 				}
 			}
 			chest.update();

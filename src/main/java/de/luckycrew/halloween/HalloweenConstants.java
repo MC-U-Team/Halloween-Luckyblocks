@@ -6,9 +6,9 @@ public class HalloweenConstants {
 	
 	public static final String MODID = "luckyblock_halloween";
 	public static final String NAME = "Halloween LuckyBlocks";
-	public static final String VERSION = "2.0.0";
+	public static final String VERSION = "2.0.1";
 	public static final String MCVERSION = "1.8";
-	public static final String DEPENDENCIES = "required-after:uteamcore@1.0.0";
+	public static final String DEPENDENCIES = "required-after:uteamcore@1.1.1";
 	
 	public static final String UPDATEURL = "https://api.u-team.info/update/luckyblocks/halloween.json";
 	

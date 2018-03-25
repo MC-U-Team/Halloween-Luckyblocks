@@ -3,30 +3,20 @@ package de.luckycrew.halloween.item;
 import java.util.List;
 
 import info.u_team.u_team_core.creativetab.UCreativeTab;
+import info.u_team.u_team_core.item.UItemFood;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.potion.*;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.*;
 
-public class ItemCandyBag extends ItemFood {
-	
-	private String name;
+public class ItemCandyBag extends UItemFood {
 	
 	public ItemCandyBag(String name, UCreativeTab tab) {
-		super(4, 2.0F, false);
-		this.name = name;
-		setCreativeTab(tab);
-		register();
+		super(name, tab, 4, 2.0F);
 		setAlwaysEdible();
 		setHasSubtypes(true);
-	}
-	
-	private void register() {
-		setUnlocalizedName(name);
-		GameRegistry.registerItem(this, name);
 	}
 	
 	@SideOnly(Side.CLIENT)

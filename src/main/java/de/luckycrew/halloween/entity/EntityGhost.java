@@ -163,9 +163,9 @@ public class EntityGhost extends EntityFlying implements IMob {
 			if (!entitymovehelper.isUpdating()) {
 				return true;
 			} else {
-				double d0 = entitymovehelper.func_179917_d() - this.ghost.posX;
-				double d1 = entitymovehelper.func_179919_e() - this.ghost.posY;
-				double d2 = entitymovehelper.func_179918_f() - this.ghost.posZ;
+				double d0 = entitymovehelper.getX() - this.ghost.posX;
+				double d1 = entitymovehelper.getY() - this.ghost.posY;
+				double d2 = entitymovehelper.getZ() - this.ghost.posZ;
 				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
 				return d3 < 1.0D || d3 > 3600.0D;
 			}

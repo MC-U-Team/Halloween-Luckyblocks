@@ -18,7 +18,6 @@ public class HalloweenBlocks {
 	
 	private void block() {
 		luckyblock();
-		
 	}
 	
 	private void luckyblock() {

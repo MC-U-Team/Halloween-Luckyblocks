@@ -1,6 +1,6 @@
 package de.luckycrew.halloween.listener;
 
-import de.luckycrew.halloween.item.ItemArmorBase;
+import de.luckycrew.halloween.util.ArmorUtility;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.*;
@@ -19,7 +19,7 @@ public class ListenerZombieArmor {
 		if (player.capabilities.isCreativeMode) {
 			return;
 		}
-		int count = ItemArmorBase.getArmorBaseCount(player, "zombie");
+		int count = ArmorUtility.getArmorBaseCount(player, "zombie");
 		if (count > 0) {
 			player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), 2, 0, false, false));
 			if (player.worldObj.rand.nextInt(500) == 0) {

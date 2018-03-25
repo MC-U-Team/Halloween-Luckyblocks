@@ -4,6 +4,7 @@ import de.luckycrew.halloween.item.ItemBlockEpic;
 import de.luckycrew.halloween.tileentity.TileEntityPumpkinBomb;
 import info.u_team.u_team_core.block.UBlockTileEntity;
 import info.u_team.u_team_core.creativetab.UCreativeTab;
+import info.u_team.u_team_core.tileentity.UTileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,7 +16,7 @@ import net.minecraft.world.World;
 public class BlockPumpkinBomb extends UBlockTileEntity {
 	
 	public BlockPumpkinBomb(String name, UCreativeTab tab) {
-		super(TileEntityPumpkinBomb.class, Material.rock, name, tab, ItemBlockEpic.class);
+		super(name, Material.rock, tab, ItemBlockEpic.class, new UTileEntityProvider("PumpkinBomb", TileEntityPumpkinBomb.class));
 		setBlockUnbreakable();
 	}
 	

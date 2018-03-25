@@ -3,8 +3,9 @@ package de.luckycrew.halloween.event;
 import java.util.ArrayList;
 
 import de.luckycrew.halloween.block.HalloweenBlocks;
-import de.luckycrew.halloween.item.*;
+import de.luckycrew.halloween.item.HalloweenItems;
 import de.luckycrew.halloween.util.ItemStackEntry;
+import info.u_team.u_team_core.item.armor.UItemArmor;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -33,19 +34,19 @@ public class LuckyEventItems extends LuckyEventCustom {
 		add(new ItemStackEntry(new ItemStack(HalloweenItems.witchsbroomstick)), 1);
 		add(new ItemStackEntry(new ItemStack(HalloweenBlocks.pumpkinbomb), 1, 2), 2);
 		
-		for (ItemArmorBase item : HalloweenItems.scarecrow) {
+		for (UItemArmor item : HalloweenItems.scarecrow) {
 			add(new ItemStackEntry(new ItemStack(item)), 2);
 		}
-		for (ItemArmorBase item : HalloweenItems.slender) {
+		for (UItemArmor item : HalloweenItems.slender) {
 			add(new ItemStackEntry(new ItemStack(item)), 2);
 		}
-		for (ItemArmorBase item : HalloweenItems.witch) {
+		for (UItemArmor item : HalloweenItems.witch) {
 			add(new ItemStackEntry(new ItemStack(item)), 2);
 		}
-		for (ItemArmorBase item : HalloweenItems.zombie) {
+		for (UItemArmor item : HalloweenItems.zombie) {
 			add(new ItemStackEntry(new ItemStack(item)), 2);
 		}
-		for (ItemArmorBase item : HalloweenItems.clown) {
+		for (UItemArmor item : HalloweenItems.clown) {
 			add(new ItemStackEntry(new ItemStack(item)), 2);
 		}
 		

@@ -2,6 +2,7 @@ package de.luckycrew.halloween.item;
 
 import static de.luckycrew.halloween.tab.HalloweenTabs.tab;
 
+import info.u_team.u_team_core.item.armor.UItemArmor;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -15,7 +16,7 @@ public class HalloweenItems {
 	
 	public static Item candy, teleporter, candybag, witchsbroomstick, pumpkingrenade;
 	
-	public static ItemArmorBase[] scarecrow, slender, witch, zombie, clown;
+	public static UItemArmor[] scarecrow, slender, witch, zombie, clown;
 	
 	public static Item killerknive;
 	
@@ -62,11 +63,11 @@ public class HalloweenItems {
 	// Methods
 	private String[] armor = new String[] { "helmet", "chestplate", "leggings", "boots" };
 	
-	private ItemArmorBase[] createArmor(ArmorMaterial material, String name) {
-		ItemArmorBase[] basearmor = new ItemArmorBase[4];
+	private UItemArmor[] createArmor(ArmorMaterial material, String name) {
+		UItemArmor[] basearmor = new UItemArmor[4];
 		
 		for (int i = 0; i < basearmor.length; i++) {
-			basearmor[i] = new ItemArmorBase(material, i, name, armor[i], tab);
+			basearmor[i] = new UItemArmor(name, tab, material, i, armor[i]);
 		}
 		return basearmor;
 	}

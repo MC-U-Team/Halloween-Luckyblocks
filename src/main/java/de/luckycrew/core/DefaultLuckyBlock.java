@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 public class DefaultLuckyBlock extends UBlock {
 	
 	public DefaultLuckyBlock(String name, UCreativeTab tab) {
-		super(Material.sponge, name, tab);
+		super(name, Material.sponge, tab);
 		this.setHardness(0.55F);
 		this.setResistance(100.0F);
 		this.setLightLevel(0.3F);
