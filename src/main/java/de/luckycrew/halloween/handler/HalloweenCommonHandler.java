@@ -2,8 +2,8 @@ package de.luckycrew.halloween.handler;
 
 import static info.u_team.u_team_core.util.registry.CommonRegistry.registerEventHandler;
 
-import de.luckycrew.core.*;
 import de.luckycrew.halloween.block.HalloweenBlocks;
+import de.luckycrew.halloween.core.*;
 import de.luckycrew.halloween.event.*;
 import de.luckycrew.halloween.listener.*;
 
