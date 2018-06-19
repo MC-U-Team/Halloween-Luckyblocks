@@ -1,33 +1,18 @@
-# eclipse
 bin
 *.launch
 .settings
 .metadata
 .classpath
 .project
-
-# idea
+.git
 out
 *.ipr
 *.iws
 *.iml
 .idea
-
-# gradle
 build
 .gradle
-
-# other
+gradle.properties
 eclipse
 run
-/CREDITS-fml.txt
-/LICENSE-fml.txt
-/MinecraftForge-Credits.txt
-/MinecraftForge-License.txt
-/Paulscode IBXM Library License.txt
-/Paulscode SoundSystem CodecIBXM License.txt
-/README.txt
-/forge-1.8-11.14.4.1577-changelog.txt
-/gradlew
-/gradlew.bat
 libs

@@ -1,22 +1,20 @@
 package de.luckycrew.halloween;
 
+import static de.luckycrew.halloween.HalloweenConstants.*;
+
 import de.luckycrew.halloween.proxy.CommonProxy;
 import info.u_team.u_team_core.sub.USubMod;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
 
-@Mod(modid = HalloweenConstants.MODID, name = HalloweenConstants.NAME, version = HalloweenConstants.VERSION, acceptedMinecraftVersions = HalloweenConstants.MCVERSION, dependencies = HalloweenConstants.DEPENDENCIES)
+@Mod(modid = MODID, name = NAME, version = VERSION, acceptedMinecraftVersions = MCVERSION, dependencies = DEPENDENCIES, updateJSON = UPDATEURL)
 public class HalloweenMod extends USubMod {
-	
-	public HalloweenMod() {
-		super(HalloweenConstants.MODID, HalloweenConstants.NAME, HalloweenConstants.VERSION, HalloweenConstants.UPDATEURL);
-	}
 	
 	@Instance
 	public static HalloweenMod instance;
 	
-	@SidedProxy(serverSide = HalloweenConstants.COMMONPROXY, clientSide = HalloweenConstants.CLIENTPROXY)
+	@SidedProxy(serverSide = COMMONPROXY, clientSide = CLIENTPROXY)
 	public static CommonProxy proxy;
 	
 	@EventHandler

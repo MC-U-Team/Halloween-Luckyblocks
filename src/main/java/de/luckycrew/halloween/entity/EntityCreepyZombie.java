@@ -69,7 +69,9 @@ public class EntityCreepyZombie extends EntityMob {
 		}
 		
 		// if (ticksExisted == 20) {
-		// worldObj.playSoundEffect(posX, posY, posZ, LbhaMod.instance.sounds.ich_bin_der_zombie, 1.0F, MathUtil.getRandomNumberInRange(rand, 0.7F, 1.2F));
+		// worldObj.playSoundEffect(posX, posY, posZ,
+		// LbhaMod.instance.sounds.ich_bin_der_zombie, 1.0F,
+		// MathUtil.getRandomNumberInRange(rand, 0.7F, 1.2F));
 		// }
 		
 		super.onLivingUpdate();

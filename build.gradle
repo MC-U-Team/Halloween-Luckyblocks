@@ -31,8 +31,8 @@ repositories {
 
 getBuildNumber()
 
-version = "${config.mod.version}-${config.buildnumber}"
-archivesBaseName = config.mod.filename
+version = "${config.mod.version}.${config.buildnumber}"
+archivesBaseName = "${config.mod.filename}-${config.forge.mcversion}"
 
 sourceCompatibility = targetCompatibility = "1.8"
 
@@ -46,31 +46,30 @@ minecraft {
     mappings = config.forge.mapping
     makeObfSourceJar = false
 	
-	replace "@VERSION@", "${config.mod.version}-${config.buildnumber}"
+	replace "@VERSION@", "${project.version}"
 }
 
 jar {
+	classifier = ""
+
     from "LICENSE"
-    
-    archiveName = "${archivesBaseName}-${minecraft.version}-v${version}.jar"
-    
+       
     manifest.mainAttributes(
        	"Implementation-Title": config.mod.name,
-    	"Implementation-Version": version,
+    	"Implementation-Version": project.version,
 		"Built-On": minecraft.version
 	)
 }
 
 task deobfJar(type: Jar) {
+	classifier = "dev"
+
     from sourceSets.main.output
-    
     from "LICENSE"
-    
-   	archiveName = "${archivesBaseName}-${minecraft.version}-v${version}-dev.jar"
-    
+        
     manifest.mainAttributes(
        	"Implementation-Title": config.mod.name,
-    	"Implementation-Version": version,
+    	"Implementation-Version": project.version,
 		"Built-On": minecraft.version
 	)
 }
@@ -80,14 +79,15 @@ artifacts {
     archives jar
 }
 
-dependencies {
-	compile "u-team-core:u_team_core-1.8-v1.1.2:49:dev"
+sourceSets {
+   	main {
+		java
+		resources
+   	}
 }
 
-processResources {
-	from(sourceSets.main.resources.srcDirs) {
-        exclude "*"
-	}
+dependencies {
+	compile "u-team-core:u_team_core-${minecraft.version}:${config.uteamcore.version}:dev"
 }
 
 curseforge {
@@ -108,7 +108,7 @@ curseforge {
     	
     	addArtifact(deobfJar) {
     		displayName = "${config.curse.display}-${minecraft.version}-${version}-dev"
-    		changelog = "Mappings: " + config.forge.mappings
+    		changelog = "Mappings: " + config.forge.mapping
     	}
   	}
 }
