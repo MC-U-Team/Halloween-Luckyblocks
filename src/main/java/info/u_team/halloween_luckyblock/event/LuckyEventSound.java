@@ -17,7 +17,7 @@ public class LuckyEventSound extends LuckyEventCustom {
 	
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
-		world.playSoundAtEntity(player, HalloweenSounds.sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenSounds.sounds.size() - 1)), 1.0F, 1.0F);
+		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.sounds.size() - 1)), 1.0F, 1.0F);
 		IThreadListener mainthread = (WorldServer) player.worldObj;
 		new Thread(() -> {
 			synchronized (this) {

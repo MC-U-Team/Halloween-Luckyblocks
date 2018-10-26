@@ -67,6 +67,6 @@ public class LuckyEventChest extends LuckyEventCustom {
 			}
 			chest.update();
 		}
-		world.playSoundAtEntity(player, HalloweenSounds.tension, 0.2F, 1.0F);
+		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.tension, 0.2F, 1.0F);
 	}
 }

@@ -4,10 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
+import net.minecraft.init.*;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -15,43 +16,45 @@ public class EntityCreepyZombie extends EntityMob {
 	
 	public EntityCreepyZombie(World worldIn) {
 		super(worldIn);
+		this.setSize(0.6F, 1.95F);
+	}
+	
+	protected void initEntityAI() {
+		this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
+		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
+		this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.5D));
+		this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 16.0F));
+		this.tasks.addTask(8, new EntityAILookIdle(this));
 		
-		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, this.aiAvoidExplodingCreepers);
-		
-		this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, false));
-		this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
-		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(6, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-		this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, true));
 	}
 	
 	@Override
 	public void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.42D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
+		getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30D);
+		getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.42D);
+		getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
 	}
 	
 	@Override
 	public void onLivingUpdate() {
-		if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild()) {
-			float f = this.getBrightness(1.0F);
-			BlockPos blockpos = new BlockPos(this.posX, Math.round(this.posY), this.posZ);
+		if (this.world.isDaytime() && !this.world.isRemote && !this.isChild()) {
+			float f = this.getBrightness();
 			
-			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canSeeSky(blockpos)) {
+			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(new BlockPos(this.posX, this.posY + (double) this.getEyeHeight(), this.posZ))) {
 				boolean flag = true;
-				ItemStack itemstack = this.getEquipmentInSlot(4);
+				ItemStack itemstack = this.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 				
-				if (itemstack != null) {
+				if (!itemstack.isEmpty()) {
 					if (itemstack.isItemStackDamageable()) {
 						itemstack.setItemDamage(itemstack.getItemDamage() + this.rand.nextInt(2));
 						
 						if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
 							this.renderBrokenItemStack(itemstack);
-							this.setCurrentItemOrArmor(4, (ItemStack) null);
+							this.setItemStackToSlot(EntityEquipmentSlot.HEAD, ItemStack.EMPTY);
 						}
 					}
 					
@@ -63,11 +66,6 @@ public class EntityCreepyZombie extends EntityMob {
 				}
 			}
 		}
-		
-		if (this.isRiding() && this.getAttackTarget() != null && this.ridingEntity instanceof EntityChicken) {
-			((EntityLiving) this.ridingEntity).getNavigator().setPath(this.getNavigator().getPath(), 1.5D);
-		}
-		
 		// if (ticksExisted == 20) {
 		// worldObj.playSoundEffect(posX, posY, posZ,
 		// LbhaMod.instance.sounds.ich_bin_der_zombie, 1.0F,
@@ -82,44 +80,42 @@ public class EntityCreepyZombie extends EntityMob {
 		super.entityInit();
 	}
 	
-	@Override
-	public boolean attackEntityAsMob(Entity p_70652_1_) {
-		boolean flag = super.attackEntityAsMob(p_70652_1_);
+	public boolean attackEntityAsMob(Entity entityIn) {
+		boolean flag = super.attackEntityAsMob(entityIn);
 		
 		if (flag) {
-			int i = this.worldObj.getDifficulty().getDifficultyId();
+			float f = this.world.getDifficultyForLocation(new BlockPos(this)).getAdditionalDifficulty();
 			
-			if (this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < i * 0.3F) {
-				p_70652_1_.setFire(2 * i);
+			if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < f * 0.3F) {
+				entityIn.setFire(2 * (int) f);
 			}
 		}
-		
 		return flag;
 	}
 	
 	@Override
-	public String getLivingSound() {
-		return "mob.zombie.say";
+	protected SoundEvent getAmbientSound() {
+		return SoundEvents.ENTITY_ZOMBIE_AMBIENT;
 	}
 	
 	@Override
-	public String getHurtSound() {
-		return "mob.zombie.hurt";
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEvents.ENTITY_ZOMBIE_HURT;
 	}
 	
 	@Override
-	public String getDeathSound() {
-		return "mob.zombie.death";
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.ENTITY_ZOMBIE_DEATH;
 	}
 	
 	@Override
-	public void playStepSound(BlockPos p_180429_1_, Block p_180429_2_) {
-		this.playSound("mob.zombie.step", 0.15F, 1.0F);
+	protected void playStepSound(BlockPos pos, Block blockIn) {
+		this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.15F, 1.0F);
 	}
 	
 	@Override
 	public Item getDropItem() {
-		return Items.rotten_flesh;
+		return Items.ROTTEN_FLESH;
 	}
 	
 }

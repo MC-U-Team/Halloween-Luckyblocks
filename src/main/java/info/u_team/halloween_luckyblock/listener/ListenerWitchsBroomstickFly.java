@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ListenerWitchsBroomstickFly {
@@ -14,7 +15,7 @@ public class ListenerWitchsBroomstickFly {
 	
 	@SubscribeEvent
 	public void on(LivingUpdateEvent event) {
-		Entity entity = event.entityLiving;
+		Entity entity = event.getEntityLiving();
 		if (!(entity instanceof EntityPlayer)) {
 			return;
 		}
@@ -32,15 +33,13 @@ public class ListenerWitchsBroomstickFly {
 		}
 		player.capabilities.isFlying = true;
 		player.fallDistance = 0.0F;
-		if (!MinecraftServer.getServer().isFlightAllowed()) {
-			MinecraftServer.getServer().setAllowFlight(true);
+		MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+		if (!server.isFlightAllowed()) {
+			server.setAllowFlight(true);
 		}
 		flying = true;
-		if (!player.worldObj.isRemote) {
+		if (!player.world.isRemote) {
 			stack.damageItem(1, player);
-			if (stack.getItemDamage() == stack.getMaxDamage()) {
-				player.destroyCurrentEquippedItem();
-			}
 		}
 	}
 }

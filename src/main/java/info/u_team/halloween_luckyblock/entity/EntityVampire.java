@@ -1,22 +1,22 @@
 package info.u_team.halloween_luckyblock.entity;
 
-import java.util.Calendar;
-
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockBlocks;
-import info.u_team.halloween_luckyblock.sound.HalloweenSounds;
-import net.minecraft.block.Block;
+import info.u_team.halloween_luckyblock.init.*;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityFallingBlock;
-import net.minecraft.entity.passive.EntityAmbientCreature;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
+import net.minecraft.network.datasync.*;
+import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 
 public class EntityVampire extends EntityAmbientCreature {
 	
+	private static final DataParameter<Byte> HANGING = EntityDataManager.<Byte> createKey(EntityBat.class, DataSerializers.BYTE);
 	private BlockPos spawnPosition;
 	
 	public EntityVampire(World worldIn) {
@@ -29,7 +29,7 @@ public class EntityVampire extends EntityAmbientCreature {
 	
 	public void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataManager.register(HANGING, Byte.valueOf((byte) 0));
 	}
 	
 	protected float getSoundVolume() {
@@ -40,16 +40,16 @@ public class EntityVampire extends EntityAmbientCreature {
 		return super.getSoundPitch() * 0.95F;
 	}
 	
-	protected String getLivingSound() {
-		return this.getIsBatHanging() && this.rand.nextInt(4) != 0 ? null : "mob.bat.idle";
+	public SoundEvent getAmbientSound() {
+		return this.getIsBatHanging() && this.rand.nextInt(4) != 0 ? null : SoundEvents.ENTITY_BAT_AMBIENT;
 	}
 	
-	protected String getHurtSound() {
-		return HalloweenSounds.scubi_dabi;
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return HalloweenLuckyBlockSounds.scubi_dabi;
 	}
 	
-	protected String getDeathSound() {
-		return HalloweenSounds.wind;
+	protected SoundEvent getDeathSound() {
+		return HalloweenLuckyBlockSounds.wind;
 	}
 	
 	public boolean canBePushed() {
@@ -64,20 +64,19 @@ public class EntityVampire extends EntityAmbientCreature {
 	
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
 	}
 	
 	public boolean getIsBatHanging() {
-		return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
+		return (((Byte) this.dataManager.get(HANGING)).byteValue() & 1) != 0;
 	}
 	
-	public void setIsBatHanging(boolean p_82236_1_) {
-		byte b0 = this.dataWatcher.getWatchableObjectByte(16);
+	public void setIsBatHanging(boolean isHanging) {
+		byte b0 = ((Byte) this.dataManager.get(HANGING)).byteValue();
 		
-		if (p_82236_1_) {
-			this.dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 | 1)));
+		if (isHanging) {
+			this.dataManager.set(HANGING, Byte.valueOf((byte) (b0 | 1)));
 		} else {
-			this.dataWatcher.updateObject(16, Byte.valueOf((byte) (b0 & -2)));
+			this.dataManager.set(HANGING, Byte.valueOf((byte) (b0 & -2)));
 		}
 	}
 	
@@ -85,8 +84,10 @@ public class EntityVampire extends EntityAmbientCreature {
 		super.onUpdate();
 		
 		if (this.getIsBatHanging()) {
-			this.motionX = this.motionY = this.motionZ = 0.0D;
-			this.posY = (double) MathHelper.floor_double(this.posY) + 1.0D - (double) this.height;
+			this.motionX = 0.0D;
+			this.motionY = 0.0D;
+			this.motionZ = 0.0D;
+			this.posY = (double) MathHelper.floor(this.posY) + 1.0D - (double) this.height;
 		} else {
 			this.motionY *= 0.6000000238418579D;
 		}
@@ -98,21 +99,21 @@ public class EntityVampire extends EntityAmbientCreature {
 		BlockPos blockpos1 = blockpos.up();
 		
 		if (this.getIsBatHanging()) {
-			if (!this.worldObj.getBlockState(blockpos1).getBlock().isNormalCube()) {
-				this.setIsBatHanging(false);
-				this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, blockpos, 0);
-			} else {
+			if (this.world.getBlockState(blockpos1).isNormalCube()) {
 				if (this.rand.nextInt(200) == 0) {
 					this.rotationYawHead = (float) this.rand.nextInt(360);
 				}
 				
-				if (this.worldObj.getClosestPlayerToEntity(this, 4.0D) != null) {
+				if (this.world.getNearestPlayerNotCreative(this, 4.0D) != null) {
 					this.setIsBatHanging(false);
-					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1015, blockpos, 0);
+					this.world.playEvent((EntityPlayer) null, 1025, blockpos, 0);
 				}
+			} else {
+				this.setIsBatHanging(false);
+				this.world.playEvent((EntityPlayer) null, 1025, blockpos, 0);
 			}
 		} else {
-			if (this.spawnPosition != null && (!this.worldObj.isAirBlock(this.spawnPosition) || this.spawnPosition.getY() < 1)) {
+			if (this.spawnPosition != null && (!this.world.isAirBlock(this.spawnPosition) || this.spawnPosition.getY() < 1)) {
 				this.spawnPosition = null;
 			}
 			
@@ -126,12 +127,12 @@ public class EntityVampire extends EntityAmbientCreature {
 			this.motionX += (Math.signum(d0) * 0.5D - this.motionX) * 0.10000000149011612D;
 			this.motionY += (Math.signum(d1) * 0.699999988079071D - this.motionY) * 0.10000000149011612D;
 			this.motionZ += (Math.signum(d2) * 0.5D - this.motionZ) * 0.10000000149011612D;
-			float f = (float) (Math.atan2(this.motionZ, this.motionX) * 180.0D / Math.PI) - 90.0F;
-			float f1 = MathHelper.wrapAngleTo180_float(f - this.rotationYaw);
+			float f = (float) (MathHelper.atan2(this.motionZ, this.motionX) * (180D / Math.PI)) - 90.0F;
+			float f1 = MathHelper.wrapDegrees(f - this.rotationYaw);
 			this.moveForward = 0.5F;
 			this.rotationYaw += f1;
 			
-			if (this.rand.nextInt(100) == 0 && this.worldObj.getBlockState(blockpos1).getBlock().isNormalCube()) {
+			if (this.rand.nextInt(100) == 0 && this.world.getBlockState(blockpos1).isNormalCube()) {
 				this.setIsBatHanging(true);
 			}
 		}
@@ -144,7 +145,7 @@ public class EntityVampire extends EntityAmbientCreature {
 	public void fall(float distance, float damageMultiplier) {
 	}
 	
-	protected void func_180433_a(double p_180433_1_, boolean p_180433_3_, Block p_180433_4_, BlockPos p_180433_5_) {
+	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
 	}
 	
 	public boolean doesEntityNotTriggerPressurePlate() {
@@ -155,7 +156,7 @@ public class EntityVampire extends EntityAmbientCreature {
 		if (this.isEntityInvulnerable(source)) {
 			return false;
 		} else {
-			if (!this.worldObj.isRemote && this.getIsBatHanging()) {
+			if (!this.world.isRemote && this.getIsBatHanging()) {
 				this.setIsBatHanging(false);
 			}
 			
@@ -163,37 +164,26 @@ public class EntityVampire extends EntityAmbientCreature {
 		}
 	}
 	
-	public void readEntityFromNBT(NBTTagCompound tagCompund) {
-		super.readEntityFromNBT(tagCompund);
-		this.dataWatcher.updateObject(16, Byte.valueOf(tagCompund.getByte("BatFlags")));
+	public void readEntityFromNBT(NBTTagCompound compound) {
+		super.readEntityFromNBT(compound);
+		this.dataManager.set(HANGING, Byte.valueOf(compound.getByte("BatFlags")));
 	}
 	
-	public void writeEntityToNBT(NBTTagCompound tagCompound) {
-		super.writeEntityToNBT(tagCompound);
-		tagCompound.setByte("BatFlags", this.dataWatcher.getWatchableObjectByte(16));
+	public void writeEntityToNBT(NBTTagCompound compound) {
+		super.writeEntityToNBT(compound);
+		compound.setByte("BatFlags", ((Byte) this.dataManager.get(HANGING)).byteValue());
 	}
 	
 	public boolean getCanSpawnHere() {
 		BlockPos blockpos = new BlockPos(this.posX, this.getEntityBoundingBox().minY, this.posZ);
 		
-		if (blockpos.getY() >= 63) {
+		if (blockpos.getY() >= this.world.getSeaLevel()) {
 			return false;
 		} else {
-			int i = this.worldObj.getLightFromNeighbors(blockpos);
-			byte b0 = 4;
-			
-			if (this.func_175569_a(this.worldObj.getCurrentDate())) {
-				b0 = 7;
-			} else if (this.rand.nextBoolean()) {
-				return false;
-			}
-			
-			return i > this.rand.nextInt(b0) ? false : super.getCanSpawnHere();
+			int i = this.world.getLightFromNeighbors(blockpos);
+			int j = 7;
+			return i > this.rand.nextInt(j) ? false : super.getCanSpawnHere();
 		}
-	}
-	
-	private boolean func_175569_a(Calendar p_175569_1_) {
-		return p_175569_1_.get(2) + 1 == 10 && p_175569_1_.get(5) >= 20 || p_175569_1_.get(2) + 1 == 11 && p_175569_1_.get(5) <= 3;
 	}
 	
 	public float getEyeHeight() {
@@ -220,16 +210,16 @@ public class EntityVampire extends EntityAmbientCreature {
 			EntityLivingBase entitylivingbase = this.vampire.getAttackTarget();
 			double d0 = 64.0D;
 			
-			if (entitylivingbase.getDistanceSqToEntity(this.vampire) < d0 * d0 && this.vampire.canEntityBeSeen(entitylivingbase)) {
-				World world = this.vampire.worldObj;
+			if (entitylivingbase.getDistanceSq(this.vampire) < d0 * d0 && this.vampire.canEntityBeSeen(entitylivingbase)) {
+				World world = this.vampire.world;
 				++this.ticks;
 				if (this.ticks == 390) {
-					world.playSoundAtEntity(entitylivingbase, HalloweenSounds.happy_halloween, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
-					EntityFallingBlock falling = new EntityFallingBlock(worldObj, entitylivingbase.posX, entitylivingbase.posY + 5, entitylivingbase.posZ, HalloweenLuckyBlockBlocks.pumpkinbomb.getDefaultState());
+					world.playSound(null, vampire.getPosition(), HalloweenLuckyBlockSounds.happy_halloween, SoundCategory.NEUTRAL, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
+					EntityFallingBlock falling = new EntityFallingBlock(world, entitylivingbase.posX, entitylivingbase.posY + 5, entitylivingbase.posZ, HalloweenLuckyBlockBlocks.pumpkinbomb.getDefaultState());
 					falling.fallTime = 100;
 					falling.shouldDropItem = false;
 					falling.setHurtEntities(false);
-					world.spawnEntityInWorld(falling);
+					world.spawnEntity(falling);
 					vampire.damageEntity(DamageSource.causeMobDamage(entitylivingbase), 4.0F);
 					this.ticks = -10;
 				}

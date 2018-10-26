@@ -49,6 +49,6 @@ public class LuckyEventSpawnCreature extends LuckyEventCustom {
 			world.spawnEntityInWorld(entity);
 		}
 		
-		world.playSoundAtEntity(player, HalloweenSounds.organ, 1.0F, 1.0F);
+		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.organ, 1.0F, 1.0F);
 	}
 }

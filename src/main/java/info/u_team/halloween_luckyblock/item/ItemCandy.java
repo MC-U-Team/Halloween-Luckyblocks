@@ -3,13 +3,14 @@ package info.u_team.halloween_luckyblock.item;
 import java.util.List;
 
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockCreativeTabs;
-import info.u_team.u_team_core.creativetab.UCreativeTab;
 import info.u_team.u_team_core.item.UItem;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
@@ -44,7 +45,8 @@ public class ItemCandy extends UItem {
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
+		ItemStack stack = player.getHeldItem(handIn);
 		NBTTagCompound compound = stack.getTagCompound();
 		if (compound.getInteger("cooldown") == 0) {
 			compound.setInteger("cooldown", 200);
@@ -53,8 +55,9 @@ public class ItemCandy extends UItem {
 			player.motionX -= (double) (MathHelper.sin(f) * 2.2F);
 			player.motionZ += (double) (MathHelper.cos(f) * 2.2F);
 			stack.damageItem(1, player);
+			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
 		}
-		return stack;
+		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
 	}
 	
 	@Override
@@ -62,10 +65,9 @@ public class ItemCandy extends UItem {
 		return !ItemStack.areItemsEqual(oldStack, newStack);
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound()) {
 			NBTTagCompound compound = stack.getTagCompound();
 			int seconds = compound.getInteger("cooldown") / 20;
@@ -76,5 +78,4 @@ public class ItemCandy extends UItem {
 			}
 		}
 	}
-	
 }

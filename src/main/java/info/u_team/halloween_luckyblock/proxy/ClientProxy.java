@@ -10,12 +10,11 @@ public class ClientProxy extends CommonProxy {
 	
 	public void preinit(FMLPreInitializationEvent event) {
 		super.preinit(event);
-		new HalloweenModelRegistry();
+		HalloweenRenderRegistry.preinit();
 	}
 	
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		new HalloweenRenderRegistry();
 	}
 	
 	public void postinit(FMLPostInitializationEvent event) {

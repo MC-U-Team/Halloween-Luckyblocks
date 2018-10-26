@@ -3,13 +3,12 @@ package info.u_team.halloween_luckyblock.core;
 import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.event.*;
-import info.u_team.halloween_luckyblock.sound.HalloweenSounds;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.player.*;
-import net.minecraft.network.play.server.*;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class LuckyHandler {
 	
@@ -30,7 +29,7 @@ public class LuckyHandler {
 			return;
 		}
 		EntityPlayerMP playermp = (EntityPlayerMP) player;
-		World world = player.getEntityWorld();
+		World world = playermp.getEntityWorld();
 		if (world.isRemote) {
 			return;
 		}
@@ -40,10 +39,10 @@ public class LuckyHandler {
 		int r = MathUtil.getRandomNumberInRange(0, events.size() - 1);
 		
 		LuckyEvent event = events.get(r);
-		event.execute((EntityPlayerMP) player, world, pos);
+		event.execute(playermp, world, pos);
 		
 		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-//			((EntityPlayerMP) player).connection.sendPacket(new SPacketSoundEffect(HalloweenSounds.sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenSounds.sounds.size() - 1)), SoundCategory.PLAYERS, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
+			playermp.connection.sendPacket(new SPacketSoundEffect(HalloweenLuckyBlockSounds.common_sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.common_sounds.size() - 1)), HalloweenLuckyBlockSounds.category, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
 		}
 	}
 	

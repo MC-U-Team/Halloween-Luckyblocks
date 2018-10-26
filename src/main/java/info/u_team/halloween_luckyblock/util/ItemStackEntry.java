@@ -17,12 +17,12 @@ public class ItemStackEntry {
 	}
 	
 	public ItemStackEntry(ItemStack stack) {
-		this(stack, stack.stackSize, stack.stackSize);
+		this(stack, stack.getCount(), stack.getCount());
 	}
 	
 	public ItemStack getItemStack() {
 		ItemStack copy = stack.copy();
-		copy.stackSize = MathUtil.getRandomNumberInRange(min, max);
+		copy.setCount(MathUtil.getRandomNumberInRange(min, max));
 		return copy;
 	}
 	

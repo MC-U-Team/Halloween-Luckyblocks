@@ -1,4 +1,4 @@
-package info.u_team.halloween_luckyblock.network.message;
+package info.u_team.halloween_luckyblock.network;
 
 import info.u_team.halloween_luckyblock.listener.ListenerGhostFlash;
 import io.netty.buffer.ByteBuf;

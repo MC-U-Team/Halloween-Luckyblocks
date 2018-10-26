@@ -7,7 +7,7 @@ import net.minecraft.item.*;
 public class ItemKillerKnive extends UItemSword {
 	
 	public ItemKillerKnive(ToolMaterial material, String name) {
-		super(name, HalloweenLuckyBlockCreativeTabs.tab, material);
+		super(name, HalloweenLuckyBlockCreativeTabs.tab, material, -1);
 	}
 	
 	@Override

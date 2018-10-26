@@ -1,21 +1,16 @@
-package info.u_team.halloween_luckyblock.network;
+package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockConstants;
-import info.u_team.halloween_luckyblock.network.message.MessageGhostFlash;
+import info.u_team.halloween_luckyblock.network.MessageGhostFlash;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class HalloweenNetwork {
+public class HalloweenLuckyBlockNetwork {
 	
-	public static SimpleNetworkWrapper network;
+	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(HalloweenLuckyBlockConstants.MODID);
 	
-	public HalloweenNetwork() {
-		network = NetworkRegistry.INSTANCE.newSimpleChannel(HalloweenLuckyBlockConstants.MODID);
-		message();
-	}
-	
-	private void message() {
+	public static void preinit() {
 		network.registerMessage(MessageGhostFlash.Handler.class, MessageGhostFlash.class, 0, Side.CLIENT);
 	}
 	

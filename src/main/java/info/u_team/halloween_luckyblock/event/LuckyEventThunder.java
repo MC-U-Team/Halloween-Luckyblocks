@@ -20,9 +20,9 @@ public class LuckyEventThunder extends LuckyEventCustom {
 		EntityPlayer other = world.getClosestPlayerToEntity(player, -1);
 		IThreadListener mainthread = (WorldServer) player.worldObj;
 		
-		world.playSoundAtEntity(player, HalloweenSounds.thunder, 1.0F, 1.0F);
+		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.thunder, 1.0F, 1.0F);
 		if (other != null) {
-			world.playSoundAtEntity(other, HalloweenSounds.thunder, 1.0F, 1.0F);
+			world.playSoundAtEntity(other, HalloweenLuckyBlockSounds.thunder, 1.0F, 1.0F);
 		}
 		
 		new Thread(() -> {
@@ -42,9 +42,9 @@ public class LuckyEventThunder extends LuckyEventCustom {
 						EntityLightningBolt light2 = new EntityLightningBolt(world, other.posX, other.posY, other.posZ);
 						world.addWeatherEffect(light2);
 					}
-					world.playSoundAtEntity(player, HalloweenSounds.wind, 1.0F, 1.0F);
+					world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.wind, 1.0F, 1.0F);
 					if (other != null) {
-						world.playSoundAtEntity(other, HalloweenSounds.wind, 1.0F, 1.0F);
+						world.playSoundAtEntity(other, HalloweenLuckyBlockSounds.wind, 1.0F, 1.0F);
 					}
 				});
 			}
