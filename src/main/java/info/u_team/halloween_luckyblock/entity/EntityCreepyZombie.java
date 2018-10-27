@@ -19,6 +19,7 @@ public class EntityCreepyZombie extends EntityMob {
 		this.setSize(0.6F, 1.95F);
 	}
 	
+	@Override
 	protected void initEntityAI() {
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
@@ -44,7 +45,7 @@ public class EntityCreepyZombie extends EntityMob {
 		if (this.world.isDaytime() && !this.world.isRemote && !this.isChild()) {
 			float f = this.getBrightness();
 			
-			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(new BlockPos(this.posX, this.posY + (double) this.getEyeHeight(), this.posZ))) {
+			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canSeeSky(new BlockPos(this.posX, this.posY + this.getEyeHeight(), this.posZ))) {
 				boolean flag = true;
 				ItemStack itemstack = this.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 				
@@ -80,6 +81,7 @@ public class EntityCreepyZombie extends EntityMob {
 		super.entityInit();
 	}
 	
+	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
 		boolean flag = super.attackEntityAsMob(entityIn);
 		

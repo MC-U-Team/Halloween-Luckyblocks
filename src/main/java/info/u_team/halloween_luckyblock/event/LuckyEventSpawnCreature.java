@@ -1,5 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.entity.*;
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.u_team_core.util.MathUtil;
@@ -11,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LuckyEventSpawnCreature extends LuckyEventCustom {
+public class LuckyEventSpawnCreature extends LuckyEvent {
 	
 	public LuckyEventSpawnCreature() {
 		super("Spawn Creature", 1);

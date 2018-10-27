@@ -1,5 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.*;
@@ -7,7 +8,7 @@ import net.minecraft.util.IThreadListener;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
-public class LuckyEventThunder extends LuckyEventCustom {
+public class LuckyEventThunder extends LuckyEvent {
 	
 	public LuckyEventThunder() {
 		super("Thunder", 1);

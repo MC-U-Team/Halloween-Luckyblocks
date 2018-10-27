@@ -3,10 +3,10 @@ package info.u_team.halloween_luckyblock.entity;
 import java.util.Random;
 
 import info.u_team.halloween_luckyblock.init.*;
-import info.u_team.halloween_luckyblock.network.*;
+import info.u_team.halloween_luckyblock.network.MessageGhostFlash;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -93,17 +93,21 @@ public class EntityGhost extends EntityFlying implements IMob {
 		private EntityGhost ghost = EntityGhost.this;
 		public int ticks;
 		
+		@Override
 		public boolean shouldExecute() {
 			return this.ghost.getAttackTarget() != null;
 		}
 		
+		@Override
 		public void startExecuting() {
 			this.ticks = 0;
 		}
 		
+		@Override
 		public void resetTask() {
 		}
 		
+		@Override
 		public void updateTask() {
 			EntityLivingBase entitylivingbase = this.ghost.getAttackTarget();
 			double d0 = 64.0D;
@@ -133,10 +137,12 @@ public class EntityGhost extends EntityFlying implements IMob {
 			this.setMutexBits(2);
 		}
 		
+		@Override
 		public boolean shouldExecute() {
 			return true;
 		}
 		
+		@Override
 		public void updateTask() {
 			if (this.ghost.getAttackTarget() == null) {
 				this.ghost.renderYawOffset = this.ghost.rotationYaw = -((float) Math.atan2(this.ghost.motionX, this.ghost.motionZ)) * 180.0F / (float) Math.PI;
@@ -161,6 +167,7 @@ public class EntityGhost extends EntityFlying implements IMob {
 			this.setMutexBits(1);
 		}
 		
+		@Override
 		public boolean shouldExecute() {
 			EntityMoveHelper entitymovehelper = this.ghost.getMoveHelper();
 			
@@ -179,11 +186,12 @@ public class EntityGhost extends EntityFlying implements IMob {
 			return false;
 		}
 		
+		@Override
 		public void startExecuting() {
 			Random random = this.ghost.getRNG();
-			double d0 = this.ghost.posX + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-			double d1 = this.ghost.posY + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-			double d2 = this.ghost.posZ + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+			double d0 = this.ghost.posX + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d1 = this.ghost.posY + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d2 = this.ghost.posZ + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
 			this.ghost.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
 		}
 	}
@@ -200,6 +208,7 @@ public class EntityGhost extends EntityFlying implements IMob {
 			this.parentEntity = ghost;
 		}
 		
+		@Override
 		public void onUpdateMoveHelper() {
 			if (this.action == EntityMoveHelper.Action.MOVE_TO) {
 				double d0 = this.posX - this.parentEntity.posX;
@@ -209,7 +218,7 @@ public class EntityGhost extends EntityFlying implements IMob {
 				
 				if (this.courseChangeCooldown-- <= 0) {
 					this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(5) + 2;
-					d3 = (double) MathHelper.sqrt(d3);
+					d3 = MathHelper.sqrt(d3);
 					
 					if (this.isNotColliding(this.posX, this.posY, this.posZ, d3)) {
 						this.parentEntity.motionX += d0 / d3 * speed;
@@ -231,7 +240,7 @@ public class EntityGhost extends EntityFlying implements IMob {
 			double d2 = (z - this.parentEntity.posZ) / p_179926_7_;
 			AxisAlignedBB axisalignedbb = this.parentEntity.getEntityBoundingBox();
 			
-			for (int i = 1; (double) i < p_179926_7_; ++i) {
+			for (int i = 1; i < p_179926_7_; ++i) {
 				axisalignedbb = axisalignedbb.offset(d0, d1, d2);
 				
 				if (!this.parentEntity.world.getCollisionBoxes(this.parentEntity, axisalignedbb).isEmpty()) {

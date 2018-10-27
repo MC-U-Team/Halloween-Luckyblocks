@@ -2,6 +2,7 @@ package info.u_team.halloween_luckyblock.event;
 
 import java.util.ArrayList;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.item.*;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -10,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LuckyEventEnchant extends LuckyEventCustom {
+public class LuckyEventEnchant extends LuckyEvent {
 	
 	public LuckyEventEnchant() {
 		super("Enchant", 1);

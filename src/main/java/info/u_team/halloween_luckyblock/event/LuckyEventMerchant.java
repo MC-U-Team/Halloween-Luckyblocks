@@ -2,6 +2,7 @@ package info.u_team.halloween_luckyblock.event;
 
 import java.util.ArrayList;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
 import info.u_team.u_team_core.util.MathUtil;
 import info.u_team.u_team_core.util.stack.ItemStackUtil;
@@ -15,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.*;
 import net.minecraft.world.World;
 
-public class LuckyEventMerchant extends LuckyEventCustom {
+public class LuckyEventMerchant extends LuckyEvent {
 	
 	public static String[] playernames = new String[] { "Nightmare", "Halloween", "Devil", "Creep" };
 	

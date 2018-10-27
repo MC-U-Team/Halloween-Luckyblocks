@@ -1,12 +1,13 @@
 package info.u_team.halloween_luckyblock.event;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
-public class LuckyEventDeath extends LuckyEventCustom {
+public class LuckyEventDeath extends LuckyEvent {
 	
 	public LuckyEventDeath() {
 		super("Death", 2);

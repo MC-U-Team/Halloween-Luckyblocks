@@ -2,6 +2,7 @@ package info.u_team.halloween_luckyblock.event;
 
 import java.util.*;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.util.ItemStackEntry;
 import info.u_team.u_team_core.item.armor.UItemArmor;
@@ -13,7 +14,7 @@ import net.minecraft.tileentity.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class LuckyEventChest extends LuckyEventCustom {
+public class LuckyEventChest extends LuckyEvent {
 	
 	private ArrayList<ItemStackEntry> stacks;
 	

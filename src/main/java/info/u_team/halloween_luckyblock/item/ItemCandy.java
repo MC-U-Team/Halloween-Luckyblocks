@@ -52,8 +52,8 @@ public class ItemCandy extends UItem {
 			compound.setInteger("cooldown", 200);
 			player.motionY = 0.88D;
 			float f = player.rotationYaw * 0.017453292F;
-			player.motionX -= (double) (MathHelper.sin(f) * 2.2F);
-			player.motionZ += (double) (MathHelper.cos(f) * 2.2F);
+			player.motionX -= MathHelper.sin(f) * 2.2F;
+			player.motionZ += MathHelper.cos(f) * 2.2F;
 			stack.damageItem(1, player);
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
 		}

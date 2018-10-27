@@ -11,10 +11,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ListenerWitchsBroomstickFly {
 	
-	private boolean flying = false;
+	private static boolean flying = false;
 	
 	@SubscribeEvent
-	public void on(LivingUpdateEvent event) {
+	public static void on(LivingUpdateEvent event) {
 		Entity entity = event.getEntityLiving();
 		if (!(entity instanceof EntityPlayer)) {
 			return;

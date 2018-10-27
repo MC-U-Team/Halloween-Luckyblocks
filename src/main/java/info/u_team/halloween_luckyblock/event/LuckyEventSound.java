@@ -1,5 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.item.EntityFallingBlock;
@@ -8,7 +9,7 @@ import net.minecraft.util.IThreadListener;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
-public class LuckyEventSound extends LuckyEventCustom {
+public class LuckyEventSound extends LuckyEvent {
 	
 	public LuckyEventSound() {
 		super("Sound", 3);

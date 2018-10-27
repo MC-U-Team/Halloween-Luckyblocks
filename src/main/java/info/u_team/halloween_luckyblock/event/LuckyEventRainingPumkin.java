@@ -2,6 +2,7 @@ package info.u_team.halloween_luckyblock.event;
 
 import java.util.ArrayList;
 
+import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockBlocks;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.block.Block;
@@ -12,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
-public class LuckyEventRainingPumkin extends LuckyEventCustom {
+public class LuckyEventRainingPumkin extends LuckyEvent {
 	
 	private ArrayList<Block> blocks;
 	

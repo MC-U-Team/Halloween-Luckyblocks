@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ListenerKillerKniveAttack {
 	
 	@SubscribeEvent
-	public void on(LivingAttackEvent event) {
+	public static void on(LivingAttackEvent event) {
 		Entity entity = event.getSource().getImmediateSource();
 		if (entity == null || !(entity instanceof EntityPlayerMP)) {
 			return;
