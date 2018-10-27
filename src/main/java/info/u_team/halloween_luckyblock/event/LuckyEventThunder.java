@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
-import info.u_team.halloween_luckyblock.sound.HalloweenSounds;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.*;
 import net.minecraft.util.IThreadListener;
@@ -18,11 +18,11 @@ public class LuckyEventThunder extends LuckyEventCustom {
 		
 		long time = world.getWorldTime();
 		EntityPlayer other = world.getClosestPlayerToEntity(player, -1);
-		IThreadListener mainthread = (WorldServer) player.worldObj;
+		IThreadListener mainthread = (WorldServer) player.world;
 		
-		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.thunder, 1.0F, 1.0F);
+		world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.thunder, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
 		if (other != null) {
-			world.playSoundAtEntity(other, HalloweenLuckyBlockSounds.thunder, 1.0F, 1.0F);
+			world.playSound(null, other.getPosition(), HalloweenLuckyBlockSounds.thunder, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
 		}
 		
 		new Thread(() -> {
@@ -36,15 +36,15 @@ public class LuckyEventThunder extends LuckyEventCustom {
 					}
 				}
 				mainthread.addScheduledTask(() -> {
-					EntityLightningBolt light1 = new EntityLightningBolt(world, player.posX, player.posY, player.posZ);
+					EntityLightningBolt light1 = new EntityLightningBolt(world, player.posX, player.posY, player.posZ, false);
 					world.addWeatherEffect(light1);
 					if (other != null) {
-						EntityLightningBolt light2 = new EntityLightningBolt(world, other.posX, other.posY, other.posZ);
+						EntityLightningBolt light2 = new EntityLightningBolt(world, other.posX, other.posY, other.posZ, false);
 						world.addWeatherEffect(light2);
 					}
-					world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.wind, 1.0F, 1.0F);
+					world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.wind, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
 					if (other != null) {
-						world.playSoundAtEntity(other, HalloweenLuckyBlockSounds.wind, 1.0F, 1.0F);
+						world.playSound(null, other.getPosition(), HalloweenLuckyBlockSounds.wind, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
 					}
 				});
 			}

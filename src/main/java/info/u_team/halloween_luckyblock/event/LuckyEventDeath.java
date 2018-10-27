@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
-import info.u_team.halloween_luckyblock.sound.HalloweenSounds;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.util.math.BlockPos;
@@ -14,8 +14,8 @@ public class LuckyEventDeath extends LuckyEventCustom {
 	
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
-		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.game_death, 1.0F, 1.0F);
-		IThreadListener mainthread = (WorldServer) player.worldObj;
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.game_death, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+		IThreadListener mainthread = (WorldServer) player.world;
 		new Thread(() -> {
 			synchronized (this) {
 				try {

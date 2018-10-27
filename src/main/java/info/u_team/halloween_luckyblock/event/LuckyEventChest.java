@@ -2,8 +2,7 @@ package info.u_team.halloween_luckyblock.event;
 
 import java.util.*;
 
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
-import info.u_team.halloween_luckyblock.sound.HalloweenSounds;
+import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.util.ItemStackEntry;
 import info.u_team.u_team_core.item.armor.UItemArmor;
 import info.u_team.u_team_core.util.MathUtil;
@@ -41,8 +40,7 @@ public class LuckyEventChest extends LuckyEventCustom {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
 		
-		@SuppressWarnings("unchecked")
-		Iterator<Item> it = Item.itemRegistry.iterator();
+		Iterator<Item> it = Item.REGISTRY.iterator();
 		while (it.hasNext()) {
 			add(new ItemStackEntry(new ItemStack(it.next()), 1, 2), 1);
 		}
@@ -56,7 +54,7 @@ public class LuckyEventChest extends LuckyEventCustom {
 	
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
-		world.setBlockState(pos.add(0, 1, 0), Blocks.chest.getDefaultState());
+		world.setBlockState(pos.add(0, 1, 0), Blocks.CHEST.getDefaultState());
 		TileEntity tile = world.getTileEntity(pos.add(0, 1, 0));
 		if (tile instanceof TileEntityChest) {
 			TileEntityChest chest = (TileEntityChest) tile;
@@ -67,6 +65,6 @@ public class LuckyEventChest extends LuckyEventCustom {
 			}
 			chest.update();
 		}
-		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.tension, 0.2F, 1.0F);
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.tension, HalloweenLuckyBlockSounds.category, 0.2F, 1.0F);
 	}
 }

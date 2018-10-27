@@ -9,6 +9,7 @@ import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class LuckyEventRainingPumkin extends LuckyEventCustom {
@@ -19,15 +20,15 @@ public class LuckyEventRainingPumkin extends LuckyEventCustom {
 		super("Pumpkin Rain", 2);
 		blocks = new ArrayList<Block>();
 		for (int i = 0; i < 15; i++) {
-			blocks.add(Blocks.pumpkin);
-			blocks.add(Blocks.lit_pumpkin);
+			blocks.add(Blocks.PUMPKIN);
+			blocks.add(Blocks.LIT_PUMPKIN);
 		}
 		blocks.add(HalloweenLuckyBlockBlocks.luckyblock);
 	}
 	
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
-		player.addChatMessage(new ChatComponentTranslation("luckyevent.rainingpumkin"));
+		player.sendMessage(new TextComponentTranslation("luckyevent.rainingpumkin"));
 		BlockPos highpos = new BlockPos(pos.getX(), 200, pos.getZ());
 		for (int i = 0; i < 150; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-35, 35), MathUtil.getRandomNumberInRange(-5, 20), MathUtil.getRandomNumberInRange(-35, 35));
@@ -35,7 +36,7 @@ public class LuckyEventRainingPumkin extends LuckyEventCustom {
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);
-			world.spawnEntityInWorld(falling);
+			world.spawnEntity(falling);
 		}
 	}
 	

@@ -25,18 +25,18 @@ public class LuckyEventBlocks extends LuckyEventCustom {
 	private void addblocks() {
 		add(HalloweenLuckyBlockBlocks.luckyblock, 1);
 		add(HalloweenLuckyBlockBlocks.pumpkinbomb, 1);
-		add(Blocks.diamond_block, 2);
-		add(Blocks.emerald_block, 2);
-		add(Blocks.iron_block, 5);
-		add(Blocks.gold_block, 3);
-		add(Blocks.log, 6);
-		add(Blocks.planks, 10);
-		add(Blocks.crafting_table, 5);
-		add(Blocks.enchanting_table, 2);
-		add(Blocks.diamond_ore, 5);
-		add(Blocks.iron_ore, 7);
-		add(Blocks.coal_block, 8);
-		add(Blocks.furnace, 5);
+		add(Blocks.DIAMOND_BLOCK, 2);
+		add(Blocks.EMERALD_BLOCK, 2);
+		add(Blocks.IRON_BLOCK, 5);
+		add(Blocks.GOLD_BLOCK, 3);
+		add(Blocks.LOG, 6);
+		add(Blocks.PLANKS, 10);
+		add(Blocks.CRAFTING_TABLE, 5);
+		add(Blocks.ENCHANTING_TABLE, 2);
+		add(Blocks.DIAMOND_BLOCK, 5);
+		add(Blocks.IRON_ORE, 7);
+		add(Blocks.COAL_BLOCK, 8);
+		add(Blocks.FURNACE, 5);
 	}
 	
 	private void add(Block entry, int count) {
@@ -56,7 +56,7 @@ public class LuckyEventBlocks extends LuckyEventCustom {
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);
-			world.spawnEntityInWorld(falling);
+			world.spawnEntity(falling);
 		}
 	}
 	

@@ -35,19 +35,19 @@ public class LuckyEventEnchant extends LuckyEventCustom {
 			}
 		}
 		for (BlockPos p : positions) {
-			world.setBlockState(pos.add(p), Blocks.bookshelf.getDefaultState());
+			world.setBlockState(pos.add(p), Blocks.BOOKSHELF.getDefaultState());
 		}
-		EntityFallingBlock falling = new EntityFallingBlock(world, pos.getX(), pos.getY() + 10, pos.getZ(), Blocks.enchanting_table.getDefaultState());
+		EntityFallingBlock falling = new EntityFallingBlock(world, pos.getX(), pos.getY() + 10, pos.getZ(), Blocks.ENCHANTING_TABLE.getDefaultState());
 		falling.fallTime = 1;
-		world.spawnEntityInWorld(falling);
-		EntityItem item = new EntityItem(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.dye, MathUtil.getRandomNumberInRange(12, 54), 4));
-		world.spawnEntityInWorld(item);
+		world.spawnEntity(falling);
+		EntityItem item = new EntityItem(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.DYE, MathUtil.getRandomNumberInRange(12, 54), 4));
+		world.spawnEntity(item);
 		for (int i = 0; i < 20; i++) {
 			EntityXPOrb xp = new EntityXPOrb(world, pos.getX(), pos.getY(), pos.getZ(), MathUtil.getRandomNumberInRange(1, 5));
 			xp.motionX = MathUtil.getRandomNumberInRange(-0.5, 0.5);
 			xp.motionY = MathUtil.getRandomNumberInRange(0.2, 0.6);
 			xp.motionZ = MathUtil.getRandomNumberInRange(-0.5, 0.5);
-			world.spawnEntityInWorld(xp);
+			world.spawnEntity(xp);
 		}
 		player.addExperienceLevel(10);
 	}

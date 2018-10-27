@@ -1,7 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockBlocks;
-import info.u_team.halloween_luckyblock.sound.HalloweenSounds;
+import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -17,8 +16,8 @@ public class LuckyEventSound extends LuckyEventCustom {
 	
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
-		world.playSoundAtEntity(player, HalloweenLuckyBlockSounds.sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.sounds.size() - 1)), 1.0F, 1.0F);
-		IThreadListener mainthread = (WorldServer) player.worldObj;
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.common_sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.common_sounds.size() - 1)), HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+		IThreadListener mainthread = (WorldServer) player.world;
 		new Thread(() -> {
 			synchronized (this) {
 				try {
@@ -32,7 +31,7 @@ public class LuckyEventSound extends LuckyEventCustom {
 				falling.fallTime = 100;
 				falling.shouldDropItem = false;
 				falling.setHurtEntities(true);
-				world.spawnEntityInWorld(falling);
+				world.spawnEntity(falling);
 			});
 		}).start();
 	}

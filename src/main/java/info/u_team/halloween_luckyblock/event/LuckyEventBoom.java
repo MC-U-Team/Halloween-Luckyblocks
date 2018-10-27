@@ -24,6 +24,6 @@ public class LuckyEventBoom extends LuckyEventCustom {
 		float offz = MathUtil.getRandomNumberInRange(0.3F, 1F);
 		
 		world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, true, x, y, z, offx, offy, offz, new int[0]);
-		world.spawnEntityInWorld(new EntityTNTPrimed(world, x, y, z, player));
+		world.spawnEntity(new EntityTNTPrimed(world, x, y, z, player));
 	}
 }

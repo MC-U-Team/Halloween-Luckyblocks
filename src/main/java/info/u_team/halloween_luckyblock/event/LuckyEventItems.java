@@ -49,11 +49,11 @@ public class LuckyEventItems extends LuckyEventCustom {
 			add(new ItemStackEntry(new ItemStack(item)), 2);
 		}
 		
-		add(new ItemStackEntry(new ItemStack(Blocks.stone), 10, 64), 3);
-		add(new ItemStackEntry(new ItemStack(Blocks.cobblestone), 10, 64), 3);
+		add(new ItemStackEntry(new ItemStack(Blocks.STONE), 10, 64), 3);
+		add(new ItemStackEntry(new ItemStack(Blocks.COBBLESTONE), 10, 64), 3);
 		
 		for (int i = 0; i < 16; i++) {
-			add(new ItemStackEntry(new ItemStack(Blocks.stained_hardened_clay, 1, i), 10, 64), 1);
+			add(new ItemStackEntry(new ItemStack(Blocks.STAINED_HARDENED_CLAY, 1, i), 10, 64), 1);
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class LuckyEventItems extends LuckyEventCustom {
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
 		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 3); i++) {
 			EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
-			world.spawnEntityInWorld(item);
+			world.spawnEntity(item);
 		}
 	}
 	

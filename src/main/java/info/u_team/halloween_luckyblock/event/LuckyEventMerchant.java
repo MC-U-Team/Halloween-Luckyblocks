@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
 import info.u_team.u_team_core.util.MathUtil;
 import info.u_team.u_team_core.util.stack.ItemStackUtil;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
+import net.minecraft.init.*;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -41,7 +40,6 @@ public class LuckyEventMerchant extends LuckyEventCustom {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
 		
@@ -56,18 +54,18 @@ public class LuckyEventMerchant extends LuckyEventCustom {
 		MerchantRecipeList list = villager.getRecipes(player);
 		list.clear();
 		list.addAll(getRecipes());
-		world.spawnEntityInWorld(villager);
+		world.spawnEntity(villager);
 		
-		ItemStack diamond = ItemStackUtil.from(Items.diamond);
-		diamond.stackSize = MathUtil.getRandomNumberInRange(9, 25);
-		ItemStack goldingot = ItemStackUtil.from(Items.gold_ingot);
-		goldingot.stackSize = MathUtil.getRandomNumberInRange(15, 64);
+		ItemStack diamond = ItemStackUtil.from(Items.DIAMOND);
+		diamond.setCount(MathUtil.getRandomNumberInRange(9, 25));
+		ItemStack goldingot = ItemStackUtil.from(Items.GOLD_INGOT);
+		goldingot.setCount(MathUtil.getRandomNumberInRange(15, 64));
 		
 		EntityItem diamondentity = new EntityItem(world, x, y, z, diamond);
 		EntityItem goldingotentity = new EntityItem(world, x, y, z, goldingot);
 		
-		world.spawnEntityInWorld(diamondentity);
-		world.spawnEntityInWorld(goldingotentity);
+		world.spawnEntity(diamondentity);
+		world.spawnEntity(goldingotentity);
 		
 	}
 	
@@ -78,60 +76,60 @@ public class LuckyEventMerchant extends LuckyEventCustom {
 			int r = MathUtil.getRandomNumberInRange(0, 19);
 			MerchantRecipe re = null;
 			
-			ItemStack diamond = ItemStackUtil.from(Items.diamond);
-			ItemStack goldingot = ItemStackUtil.from(Items.gold_ingot);
+			ItemStack diamond = ItemStackUtil.from(Items.DIAMOND);
+			ItemStack goldingot = ItemStackUtil.from(Items.GOLD_INGOT);
 			
-			ItemStack ironsword = ItemStackUtil.from(Items.iron_sword);
-			ItemStack diamondsword = ItemStackUtil.from(Items.diamond_sword);
+			ItemStack ironsword = ItemStackUtil.from(Items.IRON_SWORD);
+			ItemStack diamondsword = ItemStackUtil.from(Items.DIAMOND_SWORD);
 			
 			switch (r) {
 			case 0:
-				diamond.stackSize = MathUtil.getRandomNumberInRange(30, 45);
+				diamond.setCount(MathUtil.getRandomNumberInRange(30, 45));
 				re = new MerchantRecipe(diamond, ItemStackUtil.from(HalloweenLuckyBlockItems.killerknive));
 				break;
 			case 1:
-				goldingot.stackSize = MathUtil.getRandomNumberInRange(55, 64);
+				goldingot.setCount(MathUtil.getRandomNumberInRange(55, 64));
 				re = new MerchantRecipe(goldingot, goldingot, ItemStackUtil.from(HalloweenLuckyBlockItems.killerknive));
 				break;
 			case 2:
-				goldingot.stackSize = MathUtil.getRandomNumberInRange(1, 3);
+				goldingot.setCount(MathUtil.getRandomNumberInRange(1, 3));
 				re = new MerchantRecipe(goldingot, ironsword);
 				break;
 			case 3:
 			case 4:
-				diamond.stackSize = MathUtil.getRandomNumberInRange(8, 15);
+				diamond.setCount(MathUtil.getRandomNumberInRange(8, 15));
 				NBTTagCompound comp34 = new NBTTagCompound();
 				comp34.setBoolean("Unbreakable", true);
 				ironsword.setTagCompound(comp34);
-				ironsword.addEnchantment(Enchantment.sharpness, MathUtil.getRandomNumberInRange(5, 16));
+				ironsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.getRandomNumberInRange(5, 16));
 				if (MathUtil.getRandomNumberInRange(0, 4) == 0) {
-					ironsword.addEnchantment(Enchantment.fireAspect, MathUtil.getRandomNumberInRange(1, 2));
+					ironsword.addEnchantment(Enchantments.FIRE_ASPECT, MathUtil.getRandomNumberInRange(1, 2));
 				}
 				re = new MerchantRecipe(diamond, ironsword);
 				break;
 			case 5:
-				goldingot.stackSize = MathUtil.getRandomNumberInRange(30, 63);
+				goldingot.setCount(MathUtil.getRandomNumberInRange(30, 63));
 				NBTTagCompound comp5 = new NBTTagCompound();
 				comp5.setBoolean("Unbreakable", true);
 				ironsword.setTagCompound(comp5);
-				ironsword.addEnchantment(Enchantment.sharpness, MathUtil.getRandomNumberInRange(5, 16));
+				ironsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.getRandomNumberInRange(5, 16));
 				if (MathUtil.getRandomNumberInRange(0, 4) == 0) {
-					ironsword.addEnchantment(Enchantment.fireAspect, MathUtil.getRandomNumberInRange(1, 2));
+					ironsword.addEnchantment(Enchantments.FIRE_ASPECT, MathUtil.getRandomNumberInRange(1, 2));
 				}
 				re = new MerchantRecipe(goldingot, ironsword);
 				break;
 			case 6:
-				diamond.stackSize = MathUtil.getRandomNumberInRange(15, 29);
-				diamondsword.addEnchantment(Enchantment.unbreaking, MathUtil.getRandomNumberInRange(2, 5));
-				diamondsword.addEnchantment(Enchantment.sharpness, MathUtil.getRandomNumberInRange(10, 20));
+				diamond.setCount(MathUtil.getRandomNumberInRange(15, 29));
+				diamondsword.addEnchantment(Enchantments.UNBREAKING, MathUtil.getRandomNumberInRange(2, 5));
+				diamondsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.getRandomNumberInRange(10, 20));
 				if (MathUtil.getRandomNumberInRange(0, 2) == 0) {
-					diamondsword.addEnchantment(Enchantment.fireAspect, MathUtil.getRandomNumberInRange(1, 2));
+					diamondsword.addEnchantment(Enchantments.FIRE_ASPECT, MathUtil.getRandomNumberInRange(1, 2));
 				}
 				if (MathUtil.getRandomNumberInRange(0, 5) == 0) {
-					diamondsword.addEnchantment(Enchantment.knockback, MathUtil.getRandomNumberInRange(1, 2));
+					diamondsword.addEnchantment(Enchantments.KNOCKBACK, MathUtil.getRandomNumberInRange(1, 2));
 				}
 				if (MathUtil.getRandomNumberInRange(0, 8) == 0) {
-					diamondsword.addEnchantment(Enchantment.thorns, MathUtil.getRandomNumberInRange(2, 4));
+					diamondsword.addEnchantment(Enchantments.THORNS, MathUtil.getRandomNumberInRange(2, 4));
 				}
 				re = new MerchantRecipe(diamond, diamondsword);
 				break;
@@ -153,11 +151,11 @@ public class LuckyEventMerchant extends LuckyEventCustom {
 				switch (MathUtil.getRandomNumberInRange(0, 1)) {
 				case 0:
 					inputstack = diamond;
-					inputstack.stackSize = MathUtil.getRandomNumberInRange(5, 21);
+					inputstack.setCount(MathUtil.getRandomNumberInRange(5, 21));
 					break;
 				default:
 					inputstack = goldingot;
-					inputstack.stackSize = MathUtil.getRandomNumberInRange(45, 63);
+					inputstack.setCount(MathUtil.getRandomNumberInRange(45, 63));
 					break;
 				}
 				re = new MerchantRecipe(inputstack, armor);
