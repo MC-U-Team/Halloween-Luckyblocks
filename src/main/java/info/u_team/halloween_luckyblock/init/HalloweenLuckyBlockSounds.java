@@ -26,7 +26,10 @@ public class HalloweenLuckyBlockSounds {
 			try {
 				if (SoundEvent.class.isAssignableFrom(field.getType())) {
 					String name = field.getName();
+					
 					SoundEvent event = new SoundEvent(new ResourceLocation(HalloweenLuckyBlockConstants.MODID, name));
+					event.setRegistryName(event.getSoundName());
+					
 					field.set(null, event);
 					
 					if (name != "organ" && name != "game_death") {

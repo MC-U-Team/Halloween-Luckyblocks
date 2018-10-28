@@ -35,6 +35,13 @@ public class ItemCandyBag extends UItemFood {
 		
 	}
 	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerModel() {
+		super.registerModel();
+		setModel(this, 1, getRegistryName());
+	}
+	
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
 		return stack.getMetadata() == 0 ? EnumRarity.RARE : EnumRarity.EPIC;

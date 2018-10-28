@@ -46,7 +46,7 @@ public class TileEntityPumpkinBomb extends UTileEntity implements ITickable {
 		for (int i = 0; i < 35; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-8, 8), MathUtil.getRandomNumberInRange(1, 10), MathUtil.getRandomNumberInRange(-8, 8));
 			@SuppressWarnings("deprecation")
-			EntityFallingBlock falling = new EntityFallingBlock(world, newpos.getX(), newpos.getY(), newpos.getZ(), (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.PUMPKIN : Blocks.LIT_PUMPKIN).getStateFromMeta(MathUtil.getRandomNumberInRange(0, 3)));
+			EntityFallingBlock falling = new EntityFallingBlock(world, newpos.getX() + 0.5, newpos.getY(), newpos.getZ() + 0.5, (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.PUMPKIN : Blocks.LIT_PUMPKIN).getStateFromMeta(MathUtil.getRandomNumberInRange(0, 3)));
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

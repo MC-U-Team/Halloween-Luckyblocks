@@ -1,90 +1,90 @@
 {
 	"basta": {
 		"sounds": [
-			"basta"
+			"halloween_luckyblock:basta"
 		]
 	},
 	"game_death": {
 		"sounds": [
-			"game_death"
+			"halloween_luckyblock:game_death"
 		]
 	},
 	"haha": {
 		"sounds": [
-			"haha"
+			"halloween_luckyblock:haha"
 		]
 	},
 	"happy_halloween": {
 		"sounds": [
-			"happy_halloween_1",
-			"happy_halloween_2",
-			"happy_halloween_3",
-			"happy_halloween_4"
+			"halloween_luckyblock:happy_halloween_1",
+			"halloween_luckyblock:happy_halloween_2",
+			"halloween_luckyblock:happy_halloween_3",
+			"halloween_luckyblock:happy_halloween_4"
 		]
 	},
 	"hi_im_chucky": {
 		"sounds": [
-			"hi_im_chucky"
+			"halloween_luckyblock:hi_im_chucky"
 		]
 	},
 	"one_two": {
 		"sounds": [
-			"one_two"
+			"halloween_luckyblock:one_two"
 		]
 	},
 	"organ": {
 		"sounds": [
-			"organ"
+			"halloween_luckyblock:organ"
 		]
 	},
 	"ringle": {
 		"sounds": [
-			"ringle"
+			"halloween_luckyblock:ringle"
 		]
 	},
 	"scubi_dabi": {
 		"sounds": [
-			"scubi_dabi"
+			"halloween_luckyblock:scubi_dabi"
 		]
 	},
 	"snivelling": {
 		"sounds": [
-			"snivelling"
+			"halloween_luckyblock:snivelling"
 		]
 	},
 	"strange_laughing": {
 		"sounds": [
-			"strange_laughing"
+			"halloween_luckyblock:strange_laughing"
 		]
 	},
 	"strange": {
 		"sounds": [
-			"strange"
+			"halloween_luckyblock:strange"
 		]
 	},
 	"tension": {
 		"sounds": [
-			"tension"
+			"halloween_luckyblock:tension"
 		]
 	},
 	"thunder": {
 		"sounds": [
-			"thunder"
+			"halloween_luckyblock:thunder"
 		]
 	},
 	"wind": {
 		"sounds": [
-			"wind"
+			"halloween_luckyblock:wind"
 		]
 	},
 	"wuhu": {
 		"sounds": [
-			"wuhu"
+			"halloween_luckyblock:wuhu"
 		]
 	},
 	"you_have": {
 		"sounds": [
-			"you_have"
+			"halloween_luckyblock:you_have"
 		]
 	}
 }

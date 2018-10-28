@@ -31,7 +31,9 @@ public class ItemPumpkinGrenade extends UItem {
 		world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 0.6F, 0.4F / (itemRand.nextFloat() * 3F + 5F));
 		
 		if (!world.isRemote) {
-			world.spawnEntity(new EntityPumpkinGrenade(world, player));
+			EntityPumpkinGrenade grenade = new EntityPumpkinGrenade(world, player);
+			grenade.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 0.5F);
+			world.spawnEntity(grenade);
 		}
 		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
 	}
