@@ -1,0 +1,90 @@
+{
+	"basta": {
+		"sounds": [
+			"basta"
+		]
+	},
+	"game_death": {
+		"sounds": [
+			"game_death"
+		]
+	},
+	"haha": {
+		"sounds": [
+			"haha"
+		]
+	},
+	"happy_halloween": {
+		"sounds": [
+			"happy_halloween_1",
+			"happy_halloween_2",
+			"happy_halloween_3",
+			"happy_halloween_4"
+		]
+	},
+	"hi_im_chucky": {
+		"sounds": [
+			"hi_im_chucky"
+		]
+	},
+	"one_two": {
+		"sounds": [
+			"one_two"
+		]
+	},
+	"organ": {
+		"sounds": [
+			"organ"
+		]
+	},
+	"ringle": {
+		"sounds": [
+			"ringle"
+		]
+	},
+	"scubi_dabi": {
+		"sounds": [
+			"scubi_dabi"
+		]
+	},
+	"snivelling": {
+		"sounds": [
+			"snivelling"
+		]
+	},
+	"strange_laughing": {
+		"sounds": [
+			"strange_laughing"
+		]
+	},
+	"strange": {
+		"sounds": [
+			"strange"
+		]
+	},
+	"tension": {
+		"sounds": [
+			"tension"
+		]
+	},
+	"thunder": {
+		"sounds": [
+			"thunder"
+		]
+	},
+	"wind": {
+		"sounds": [
+			"wind"
+		]
+	},
+	"wuhu": {
+		"sounds": [
+			"wuhu"
+		]
+	},
+	"you_have": {
+		"sounds": [
+			"you_have"
+		]
+	}
+}

@@ -31,7 +31,7 @@ public class TileEntityPumpkinBomb extends UTileEntity implements ITickable {
 		} else {
 			world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, pos.getX() + 0.5D, pos.getY() + 0.9D, pos.getZ() + 0.5D, 0.0D, 0.2D, 0.0D, new int[0]);
 			if (fuse % 20 == 0) {
-				world.playSound(null, pos, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 0.8F, 0.4F / (world.rand.nextFloat() * 2F + 4F));
+				world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.8F, 0.4F / (world.rand.nextFloat() * 2F + 4F));
 			}
 			fuse--;
 		}

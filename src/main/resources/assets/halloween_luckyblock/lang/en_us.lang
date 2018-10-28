@@ -1,0 +1,57 @@
+#Tab
+itemGroup.luckyblock_halloween:luckyblock_halloween_tab=Halloween LuckyBlock Tab
+
+#Tile
+tile.luckyblock_halloween:luckyblock_halloween.name=Halloween LuckyBlock
+tile.luckyblock_halloween:pumpkinbomb.name=Pumpkin Bomb
+
+#Item
+item.luckyblock_halloween:candy.name=Flying Candy
+item.luckyblock_halloween:teleporter.name=Teleporter
+item.luckyblock_halloween:candybag.name=Candy Bag
+item.luckyblock_halloween:witchsbroomstick.name=Witch's Broomstick
+item.luckyblock_halloween:pumpkingrenade.name=Pumpkin Grenade
+
+item.luckyblock_halloween:slender_helmet.name=Slender Helmet
+item.luckyblock_halloween:slender_chestplate.name=Slender Chestplate
+item.luckyblock_halloween:slender_leggings.name=Slender Leggings
+item.luckyblock_halloween:slender_boots.name=Slender Boots
+
+item.luckyblock_halloween:scarecrow_helmet.name=Scarecrow Helmet
+item.luckyblock_halloween:scarecrow_chestplate.name=Scarecrow Chestplate
+item.luckyblock_halloween:scarecrow_leggings.name=Scarecrow Leggings
+item.luckyblock_halloween:scarecrow_boots.name=Scarecrow Boots
+
+item.luckyblock_halloween:witch_helmet.name=Witch Helmet
+item.luckyblock_halloween:witch_chestplate.name=Witch Chestplate
+item.luckyblock_halloween:witch_leggings.name=Witch Leggings
+item.luckyblock_halloween:witch_boots.name=Witch Boots
+
+item.luckyblock_halloween:zombie_helmet.name=Zombie Helmet
+item.luckyblock_halloween:zombie_chestplate.name=Zombie Chestplate
+item.luckyblock_halloween:zombie_leggings.name=Zombie Leggings
+item.luckyblock_halloween:zombie_boots.name=Zombie Boots
+
+item.luckyblock_halloween:clown_helmet.name=Clown Helmet
+item.luckyblock_halloween:clown_chestplate.name=Clown Chestplate
+item.luckyblock_halloween:clown_leggings.name=Clown Leggings
+item.luckyblock_halloween:clown_boots.name=Clown Boots
+
+item.luckyblock_halloween:killerknive.name=Killer Knive
+
+#Entity
+entity.pumpkingrenade.name=Pumpkin Grenade
+entity.creepyzombie.name=Creepy Zombie
+entity.ghost.name=Ghost
+entity.vampire.name=Vampire
+
+#Custom
+
+item.candy.cooldown.no=§bReady to use
+item.candy.cooldown.yes=§cNext use in §6%s §cseconds
+
+item.teleporter.nolocation=§cLocation out of range
+
+tile.pumpkinbomb.place=§4Run! Run! Only 6 seconds till explosion!
+
+luckyevent.rainingpumkin=§e<HyCraftHD> §6Look into the sky ... :)

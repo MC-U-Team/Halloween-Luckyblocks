@@ -1,0 +1,19 @@
+[
+	{
+		"modid": "halloween_luckyblock",
+		"name": "Halloween LuckyBlock",
+		"version": "${version}",
+		"mcversion": "${mcversion}",
+		"description": "Cool and spooky luckyblocks for halloween",
+		"url": "https://u-team.info/mod/halloween_luckyblock",
+		"authorList": [
+			"HyCraftHD",
+			"Nurenja",
+			"Milchbar",
+			"Redhair",
+			"Angelgaming"
+		],
+		"credits": "LuckyCrew and U Team",
+		"logoFile": "assets/halloween_luckyblock/textures/blocks/luckyblock.png"
+	}
+]
