@@ -56,7 +56,7 @@ minecraft {
 	
 	replace '${version}', project.version
 	replace '${mcversion}', project.minecraft.version
-	replaceIn "WHERE/OverworldMirrorConstants.java"
+	replaceIn "info/u_team/halloween_luckyblock/HalloweenLuckyBlockConstants.java"
 }
 
 def normalManifest = {

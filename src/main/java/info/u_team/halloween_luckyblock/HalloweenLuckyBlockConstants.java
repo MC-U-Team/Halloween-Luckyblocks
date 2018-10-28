@@ -8,7 +8,7 @@ public class HalloweenLuckyBlockConstants {
 	public static final String NAME = "Halloween LuckyBlock";
 	public static final String VERSION = "${version}";
 	public static final String MCVERSION = "${mcversion}";
-	public static final String DEPENDENCIES = "required:forge@[14.23.4.2745,);required-after:uteamcore@[2.0.1.84,);";
+	public static final String DEPENDENCIES = "required:forge@[14.23.4.2745,);required-after:uteamcore@[2.0.1.85,);";
 	
 	public static final String UPDATEURL = "https://api.u-team.info/update/halloween_luckyblock.json";
 	
