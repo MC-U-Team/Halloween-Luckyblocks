@@ -116,7 +116,7 @@ public class EntityGhost extends EntityFlying implements IMob {
 				World world = ghost.world;
 				++this.ticks;
 				if (this.ticks == 90) {
-					world.playSound(null, ghost.getPosition(), HalloweenLuckyBlockSounds.ringle, SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
+					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.ringle, SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
 					entitylivingbase.attackEntityFrom(DamageSource.MAGIC, 4.0F);
 					if (!world.isRemote && entitylivingbase instanceof EntityPlayerMP) {
 						HalloweenLuckyBlockNetwork.network.sendTo(new MessageGhostFlash(), (EntityPlayerMP) entitylivingbase);

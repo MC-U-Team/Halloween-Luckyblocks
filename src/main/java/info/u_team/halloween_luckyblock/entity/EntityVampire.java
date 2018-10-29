@@ -23,7 +23,7 @@ public class EntityVampire extends EntityAmbientCreature {
 		super(worldIn);
 		this.setSize(2.0F, 2.0F);
 		this.setIsBatHanging(true);
-		this.tasks.addTask(7, new EntityVampire.AIAttack());
+		this.tasks.addTask(2, new EntityVampire.AIAttack());
 		this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
 	}
 	
@@ -236,6 +236,7 @@ public class EntityVampire extends EntityAmbientCreature {
 			double d0 = 64.0D;
 			
 			if (entitylivingbase.getDistanceSq(this.vampire) < d0 * d0 && this.vampire.canEntityBeSeen(entitylivingbase)) {
+				System.out.println(ticks);
 				World world = this.vampire.world;
 				++this.ticks;
 				if (this.ticks == 390) {
