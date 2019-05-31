@@ -157,12 +157,15 @@ curseforge {
 		
     	mainArtifact(jar) {
       		displayName = "${config.curse.display}-${minecraft.version}-${version}"
+      		changelogType = "html"
+			changelog = "<a href=\"${config.curse.changelog}\">Changelog of ${project.version}</a>"
     	}
     	
     	addArtifact(deobfJar) {
     		displayName = "${config.curse.display}-${minecraft.version}-${version}-dev"
+    		changelogType = "text"
     		changelog = "Mappings: " + config.forge.mapping
-    	}
+		}
   	}
 }
 
@@ -215,6 +218,7 @@ uploadArchives {
 }
 
 task uploadBoth {
+	tasks.uploadBoth.dependsOn build
 	tasks.uploadBoth.dependsOn uploadArchives
 	tasks.uploadBoth.dependsOn "curseforge${config.curse.id}"
 	tasks.uploadBoth.dependsOn setBuildNumber
