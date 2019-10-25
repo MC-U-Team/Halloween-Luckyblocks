@@ -3,11 +3,11 @@ package info.u_team.halloween_luckyblock.event;
 import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
-import info.u_team.u_team_core.util.MathUtil;
+import info.u_team.halloween_luckyblock.util.MathUtil;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.*;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.*;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -18,7 +18,7 @@ public class LuckyEventEnchant extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(EntityPlayerMP player, final World world, final BlockPos pos) {
+	public void execute(ServerPlayerEntity player, final World world, final BlockPos pos) {
 		ArrayList<BlockPos> positions = new ArrayList<BlockPos>();
 		for (int x = -2; x <= 2; x++) {
 			for (int y = 0; y <= 2; y++) {
@@ -38,17 +38,15 @@ public class LuckyEventEnchant extends LuckyEvent {
 		for (BlockPos p : positions) {
 			world.setBlockState(pos.add(p), Blocks.BOOKSHELF.getDefaultState());
 		}
-		EntityFallingBlock falling = new EntityFallingBlock(world, pos.getX(), pos.getY() + 10, pos.getZ(), Blocks.ENCHANTING_TABLE.getDefaultState());
+		FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 10, pos.getZ(), Blocks.ENCHANTING_TABLE.getDefaultState());
 		falling.fallTime = 1;
-		world.spawnEntity(falling);
-		EntityItem item = new EntityItem(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.DYE, MathUtil.getRandomNumberInRange(12, 54), 4));
-		world.spawnEntity(item);
+		world.addEntity(falling);
+		ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.LAPIS_LAZULI, MathUtil.getRandomNumberInRange(12, 54)));
+		world.addEntity(item);
 		for (int i = 0; i < 20; i++) {
-			EntityXPOrb xp = new EntityXPOrb(world, pos.getX(), pos.getY(), pos.getZ(), MathUtil.getRandomNumberInRange(1, 5));
-			xp.motionX = MathUtil.getRandomNumberInRange(-0.5, 0.5);
-			xp.motionY = MathUtil.getRandomNumberInRange(0.2, 0.6);
-			xp.motionZ = MathUtil.getRandomNumberInRange(-0.5, 0.5);
-			world.spawnEntity(xp);
+			ExperienceOrbEntity xp = new ExperienceOrbEntity(world, pos.getX(), pos.getY(), pos.getZ(), MathUtil.getRandomNumberInRange(1, 5));
+			xp.setMotion(MathUtil.getRandomNumberInRange(-0.5, 0.5), MathUtil.getRandomNumberInRange(0.2, 0.6), MathUtil.getRandomNumberInRange(-0.5, 0.5));
+			world.addEntity(xp);
 		}
 		player.addExperienceLevel(10);
 	}

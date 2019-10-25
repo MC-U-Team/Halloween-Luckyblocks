@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.*;
-import info.u_team.halloween_luckyblock.util.ItemStackEntry;
-import info.u_team.u_team_core.item.armor.UItemArmor;
-import info.u_team.u_team_core.util.MathUtil;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
+import info.u_team.halloween_luckyblock.util.*;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -65,10 +63,10 @@ public class LuckyEventItems extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
 		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 3); i++) {
-			EntityItem item = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
-			world.spawnEntity(item);
+			ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
+			world.addEntity(item);
 		}
 	}
 	
