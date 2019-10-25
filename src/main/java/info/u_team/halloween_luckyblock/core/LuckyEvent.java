@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.core;
 
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -14,7 +14,7 @@ public abstract class LuckyEvent {
 		this.count = count;
 	}
 	
-	public abstract void execute(EntityPlayerMP player, World world, BlockPos pos);
+	public abstract void execute(ServerPlayerEntity player, World world, BlockPos pos);
 	
 	public String getName() {
 		return name;

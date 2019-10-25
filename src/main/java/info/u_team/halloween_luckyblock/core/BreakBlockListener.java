@@ -1,14 +1,14 @@
 package info.u_team.halloween_luckyblock.core;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class BreakBlockListener {
 	
-	private Block block;
-	private LuckyHandler handler;
+	private final Block block;
+	private final LuckyHandler handler;
 	
 	public BreakBlockListener(Block block, LuckyHandler handler) {
 		this.block = block;
@@ -18,8 +18,8 @@ public class BreakBlockListener {
 	@SubscribeEvent
 	public void onBlockBreakEvent(BreakEvent event) {
 		if (event.getState().getBlock() == block) {
-			EntityPlayer player = event.getPlayer();
-			if (player.capabilities.isCreativeMode) {
+			final PlayerEntity player = event.getPlayer();
+			if (player.abilities.isCreativeMode) {
 				return;
 			}
 			handler.post(player, event.getPos());

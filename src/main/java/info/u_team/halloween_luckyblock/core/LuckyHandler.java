@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.core;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import info.u_team.halloween_luckyblock.event.*;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
@@ -24,19 +24,19 @@ public class LuckyHandler {
 		}
 	}
 	
-	public void post(EntityPlayer player, BlockPos pos) {
-		if (!(player instanceof EntityPlayerMP)) {
+	public void post(PlayerEntity player, BlockPos pos) {
+		if (!(player instanceof ServerPlayerEntity)) {
 			return;
 		}
-		EntityPlayerMP playermp = (EntityPlayerMP) player;
-		World world = playermp.getEntityWorld();
+		final ServerPlayerEntity playermp = (ServerPlayerEntity) player;
+		final World world = playermp.getEntityWorld();
 		if (world.isRemote) {
 			return;
 		}
 		if (events.size() == 0) {
 			return;
 		}
-		int r = MathUtil.getRandomNumberInRange(0, events.size() - 1);
+		int r = getRandomNumberInRange(player.getRNG(), 0, events.size() - 1);
 		
 		LuckyEvent event = events.get(r);
 		event.execute(playermp, world, pos);
@@ -44,6 +44,10 @@ public class LuckyHandler {
 		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
 			playermp.connection.sendPacket(new SPacketSoundEffect(HalloweenLuckyBlockSounds.common_sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.common_sounds.size() - 1)), HalloweenLuckyBlockSounds.category, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
 		}
+	}
+	
+	private int getRandomNumberInRange(Random random, int min, int max) {
+		return random.nextInt(max - min + 1) + min;
 	}
 	
 }
