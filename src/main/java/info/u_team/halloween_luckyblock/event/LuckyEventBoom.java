@@ -1,12 +1,13 @@
 package info.u_team.halloween_luckyblock.event;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
-import info.u_team.u_team_core.util.MathUtil;
-import net.minecraft.entity.item.EntityTNTPrimed;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.EnumParticleTypes;
+import info.u_team.halloween_luckyblock.util.MathUtil;
+import net.minecraft.entity.item.TNTEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventBoom extends LuckyEvent {
 	
@@ -15,7 +16,7 @@ public class LuckyEventBoom extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
@@ -24,7 +25,10 @@ public class LuckyEventBoom extends LuckyEvent {
 		float offy = MathUtil.getRandomNumberInRange(0.5F, 1.5F);
 		float offz = MathUtil.getRandomNumberInRange(0.3F, 1F);
 		
-		world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, true, x, y, z, offx, offy, offz, new int[0]);
-		world.spawnEntity(new EntityTNTPrimed(world, x, y, z, player));
+		world.addParticle(ParticleTypes.CRIT, x, y, z, offx, offy, offz);
+		
+		((ServerWorld) world).spawnParticle(ParticleTypes.CRIT, x, y, z, 0, offx, offy, offz, 1);
+		
+		world.addEntity(new TNTEntity(world, x, y, z, player));
 	}
 }
