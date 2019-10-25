@@ -1,16 +1,16 @@
 # Halloween-Luckyblock
 
 [
-![Curseforge Downloads](http://cf.way2muchnoise.eu/halloween-luckyblock.svg)
-![Curseforge Versions](http://cf.way2muchnoise.eu/versions/halloween-luckyblock.svg)
-](https://www.curseforge.com/minecraft/mc-mods/halloween-luckyblock)
+![Curseforge Downloads](http://cf.way2muchnoise.eu/halloween-luckyblocks.svg)
+![Curseforge Versions](http://cf.way2muchnoise.eu/versions/halloween-luckyblocks.svg)
+](https://www.curseforge.com/minecraft/mc-mods/halloween-luckyblocks)
 [
 ![Discord](https://img.shields.io/discord/297104769649213441?label=Discord)
 ](https://discordapp.com/invite/QXbWS36)
 
 ### This mod adds a new enchantment that increase the attack speed time.
 
-- Download on [curseforge](https://www.curseforge.com/minecraft/mc-mods/halloween-luckyblock).  
+- Download on [curseforge](https://www.curseforge.com/minecraft/mc-mods/halloween-luckyblocks).  
 - Find more information on our [website](https://u-team.info/mods/halloween_luckyblock).
 - Updates can be found in the [changelog](CHANGELOG.md).
 
