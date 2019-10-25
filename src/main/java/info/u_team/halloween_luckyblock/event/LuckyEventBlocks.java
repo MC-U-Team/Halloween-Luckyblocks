@@ -4,18 +4,16 @@ import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockBlocks;
-import info.u_team.u_team_core.util.MathUtil;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityFallingBlock;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
+import info.u_team.halloween_luckyblock.util.MathUtil;
+import net.minecraft.block.*;
+import net.minecraft.entity.item.FallingBlockEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class LuckyEventBlocks extends LuckyEvent {
 	
-	private ArrayList<IBlockState> blocks;
+	private final ArrayList<BlockState> blocks;
 	
 	public LuckyEventBlocks() {
 		super("Blocks", 6);
@@ -30,8 +28,8 @@ public class LuckyEventBlocks extends LuckyEvent {
 		add(Blocks.EMERALD_BLOCK, 2);
 		add(Blocks.IRON_BLOCK, 5);
 		add(Blocks.GOLD_BLOCK, 3);
-		add(Blocks.LOG, 6);
-		add(Blocks.PLANKS, 10);
+		add(Blocks.OAK_LOG, 6);
+		add(Blocks.OAK_PLANKS, 10);
 		add(Blocks.CRAFTING_TABLE, 5);
 		add(Blocks.ENCHANTING_TABLE, 2);
 		add(Blocks.DIAMOND_BLOCK, 5);
@@ -44,20 +42,20 @@ public class LuckyEventBlocks extends LuckyEvent {
 		add(entry.getDefaultState(), count);
 	}
 	
-	private void add(IBlockState entry, int count) {
+	private void add(BlockState entry, int count) {
 		for (int i = 0; i < count; i++) {
 			blocks.add(entry);
 		}
 	}
 	
 	@Override
-	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
 		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 5); i++) {
-			EntityFallingBlock falling = new EntityFallingBlock(world, pos.getX(), pos.getY() + 5 + (10 * i), pos.getZ(), blocks.get(MathUtil.getRandomNumberInRange(0, blocks.size() - 1)));
+			final FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 5 + (10 * i), pos.getZ(), blocks.get(MathUtil.getRandomNumberInRange(0, blocks.size() - 1)));
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);
-			world.spawnEntity(falling);
+			world.addEntity(falling);
 		}
 	}
 	
