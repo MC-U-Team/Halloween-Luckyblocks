@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.item;
 
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockCreativeTabs;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItemGroups;
 import info.u_team.u_team_core.item.UItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public class ItemWitchsBroomstick extends UItem {
 	
 	public ItemWitchsBroomstick(String name) {
-		super(name, HalloweenLuckyBlockCreativeTabs.tab);
+		super(name, HalloweenLuckyBlockItemGroups.GROUP);
 		setMaxDamage(100);
 		setMaxStackSize(1);
 	}

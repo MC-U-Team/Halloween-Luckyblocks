@@ -16,7 +16,7 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
-		HalloweenLuckyBlockCreativeTabs.init();
+		HalloweenLuckyBlockItemGroups.init();
 		HalloweenLuckyBlockEvents.init();
 		CommonRegistry.registerEventHandler(ListenerKillerKniveAttack.class, ListenerZombieArmor.class);
 	}

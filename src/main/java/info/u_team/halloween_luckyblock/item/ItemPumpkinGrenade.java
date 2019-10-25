@@ -1,7 +1,7 @@
 package info.u_team.halloween_luckyblock.item;
 
 import info.u_team.halloween_luckyblock.entity.EntityPumpkinGrenade;
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockCreativeTabs;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItemGroups;
 import info.u_team.u_team_core.item.UItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class ItemPumpkinGrenade extends UItem {
 	
 	public ItemPumpkinGrenade(String name) {
-		super(name, HalloweenLuckyBlockCreativeTabs.tab);
+		super(name, HalloweenLuckyBlockItemGroups.GROUP);
 		setMaxStackSize(16);
 	}
 	

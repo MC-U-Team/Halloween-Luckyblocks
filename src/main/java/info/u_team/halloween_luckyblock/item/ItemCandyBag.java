@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.item;
 
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockCreativeTabs;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItemGroups;
 import info.u_team.u_team_core.item.UItemFood;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.*;
 public class ItemCandyBag extends UItemFood {
 	
 	public ItemCandyBag(String name) {
-		super(name, HalloweenLuckyBlockCreativeTabs.tab, 4, 2.0F);
+		super(name, HalloweenLuckyBlockItemGroups.GROUP, 4, 2.0F);
 		setAlwaysEdible();
 		setHasSubtypes(true);
 	}

@@ -2,7 +2,7 @@ package info.u_team.halloween_luckyblock.item;
 
 import java.util.List;
 
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockCreativeTabs;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItemGroups;
 import info.u_team.u_team_core.item.UItem;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.*;
 public class ItemCandy extends UItem {
 	
 	public ItemCandy(String name) {
-		super(name, HalloweenLuckyBlockCreativeTabs.tab);
+		super(name, HalloweenLuckyBlockItemGroups.GROUP);
 		this.setMaxDamage(20);
 		this.setMaxStackSize(1);
 	}

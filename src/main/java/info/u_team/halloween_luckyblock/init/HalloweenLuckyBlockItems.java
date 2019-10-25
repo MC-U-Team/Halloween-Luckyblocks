@@ -38,10 +38,10 @@ public class HalloweenLuckyBlockItems {
 	
 	private static UItemArmor[] createArmor(ArmorMaterial material, String name) {
 		UItemArmor[] armor = new UItemArmor[4];
-		armor[0] = new UItemHelmet(name, HalloweenLuckyBlockCreativeTabs.tab, material);
-		armor[1] = new UItemChestplate(name, HalloweenLuckyBlockCreativeTabs.tab, material);
-		armor[2] = new UItemLeggings(name, HalloweenLuckyBlockCreativeTabs.tab, material);
-		armor[3] = new UItemBoots(name, HalloweenLuckyBlockCreativeTabs.tab, material);
+		armor[0] = new UItemHelmet(name, HalloweenLuckyBlockItemGroups.GROUP, material);
+		armor[1] = new UItemChestplate(name, HalloweenLuckyBlockItemGroups.GROUP, material);
+		armor[2] = new UItemLeggings(name, HalloweenLuckyBlockItemGroups.GROUP, material);
+		armor[3] = new UItemBoots(name, HalloweenLuckyBlockItemGroups.GROUP, material);
 		return armor;
 	}
 	
