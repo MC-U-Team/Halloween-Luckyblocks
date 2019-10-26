@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.event;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
@@ -21,7 +21,9 @@ public class LuckyEventMerchant extends LuckyEvent {
 	
 	public static String[] playernames = new String[] { "Nightmare", "Halloween", "Devil", "Creep" };
 	
-	private ArrayList<Item> armor = new ArrayList<Item>();
+	private final List<Item> armor = new ArrayList<Item>();
+	
+	private final List<IVillagerType> types = new ArrayList<IVillagerType>();
 	
 	public LuckyEventMerchant() {
 		super("Merchant", 2);
@@ -40,6 +42,14 @@ public class LuckyEventMerchant extends LuckyEvent {
 		for (Item item : HalloweenLuckyBlockItems.CLOWN_SET.getArray()) {
 			armor.add(item);
 		}
+		
+		types.add(IVillagerType.DESERT);
+		types.add(IVillagerType.JUNGLE);
+		types.add(IVillagerType.PLAINS);
+		types.add(IVillagerType.SAVANNA);
+		types.add(IVillagerType.SNOW);
+		types.add(IVillagerType.SWAMP);
+		types.add(IVillagerType.TAIGA);
 	}
 	
 	@Override
@@ -50,7 +60,9 @@ public class LuckyEventMerchant extends LuckyEvent {
 		int z = pos.getZ();
 		
 		VillagerEntity villager = new VillagerEntity(EntityType.VILLAGER, world);
-		villager.setVillagerData(new VillagerData(IVillagerType.DESERT, VillagerProfession.WEAPONSMITH, 1));
+		
+		villager.setVillagerData(villager.getVillagerData().withType(types.get(MathUtil.getRandomNumberInRange(0, types.size() - 1))).withProfession(VillagerProfession.NITWIT));
+		
 		villager.setPosition(x, y, z);
 		villager.setCustomNameVisible(true);
 		villager.setCustomName(new StringTextComponent(playernames[MathUtil.getRandomNumberInRange(0, playernames.length - 1)]));

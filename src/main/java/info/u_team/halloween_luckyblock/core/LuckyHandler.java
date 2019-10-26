@@ -38,7 +38,7 @@ public class LuckyHandler {
 		}
 		int r = getRandomNumberInRange(player.getRNG(), 0, events.size() - 1);
 		
-		LuckyEvent event = new LuckyEventSound();
+		LuckyEvent event = new LuckyEventMerchant();
 		event.execute(playermp, world, pos);
 		
 //		LuckyEvent event = events.get(r);
