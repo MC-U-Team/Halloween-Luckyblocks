@@ -19,9 +19,9 @@ public class BreakBlockListener {
 	public void onBlockBreakEvent(BreakEvent event) {
 		if (event.getState().getBlock() == block) {
 			final PlayerEntity player = event.getPlayer();
-			if (player.abilities.isCreativeMode) {
-				return;
-			}
+//			if (player.abilities.isCreativeMode) {
+//				return;
+//			}
 			handler.post(player, event.getPos());
 		}
 	}
