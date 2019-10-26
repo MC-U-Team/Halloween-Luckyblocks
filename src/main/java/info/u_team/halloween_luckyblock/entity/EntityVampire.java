@@ -21,7 +21,6 @@ public class EntityVampire extends AmbientEntity {
 	
 	public EntityVampire(EntityType<? extends EntityVampire> type, World world) {
 		super(type, world);
-		// this.setSize(2.0F, 2.0F); TODO
 		this.setIsBatHanging(true);
 		this.goalSelector.addGoal(2, new AIAttack());
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, e -> true));

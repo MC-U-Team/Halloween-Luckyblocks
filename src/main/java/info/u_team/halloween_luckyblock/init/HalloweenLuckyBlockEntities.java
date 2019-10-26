@@ -1,7 +1,7 @@
 package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
-import info.u_team.halloween_luckyblock.entity.EntityPumpkinGrenade;
+import info.u_team.halloween_luckyblock.entity.*;
 import info.u_team.u_team_core.entitytype.UEntityType.UBuilder;
 import info.u_team.u_team_core.util.registry.BaseRegistryUtil;
 import net.minecraft.entity.*;
@@ -35,6 +35,8 @@ public class HalloweenLuckyBlockEntities {
 	//
 	
 	public static final EntityType<EntityPumpkinGrenade> PUMPKINGRENADE = UBuilder.<EntityPumpkinGrenade> create("pumpkingrenade", EntityPumpkinGrenade::new, EntityClassification.MISC).setCustomClientFactory(EntityPumpkinGrenade::new).size(0.25F, 0.25F).setTrackingRange(128).setUpdateInterval(20).setShouldReceiveVelocityUpdates(true).build();
+	
+	public static final EntityType<EntityVampire> VAMPIRE = UBuilder.<EntityVampire> create("vampire", EntityVampire::new, EntityClassification.MONSTER).size(2F, 2F).setTrackingRange(64).setUpdateInterval(3).setShouldReceiveVelocityUpdates(true).build();
 	
 	@SubscribeEvent
 	public static void register(Register<EntityType<?>> event) {
