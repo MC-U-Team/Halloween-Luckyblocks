@@ -3,14 +3,13 @@ package info.u_team.halloween_luckyblock.init;
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.core.*;
 import info.u_team.halloween_luckyblock.event.*;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
-@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE, value = Dist.CLIENT)
+@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE)
 public class HalloweenLuckyBlockEvents {
 	
 	@SubscribeEvent
