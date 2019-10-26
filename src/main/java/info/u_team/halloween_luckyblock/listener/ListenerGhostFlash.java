@@ -1,8 +1,7 @@
 package info.u_team.halloween_luckyblock.listener;
 
-import info.u_team.u_team_core.util.MathUtil;
+import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraftforge.api.distmarker.*;
 import net.minecraftforge.client.event.EntityViewRenderEvent.CameraSetup;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
