@@ -1,51 +1,49 @@
 package info.u_team.halloween_luckyblock.entity;
 
-import java.util.Random;
+import java.util.*;
 
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.network.MessageGhostFlash;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.controller.MovementController;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
+import net.minecraftforge.fml.network.PacketDistributor;
 
-public class EntityGhost extends EntityFlying implements IMob {
+public class EntityGhost extends FlyingEntity implements IMob {
 	
-	public EntityGhost(World world) {
-		super(world);
-		this.setSize(1.5F, 1.5F);
+	public EntityGhost(EntityType<? extends EntityGhost> type, World world) {
+		super(type, world);
+		// this.setSize(1.5F, 1.5F);
 		this.experienceValue = 12;
-		this.moveHelper = new EntityGhost.GhostMoveHelper(this);
-		
+		this.moveController = new EntityGhost.GhostMoveHelper(this);
 	}
 	
 	@Override
-	protected void initEntityAI() {
-		this.tasks.addTask(5, new EntityGhost.AIRandomFly());
-		this.tasks.addTask(7, new EntityGhost.AILookAround());
-		this.tasks.addTask(7, new EntityGhost.AIAttack());
-		this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
+	protected void registerGoals() {
+		this.goalSelector.addGoal(5, new EntityGhost.AIRandomFly());
+		this.goalSelector.addGoal(7, new EntityGhost.AILookAround());
+		this.goalSelector.addGoal(7, new EntityGhost.AIAttack());
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p_213812_1_) -> true));
 	}
 	
 	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		
-		if (!world.isRemote && world.getDifficulty() == EnumDifficulty.PEACEFUL) {
-			setDead();
+	public void tick() {
+		super.tick();
+		if (!world.isRemote && world.getDifficulty() == Difficulty.PEACEFUL) {
+			remove();
 		}
 	}
 	
 	@Override
-	public void applyEntityAttributes() {
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(100.0D);
+	public void registerAttributes() {
+		super.registerAttributes();
+		this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
+		this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(100.0D);
 	}
 	
 	@Override
@@ -64,18 +62,13 @@ public class EntityGhost extends EntityFlying implements IMob {
 	}
 	
 	@Override
-	public Item getDropItem() {
-		return Items.GUNPOWDER;
-	}
-	
-	@Override
 	public float getSoundVolume() {
 		return 2.0F;
 	}
 	
 	@Override
-	public boolean getCanSpawnHere() {
-		return super.getCanSpawnHere() && world.getDifficulty() != EnumDifficulty.PEACEFUL;
+	public boolean canSpawn(IWorld worldIn, SpawnReason spawnReasonIn) {
+		return super.canSpawn(worldIn, spawnReasonIn) && world.getDifficulty() != Difficulty.PEACEFUL;
 	}
 	
 	@Override
@@ -84,11 +77,11 @@ public class EntityGhost extends EntityFlying implements IMob {
 	}
 	
 	@Override
-	public float getEyeHeight() {
+	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
 		return 1.6F;
 	}
 	
-	class AIAttack extends EntityAIBase {
+	class AIAttack extends Goal {
 		
 		private EntityGhost ghost = EntityGhost.this;
 		public int ticks;
@@ -108,8 +101,8 @@ public class EntityGhost extends EntityFlying implements IMob {
 		}
 		
 		@Override
-		public void updateTask() {
-			EntityLivingBase entitylivingbase = this.ghost.getAttackTarget();
+		public void tick() {
+			LivingEntity entitylivingbase = this.ghost.getAttackTarget();
 			double d0 = 64.0D;
 			
 			if (entitylivingbase.getDistanceSq(this.ghost) < d0 * d0 && this.ghost.canEntityBeSeen(entitylivingbase)) {
@@ -118,8 +111,8 @@ public class EntityGhost extends EntityFlying implements IMob {
 				if (this.ticks == 90) {
 					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.ringle, SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
 					entitylivingbase.attackEntityFrom(DamageSource.MAGIC, 4.0F);
-					if (!world.isRemote && entitylivingbase instanceof EntityPlayerMP) {
-						HalloweenLuckyBlockNetwork.network.sendTo(new MessageGhostFlash(), (EntityPlayerMP) entitylivingbase);
+					if (!world.isRemote && entitylivingbase instanceof ServerPlayerEntity) {
+						HalloweenLuckyBlockNetwork.NETWORK.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) entitylivingbase), new MessageGhostFlash());
 					}
 					this.ticks = -10;
 				}
@@ -129,12 +122,12 @@ public class EntityGhost extends EntityFlying implements IMob {
 		}
 	}
 	
-	class AILookAround extends EntityAIBase {
+	class AILookAround extends Goal {
 		
 		private EntityGhost ghost = EntityGhost.this;
 		
 		public AILookAround() {
-			this.setMutexBits(2);
+			this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
 		}
 		
 		@Override
@@ -143,11 +136,11 @@ public class EntityGhost extends EntityFlying implements IMob {
 		}
 		
 		@Override
-		public void updateTask() {
+		public void tick() {
 			if (this.ghost.getAttackTarget() == null) {
-				this.ghost.renderYawOffset = this.ghost.rotationYaw = -((float) Math.atan2(this.ghost.motionX, this.ghost.motionZ)) * 180.0F / (float) Math.PI;
+				this.ghost.renderYawOffset = this.ghost.rotationYaw = -((float) Math.atan2(this.ghost.getMotion().getX(), this.ghost.getMotion().getZ())) * 180.0F / (float) Math.PI;
 			} else {
-				EntityLivingBase entitylivingbase = this.ghost.getAttackTarget();
+				LivingEntity entitylivingbase = this.ghost.getAttackTarget();
 				double d0 = 64.0D;
 				
 				if (entitylivingbase.getDistanceSq(this.ghost) < d0 * d0) {
@@ -159,17 +152,17 @@ public class EntityGhost extends EntityFlying implements IMob {
 		}
 	}
 	
-	class AIRandomFly extends EntityAIBase {
+	class AIRandomFly extends Goal {
 		
 		private EntityGhost ghost = EntityGhost.this;
 		
 		public AIRandomFly() {
-			this.setMutexBits(1);
+			this.setMutexFlags(EnumSet.of(Goal.Flag.MOVE));
 		}
 		
 		@Override
 		public boolean shouldExecute() {
-			EntityMoveHelper entitymovehelper = this.ghost.getMoveHelper();
+			MovementController entitymovehelper = this.ghost.getMoveHelper();
 			
 			if (!entitymovehelper.isUpdating()) {
 				return true;
@@ -196,7 +189,7 @@ public class EntityGhost extends EntityFlying implements IMob {
 		}
 	}
 	
-	static class GhostMoveHelper extends EntityMoveHelper {
+	static class GhostMoveHelper extends MovementController {
 		
 		private final double speed = 0.25D;
 		
@@ -209,41 +202,29 @@ public class EntityGhost extends EntityFlying implements IMob {
 		}
 		
 		@Override
-		public void onUpdateMoveHelper() {
-			if (this.action == EntityMoveHelper.Action.MOVE_TO) {
-				double d0 = this.posX - this.parentEntity.posX;
-				double d1 = this.posY - this.parentEntity.posY;
-				double d2 = this.posZ - this.parentEntity.posZ;
-				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
-				
+		public void tick() {
+			if (this.action == MovementController.Action.MOVE_TO) {
 				if (this.courseChangeCooldown-- <= 0) {
 					this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(5) + 2;
-					d3 = MathHelper.sqrt(d3);
-					
-					if (this.isNotColliding(this.posX, this.posY, this.posZ, d3)) {
-						this.parentEntity.motionX += d0 / d3 * speed;
-						this.parentEntity.motionY += d1 / d3 * speed;
-						this.parentEntity.motionZ += d2 / d3 * speed;
+					Vec3d vec3d = new Vec3d(this.posX - this.parentEntity.posX, this.posY - this.parentEntity.posY, this.posZ - this.parentEntity.posZ);
+					double d0 = vec3d.length();
+					vec3d = vec3d.normalize();
+					if (this.func_220673_a(vec3d, MathHelper.ceil(d0))) {
+						this.parentEntity.setMotion(this.parentEntity.getMotion().add(vec3d.scale(speed)));
 					} else {
-						this.action = EntityMoveHelper.Action.WAIT;
+						this.action = MovementController.Action.WAIT;
 					}
 				}
+				
 			}
 		}
 		
-		/**
-		 * Checks if entity bounding box is not colliding with terrain
-		 */
-		private boolean isNotColliding(double x, double y, double z, double p_179926_7_) {
-			double d0 = (x - this.parentEntity.posX) / p_179926_7_;
-			double d1 = (y - this.parentEntity.posY) / p_179926_7_;
-			double d2 = (z - this.parentEntity.posZ) / p_179926_7_;
-			AxisAlignedBB axisalignedbb = this.parentEntity.getEntityBoundingBox();
+		private boolean func_220673_a(Vec3d p_220673_1_, int p_220673_2_) {
+			AxisAlignedBB axisalignedbb = this.parentEntity.getBoundingBox();
 			
-			for (int i = 1; i < p_179926_7_; ++i) {
-				axisalignedbb = axisalignedbb.offset(d0, d1, d2);
-				
-				if (!this.parentEntity.world.getCollisionBoxes(this.parentEntity, axisalignedbb).isEmpty()) {
+			for (int i = 1; i < p_220673_2_; ++i) {
+				axisalignedbb = axisalignedbb.offset(p_220673_1_);
+				if (!this.parentEntity.world.isCollisionBoxesEmpty(this.parentEntity, axisalignedbb)) {
 					return false;
 				}
 			}
