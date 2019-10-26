@@ -2,6 +2,7 @@ package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.item.*;
+import info.u_team.halloween_luckyblock.util.USpawnEggItem;
 import info.u_team.u_team_core.item.armor.*;
 import info.u_team.u_team_core.util.registry.BaseRegistryUtil;
 import net.minecraft.item.*;
@@ -29,9 +30,9 @@ public class HalloweenLuckyBlockItems {
 	public static final ArmorSet ZOMBIE_SET = ArmorSetCreator.create("zombie", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.ZOMBIE);
 	public static final ArmorSet CLOWN_SET = ArmorSetCreator.create("clown", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.CLOWN);
 	
-	public static final SpawnEggItem CREEPY_ZOMBIE_SPAWN_EGG = new SpawnEggItem(HalloweenLuckyBlockEntities.CREEPY_ZOMBIE, 0x2ecc71, 0xe67e22, new Properties());
-	public static final SpawnEggItem VAMPIRE_SPAWN_EGG = new SpawnEggItem(HalloweenLuckyBlockEntities.VAMPIRE, 0x686c72, 0x000000, new Properties());
-	public static final SpawnEggItem GHOST_SPAWN_EGG = new SpawnEggItem(HalloweenLuckyBlockEntities.GHOST, 0x797a74, 0xffffff, new Properties());
+	public static final SpawnEggItem CREEPY_ZOMBIE_SPAWN_EGG = new USpawnEggItem("creepy_zombie_spawn_egg", HalloweenLuckyBlockEntities.CREEPY_ZOMBIE, 0x2ecc71, 0xe67e22, new Properties().group(HalloweenLuckyBlockItemGroups.GROUP));
+	public static final SpawnEggItem VAMPIRE_SPAWN_EGG = new USpawnEggItem("vampire_spawn_egg", HalloweenLuckyBlockEntities.VAMPIRE, 0x686c72, 0x000000, new Properties().group(HalloweenLuckyBlockItemGroups.GROUP));
+	public static final SpawnEggItem GHOST_SPAWN_EGG = new USpawnEggItem("ghost_spawn_egg", HalloweenLuckyBlockEntities.GHOST, 0x797a74, 0xffffff, new Properties().group(HalloweenLuckyBlockItemGroups.GROUP));
 	
 	@SubscribeEvent
 	public static void register(Register<Item> event) {
