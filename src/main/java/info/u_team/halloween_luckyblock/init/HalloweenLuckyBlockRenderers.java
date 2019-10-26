@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.MOD, value = Dist.CLIENT)
-public class HalloweenLuckyBlockRenderRegistry {
+public class HalloweenLuckyBlockRenderers {
 	
 	@SubscribeEvent
 	public static void register(FMLClientSetupEvent event) {
