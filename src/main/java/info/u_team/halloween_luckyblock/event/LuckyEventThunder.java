@@ -22,9 +22,9 @@ public class LuckyEventThunder extends LuckyEvent {
 		PlayerEntity other = world.getClosestPlayer(player, -1);
 		MinecraftServer mainthread = player.world.getServer();
 		
-		world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.thunder, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+		world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.THUNDER, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		if (other != null) {
-			world.playSound(null, other.getPosition(), HalloweenLuckyBlockSounds.thunder, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+			world.playSound(null, other.getPosition(), HalloweenLuckyBlockSounds.THUNDER, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		}
 		
 		new Thread(() -> {
@@ -42,9 +42,9 @@ public class LuckyEventThunder extends LuckyEvent {
 						LightningBoltEntity light2 = new LightningBoltEntity(world, other.posX, other.posY, other.posZ, false);
 						((ServerWorld) world).addLightningBolt(light2);
 					}
-					world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.wind, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+					world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.WIND, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 					if (other != null) {
-						world.playSound(null, other.getPosition(), HalloweenLuckyBlockSounds.wind, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+						world.playSound(null, other.getPosition(), HalloweenLuckyBlockSounds.WIND, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 					}
 				});
 			}

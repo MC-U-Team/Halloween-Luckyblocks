@@ -42,7 +42,7 @@ public class LuckyHandler {
 		event.execute(playermp, world, pos);
 		
 		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.common_sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.common_sounds.size() - 1)), HalloweenLuckyBlockSounds.category, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
+			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
 		}
 	}
 	

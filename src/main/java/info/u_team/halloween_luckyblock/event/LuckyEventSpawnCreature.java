@@ -48,6 +48,6 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 		if (entity != null) {
 			world.addEntity(entity);
 		}
-		world.playSound(null, pos, HalloweenLuckyBlockSounds.organ, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.ORGAN, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 	}
 }

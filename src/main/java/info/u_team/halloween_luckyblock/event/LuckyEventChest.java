@@ -65,6 +65,6 @@ public class LuckyEventChest extends LuckyEvent {
 			}
 			chest.tick();
 		}
-		world.playSound(null, pos, HalloweenLuckyBlockSounds.tension, HalloweenLuckyBlockSounds.category, 0.2F, 1.0F);
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.TENSION, HalloweenLuckyBlockSounds.CATEGORY, 0.2F, 1.0F);
 	}
 }

@@ -53,12 +53,12 @@ public class EntityVampire extends AmbientEntity {
 	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-		return HalloweenLuckyBlockSounds.scubi_dabi;
+		return HalloweenLuckyBlockSounds.SCUBI_DABI;
 	}
 	
 	@Override
 	protected SoundEvent getDeathSound() {
-		return HalloweenLuckyBlockSounds.wind;
+		return HalloweenLuckyBlockSounds.WIND;
 	}
 	
 	@Override
@@ -233,7 +233,7 @@ public class EntityVampire extends AmbientEntity {
 				World world = this.vampire.world;
 				++this.ticks;
 				if (this.ticks == 390) {
-					world.playSound(null, vampire.getPosition(), HalloweenLuckyBlockSounds.happy_halloween, SoundCategory.NEUTRAL, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
+					world.playSound(null, vampire.getPosition(), HalloweenLuckyBlockSounds.HAPPY_HALLOWEEN, SoundCategory.NEUTRAL, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
 					FallingBlockEntity falling = new FallingBlockEntity(world, entitylivingbase.posX, entitylivingbase.posY + 5, entitylivingbase.posZ, HalloweenLuckyBlockBlocks.PUMPKINBOMB.getDefaultState());
 					falling.fallTime = 100;
 					falling.shouldDropItem = false;

@@ -14,7 +14,7 @@ public class LuckyEventDeath extends LuckyEvent {
 	
 	@Override
 	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
-		world.playSound(null, pos, HalloweenLuckyBlockSounds.game_death, HalloweenLuckyBlockSounds.category, 1.0F, 1.0F);
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.GAME_DEATH, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		new Thread(() -> {
 			try {
 				wait(8500);

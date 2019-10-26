@@ -51,17 +51,17 @@ public class EntityGhost extends FlyingEntity implements IMob {
 	
 	@Override
 	protected SoundEvent getAmbientSound() {
-		return HalloweenLuckyBlockSounds.snivelling;
+		return HalloweenLuckyBlockSounds.SNIVELLING;
 	}
 	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
-		return HalloweenLuckyBlockSounds.strange_laughing;
+		return HalloweenLuckyBlockSounds.STRANGE_LAUGHING;
 	}
 	
 	@Override
 	protected SoundEvent getDeathSound() {
-		return HalloweenLuckyBlockSounds.thunder;
+		return HalloweenLuckyBlockSounds.THUNDER;
 	}
 	
 	@Override
@@ -112,7 +112,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 				World world = ghost.world;
 				++this.ticks;
 				if (this.ticks == 90) {
-					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.ringle, SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
+					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.RINGLE, SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
 					entitylivingbase.attackEntityFrom(DamageSource.MAGIC, 4.0F);
 					if (!world.isRemote && entitylivingbase instanceof ServerPlayerEntity) {
 						HalloweenLuckyBlockNetwork.NETWORK.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) entitylivingbase), new MessageGhostFlash());

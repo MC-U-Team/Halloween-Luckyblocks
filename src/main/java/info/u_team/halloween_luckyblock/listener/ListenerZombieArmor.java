@@ -29,7 +29,7 @@ public class ListenerZombieArmor {
 		if (count > 0) {
 			player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 2, 0, false, false));
 			if (player.world.rand.nextInt(500) == 0) {
-				player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ZOMBIE_AMBIENT, HalloweenLuckyBlockSounds.category, 0.2F, 1.0F);
+				player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ZOMBIE_AMBIENT, HalloweenLuckyBlockSounds.CATEGORY, 0.2F, 1.0F);
 			}
 		}
 	}
