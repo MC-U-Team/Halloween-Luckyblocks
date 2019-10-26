@@ -3,7 +3,10 @@ package info.u_team.halloween_luckyblock.core;
 import java.util.*;
 
 import info.u_team.halloween_luckyblock.event.*;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
+import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.entity.player.*;
+import net.minecraft.network.play.server.SPlaySoundEffectPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -35,20 +38,12 @@ public class LuckyHandler {
 		}
 		int r = getRandomNumberInRange(player.getRNG(), 0, events.size() - 1);
 		
-		LuckyEvent event = new LuckyEventGeneration();
-		
+		LuckyEvent event = events.get(r);
 		event.execute(playermp, world, pos);
 		
-		// LuckyEvent event = events.get(r);
-		// event.execute(playermp, world, pos);
-		//
-		// if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof
-		// LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-		// playermp.connection.sendPacket(new
-		// SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0,
-		// HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.posX, player.posY,
-		// player.posZ, 0.15F, 1.0F));
-		// }
+		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
+			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
+		}
 	}
 	
 	private int getRandomNumberInRange(Random random, int min, int max) {

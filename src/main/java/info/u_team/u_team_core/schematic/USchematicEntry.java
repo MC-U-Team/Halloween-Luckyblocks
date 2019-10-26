@@ -26,7 +26,7 @@ public class USchematicEntry {
 		Block block = state.getBlock();
 		
 		registryname = ForgeRegistries.BLOCKS.getKey(block);
-		meta = 0;
+		meta = 0; // placeholder. We have no meta data naymore
 		
 		TileEntity tileentity = world.getTileEntity(pos);
 		if (tileentity != null) {
