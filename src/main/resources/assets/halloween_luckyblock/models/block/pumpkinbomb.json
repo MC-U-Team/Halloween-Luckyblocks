@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"particle": "blocks/pumpkin_side",
-		"0": "blocks/pumpkin_side"
+		"particle": "block/pumpkin_side",
+		"0": "block/pumpkin_side"
 	},
 	"elements": [
 		{
