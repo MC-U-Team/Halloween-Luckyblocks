@@ -4,9 +4,9 @@ import java.util.*;
 
 import info.u_team.halloween_luckyblock.event.*;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
-import info.u_team.u_team_core.util.MathUtil;
+import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.entity.player.*;
-import net.minecraft.network.play.server.SPacketSoundEffect;
+import net.minecraft.network.play.server.SPlaySoundEffectPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -42,7 +42,7 @@ public class LuckyHandler {
 		event.execute(playermp, world, pos);
 		
 		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-			playermp.connection.sendPacket(new SPacketSoundEffect(HalloweenLuckyBlockSounds.common_sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.common_sounds.size() - 1)), HalloweenLuckyBlockSounds.category, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
+			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.common_sounds.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.common_sounds.size() - 1)), HalloweenLuckyBlockSounds.category, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
 		}
 	}
 	
