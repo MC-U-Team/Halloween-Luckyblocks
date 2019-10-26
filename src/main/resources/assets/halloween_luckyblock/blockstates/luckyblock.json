@@ -1,7 +1,7 @@
 {
 	"variants": {
-		"normal": {
-			"model": "halloween_luckyblock:luckyblock"
+		"": {
+			"model": "halloween_luckyblock:block/luckyblock"
 		}
 	}
 }
