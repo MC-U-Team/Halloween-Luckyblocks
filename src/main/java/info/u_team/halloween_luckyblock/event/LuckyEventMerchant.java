@@ -8,8 +8,9 @@ import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.merchant.villager.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.villager.IVillagerType;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
@@ -49,6 +50,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 		int z = pos.getZ();
 		
 		VillagerEntity villager = new VillagerEntity(EntityType.VILLAGER, world);
+		villager.setVillagerData(new VillagerData(IVillagerType.DESERT, VillagerProfession.WEAPONSMITH, 1));
 		villager.setPosition(x, y, z);
 		villager.setCustomNameVisible(true);
 		villager.setCustomName(new StringTextComponent(playernames[MathUtil.getRandomNumberInRange(0, playernames.length - 1)]));
