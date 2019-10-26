@@ -2,7 +2,7 @@ package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.core.*;
 import info.u_team.halloween_luckyblock.event.*;
-import info.u_team.u_team_core.registry.CommonRegistry;
+import net.minecraftforge.common.MinecraftForge;
 
 public class HalloweenLuckyBlockEvents {
 	
@@ -23,7 +23,7 @@ public class HalloweenLuckyBlockEvents {
 		handler.add(new LuckyEventSpawnCreature());
 		handler.add(new LuckyEventThunder());
 		
-		CommonRegistry.registerEventHandler(new BreakBlockListener(HalloweenLuckyBlockBlocks.luckyblock, handler));
+		MinecraftForge.EVENT_BUS.register(new BreakBlockListener(HalloweenLuckyBlockBlocks.LUCKYBLOCK, handler));
 	}
 	
 }
