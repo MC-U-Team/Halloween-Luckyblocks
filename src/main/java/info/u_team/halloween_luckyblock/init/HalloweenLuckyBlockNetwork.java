@@ -1,17 +1,19 @@
 package info.u_team.halloween_luckyblock.init;
 
-import info.u_team.halloween_luckyblock.HalloweenLuckyBlockConstants;
+import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.network.MessageGhostFlash;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class HalloweenLuckyBlockNetwork {
 	
-	public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel(HalloweenLuckyBlockConstants.MODID);
+	public static final String PROTOCOL = "1.14.4-1";
+	
+	public static final SimpleChannel NETWORK = NetworkRegistry.newSimpleChannel(new ResourceLocation(HalloweenLuckyBlockMod.MODID, "network"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals);
 	
 	public static void preinit() {
-		network.registerMessage(MessageGhostFlash.Handler.class, MessageGhostFlash.class, 0, Side.CLIENT);
+		NETWORK.registerMessage(0, MessageGhostFlash.class, MessageGhostFlash::encode, MessageGhostFlash::decode, MessageGhostFlash.Handler::handle);
 	}
 	
 }

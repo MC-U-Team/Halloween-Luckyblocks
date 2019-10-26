@@ -1,25 +1,26 @@
 package info.u_team.halloween_luckyblock.network;
 
-import info.u_team.halloween_luckyblock.listener.ListenerGhostFlash;
-import io.netty.buffer.ByteBuf;
-import net.minecraftforge.fml.common.network.simpleimpl.*;
+import java.util.function.Supplier;
 
-public class MessageGhostFlash implements IMessage {
+import info.u_team.halloween_luckyblock.listener.ListenerGhostFlash;
+import net.minecraft.network.PacketBuffer;
+import net.minecraftforge.fml.network.NetworkEvent.Context;
+
+public class MessageGhostFlash {
 	
-	@Override
-	public void fromBytes(ByteBuf buf) {
+	public static void encode(MessageGhostFlash message, PacketBuffer sendBuffer) {
 	}
 	
-	@Override
-	public void toBytes(ByteBuf buf) {
+	public static MessageGhostFlash decode(PacketBuffer sendBuffer) {
+		return new MessageGhostFlash();
 	}
 	
-	public static class Handler implements IMessageHandler<MessageGhostFlash, IMessage> {
+	public static class Handler {
 		
-		@Override
-		public IMessage onMessage(MessageGhostFlash message, MessageContext ctx) {
+		public static void handle(MessageGhostFlash message, Supplier<Context> contextSupplier) {
+			final Context context = contextSupplier.get();
 			ListenerGhostFlash.flash = true;
-			return null;
+			context.setPacketHandled(true);
 		}
 	}
 }
