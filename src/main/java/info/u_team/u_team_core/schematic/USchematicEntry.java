@@ -1,14 +1,12 @@
 package info.u_team.u_team_core.schematic;
 
-import info.u_team.u_team_core.UCoreConstants;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.block.*;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * Schematic API<br>
@@ -21,58 +19,57 @@ public class USchematicEntry {
 	
 	private ResourceLocation registryname;
 	private int meta;
-	private NBTTagCompound nbt;
+	private CompoundNBT nbt;
 	
 	public USchematicEntry(World world, BlockPos pos) {
-		IBlockState state = world.getBlockState(pos);
+		BlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		
-		registryname = Block.REGISTRY.getNameForObject(block);
-		meta = block.getMetaFromState(state);
+		registryname = ForgeRegistries.BLOCKS.getKey(block);
+		meta = 0;
 		
 		TileEntity tileentity = world.getTileEntity(pos);
 		if (tileentity != null) {
-			tileentity.writeToNBT(nbt = new NBTTagCompound());
-			nbt.removeTag("x"); // We don't need the old location
-			nbt.removeTag("y");
-			nbt.removeTag("z");
+			tileentity.write(nbt = new CompoundNBT());
+			nbt.remove("x"); // We don't need the old location
+			nbt.remove("y");
+			nbt.remove("z");
 		}
 	}
 	
-	public USchematicEntry(NBTTagCompound tag) {
+	public USchematicEntry(CompoundNBT tag) {
 		registryname = new ResourceLocation(tag.getString("name"));
-		meta = tag.getInteger("meta");
-		nbt = tag.getCompoundTag("nbt");
+		meta = tag.getInt("meta");
+		nbt = tag.getCompound("nbt");
 	}
 	
 	public void setBlock(World world, BlockPos pos) {
-		Block block = Block.REGISTRY.getObject(registryname);
+		Block block = ForgeRegistries.BLOCKS.getValue(registryname);
 		if (block == null) {
-			UCoreConstants.LOGGER.warn("Block registryname " + registryname + " in schematic was not found in minecraft!? Mods missing?");
+			System.err.println("Block registryname " + registryname + " in schematic was not found in minecraft!? Mods missing?");
 			block = Blocks.AIR;
 		}
 		
-		@SuppressWarnings("deprecation")
-		IBlockState state = block.getStateFromMeta(meta);
+		BlockState state = block.getDefaultState();
 		world.setBlockState(pos, state);
 		
 		TileEntity tileentity = world.getTileEntity(pos);
 		
 		if (tileentity != null && nbt != null) {
-			nbt.setInteger("x", pos.getX());
-			nbt.setInteger("y", pos.getY());
-			nbt.setInteger("z", pos.getZ());
-			tileentity.readFromNBT(nbt);
+			nbt.putInt("x", pos.getX());
+			nbt.putInt("y", pos.getY());
+			nbt.putInt("z", pos.getZ());
+			tileentity.read(nbt);
 		}
 	}
 	
-	public NBTTagCompound getTag() {
-		NBTTagCompound entry = new NBTTagCompound();
+	public CompoundNBT getTag() {
+		CompoundNBT entry = new CompoundNBT();
 		
-		entry.setString("name", registryname.toString());
-		entry.setInteger("meta", meta);
+		entry.putString("name", registryname.toString());
+		entry.putInt("meta", meta);
 		if (nbt != null) {
-			entry.setTag("nbt", nbt);
+			entry.put("nbt", nbt);
 		}
 		return entry;
 	}

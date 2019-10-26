@@ -55,27 +55,27 @@ public class USchematicSaveRegion {
 		return sizez;
 	}
 	
-	public NBTTagCompound saveNBT() {
-		NBTTagCompound root = new NBTTagCompound();
+	public CompoundNBT saveNBT() {
+		CompoundNBT root = new CompoundNBT();
 		
-		root.setInteger("sizex", getSizeX());
-		root.setInteger("sizey", getSizeY());
-		root.setInteger("sizez", getSizeZ());
-		root.setInteger("count", getCount());
+		root.putInt("sizex", getSizeX());
+		root.putInt("sizey", getSizeY());
+		root.putInt("sizez", getSizeZ());
+		root.putInt("count", getCount());
 		
-		root.setTag("blocks", saveBlocks());
+		root.put("blocks", saveBlocks());
 		
 		return root;
 	}
 	
-	private NBTTagList saveBlocks() {
-		NBTTagList list = new NBTTagList();
+	private ListNBT saveBlocks() {
+		ListNBT list = new ListNBT();
 		for (int x = min.getX(); x <= max.getX(); x++) {
 			for (int z = min.getZ(); z <= max.getZ(); z++) {
 				for (int y = min.getY(); y <= max.getY(); y++) {
 					BlockPos pos = new BlockPos(x, y, z);
 					USchematicEntry entry = new USchematicEntry(world, pos);
-					list.appendTag(entry.getTag());
+					list.add(entry.getTag());
 				}
 			}
 		}

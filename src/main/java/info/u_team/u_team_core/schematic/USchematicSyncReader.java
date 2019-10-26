@@ -3,7 +3,6 @@ package info.u_team.u_team_core.schematic;
 import java.io.*;
 import java.util.function.BiConsumer;
 
-import info.u_team.u_team_core.UCoreConstants;
 import info.u_team.u_team_core.util.io.NBTStreamUtil;
 
 /**
@@ -45,7 +44,8 @@ public class USchematicSyncReader {
 		try {
 			region.readNBT(NBTStreamUtil.readNBTFromStream(stream));
 		} catch (IOException ex) {
-			UCoreConstants.LOGGER.error("Error while trying to load schematic region.", ex);
+			System.err.println("Error while trying to load schematic region.");
+			ex.printStackTrace();
 			success = false;
 		}
 		

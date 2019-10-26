@@ -44,15 +44,15 @@ public class USchematicLoadRegion {
 		return start;
 	}
 	
-	public void readNBT(NBTTagCompound root) {
-		sizex = root.getInteger("sizex");
-		sizey = root.getInteger("sizey");
-		sizez = root.getInteger("sizez");
+	public void readNBT(CompoundNBT root) {
+		sizex = root.getInt("sizex");
+		sizey = root.getInt("sizey");
+		sizez = root.getInt("sizez");
 		
-		readBlocks(root.getTagList("blocks", 10));
+		readBlocks(root.getList("blocks", 10));
 	}
 	
-	private void readBlocks(NBTTagList list) {
+	private void readBlocks(ListNBT list) {
 		
 		if (centerstart) {
 			centerstart();
@@ -64,7 +64,7 @@ public class USchematicLoadRegion {
 				for (int y = 0; y < sizey; y++) {
 					BlockPos pos = start.add(rotate(new BlockPos(x, y, z)));
 					
-					USchematicEntry entry = new USchematicEntry(list.getCompoundTagAt(i++));
+					USchematicEntry entry = new USchematicEntry(list.getCompound(i++));
 					entry.setBlock(world, pos);
 				}
 			}
