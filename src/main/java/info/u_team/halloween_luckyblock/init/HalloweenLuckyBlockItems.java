@@ -1,53 +1,37 @@
 package info.u_team.halloween_luckyblock.init;
 
-import info.u_team.halloween_luckyblock.HalloweenLuckyBlockConstants;
+import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.item.*;
-import info.u_team.halloween_luckyblock.util.RegistryUtilArmor;
 import info.u_team.u_team_core.item.armor.*;
-import info.u_team.u_team_core.registry.ItemRegistry;
-import info.u_team.u_team_core.util.RegistryUtil;
-import net.minecraft.init.SoundEvents;
+import info.u_team.u_team_core.util.registry.BaseRegistryUtil;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraft.item.Item.Properties;
+import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
+@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.MOD)
 public class HalloweenLuckyBlockItems {
 	
-	public static final ArmorMaterial scarecrow_material = EnumHelper.addArmorMaterial("scarecrow", HalloweenLuckyBlockConstants.MODID + ":scarecrow", 200, new int[] { 3, 8, 6, 3 }, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-	public static final ArmorMaterial slender_material = EnumHelper.addArmorMaterial("slender", HalloweenLuckyBlockConstants.MODID + ":slender", 200, new int[] { 6, 16, 12, 6 }, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-	public static final ArmorMaterial witch_material = EnumHelper.addArmorMaterial("witch", HalloweenLuckyBlockConstants.MODID + ":witch", 200, new int[] { 3, 10, 6, 1 }, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-	public static final ArmorMaterial zombie_material = EnumHelper.addArmorMaterial("zombie", HalloweenLuckyBlockConstants.MODID + ":zombie", 200, new int[] { 2, 8, 7, 3 }, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
-	public static final ArmorMaterial clown_material = EnumHelper.addArmorMaterial("clown", HalloweenLuckyBlockConstants.MODID + ":clown", 50, new int[] { 20, 20, 20, 20 }, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
+	public static final Item CANDY = new ItemCandy("candy");
+	public static final Item TELEPORTER = new ItemTeleporter("teleporter");
+	public static final Item CANDYBAG = new ItemCandyBag("candybag", false);
+	public static final Item CANDYBAG_OP = new ItemCandyBag("candybag_op", true);
+	public static final Item WITCHBROOMSTICK = new ItemWitchsBroomstick("witchsbroomstick");
+	public static final Item PUMPKINGRENADE = new ItemPumpkinGrenade("pumpkingrenade");
 	
-	public static final ToolMaterial killerknive_material = EnumHelper.addToolMaterial("killerknive", 1, 120, 1, 7, 20);
+	public static final Item KILLERKNIFE = new ItemKillerKnive(HalloweenLuckyBlockToolMaterials.KILLERKNIFE, "killerknive");
 	
-	public static final Item candy = new ItemCandy("candy");
-	public static final Item teleporter = new ItemTeleporter("teleporter");
-	public static final Item candybag = new ItemCandyBag("candybag");
-	public static final Item witchsbroomstick = new ItemWitchsBroomstick("witchsbroomstick");
-	public static final Item pumpkingrenade = new ItemPumpkinGrenade("pumpkingrenade");
+	public static final ArmorSet SCARECROW_SET = ArmorSetCreator.create("scarecrow", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.SCARECROW);
+	public static final ArmorSet SLENDER_SET = ArmorSetCreator.create("slender", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.SLENDER);
+	public static final ArmorSet WITCH_SET = ArmorSetCreator.create("witch", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.WITCH);
+	public static final ArmorSet ZOMBIE_SET = ArmorSetCreator.create("zombie", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.ZOMBIE);
+	public static final ArmorSet CLOWN_SET = ArmorSetCreator.create("clown", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.CLOWN);
 	
-	public static final Item killerknive = new ItemKillerKnive(killerknive_material, "killerknive");
-	
-	public static final UItemArmor[] scarecrow = createArmor(scarecrow_material, "scarecrow");
-	public static final UItemArmor[] slender = createArmor(slender_material, "slender");
-	public static final UItemArmor[] witch = createArmor(witch_material, "witch");
-	public static final UItemArmor[] zombie = createArmor(zombie_material, "zombie");
-	public static final UItemArmor[] clown = createArmor(clown_material, "clown");
-	
-	private static UItemArmor[] createArmor(ArmorMaterial material, String name) {
-		UItemArmor[] armor = new UItemArmor[4];
-		armor[0] = new UItemHelmet(name, HalloweenLuckyBlockItemGroups.GROUP, material);
-		armor[1] = new UItemChestplate(name, HalloweenLuckyBlockItemGroups.GROUP, material);
-		armor[2] = new UItemLeggings(name, HalloweenLuckyBlockItemGroups.GROUP, material);
-		armor[3] = new UItemBoots(name, HalloweenLuckyBlockItemGroups.GROUP, material);
-		return armor;
-	}
-	
-	public static void preinit() {
-		ItemRegistry.register(HalloweenLuckyBlockConstants.MODID, RegistryUtil.getRegistryEntries(Item.class, HalloweenLuckyBlockItems.class));
-		ItemRegistry.register(HalloweenLuckyBlockConstants.MODID, RegistryUtilArmor.getArmorRegistryEntries(HalloweenLuckyBlockItems.class));
+	@SubscribeEvent
+	public static void register(Register<Item> event) {
+		BaseRegistryUtil.getAllRegistryEntriesAndApplyNames(HalloweenLuckyBlockMod.MODID, Item.class).forEach(event.getRegistry()::register);
 	}
 	
 }
