@@ -17,7 +17,6 @@ public class EntityCreepyZombie extends MonsterEntity {
 	
 	public EntityCreepyZombie(EntityType<? extends EntityCreepyZombie> type, World worldIn) {
 		super(type, worldIn);
-		// this.setSize(0.6F, 1.95F);
 	}
 	
 	@Override

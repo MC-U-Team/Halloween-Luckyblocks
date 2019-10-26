@@ -18,7 +18,6 @@ public class EntityGhost extends FlyingEntity implements IMob {
 	
 	public EntityGhost(EntityType<? extends EntityGhost> type, World world) {
 		super(type, world);
-		// this.setSize(1.5F, 1.5F);
 		this.experienceValue = 12;
 		this.moveController = new EntityGhost.GhostMoveHelper(this);
 	}
