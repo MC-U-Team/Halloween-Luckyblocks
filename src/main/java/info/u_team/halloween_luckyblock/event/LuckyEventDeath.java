@@ -17,7 +17,9 @@ public class LuckyEventDeath extends LuckyEvent {
 		world.playSound(null, pos, HalloweenLuckyBlockSounds.GAME_DEATH, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		new Thread(() -> {
 			try {
-				wait(8500);
+				synchronized (this) {
+					wait(8500);
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

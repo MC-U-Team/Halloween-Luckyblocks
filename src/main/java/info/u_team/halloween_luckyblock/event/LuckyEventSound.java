@@ -19,7 +19,9 @@ public class LuckyEventSound extends LuckyEvent {
 		world.playSound(null, pos, HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		new Thread(() -> {
 			try {
-				wait(5000);
+				synchronized (this) {
+					wait(5000);
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -38,12 +38,15 @@ public class LuckyHandler {
 		}
 		int r = getRandomNumberInRange(player.getRNG(), 0, events.size() - 1);
 		
-		LuckyEvent event = events.get(r);
+		LuckyEvent event = new LuckyEventSound();
 		event.execute(playermp, world, pos);
 		
-		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
-		}
+//		LuckyEvent event = events.get(r);
+//		event.execute(playermp, world, pos);
+//		
+//		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
+//			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
+//		}
 	}
 	
 	private int getRandomNumberInRange(Random random, int min, int max) {
