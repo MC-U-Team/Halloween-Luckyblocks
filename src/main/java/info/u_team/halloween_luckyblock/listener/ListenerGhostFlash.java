@@ -1,6 +1,7 @@
 package info.u_team.halloween_luckyblock.listener;
 
 import info.u_team.u_team_core.util.MathUtil;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraftforge.api.distmarker.*;
 import net.minecraftforge.client.event.EntityViewRenderEvent.CameraSetup;
@@ -19,10 +20,10 @@ public class ListenerGhostFlash {
 				if (time == 0) {
 					time = System.currentTimeMillis();
 				}
-				EntityRenderer render = event.getRenderer();
+				GameRenderer render = event.getRenderer();
 				if (System.currentTimeMillis() - time < 2000) {
 					if (!render.isShaderActive()) {
-						render.loadShader(EntityRenderer.SHADERS_TEXTURES[MathUtil.getRandomNumberInRange(0, EntityRenderer.SHADER_COUNT - 1)]);
+						render.loadShader(GameRenderer.SHADERS_TEXTURES[MathUtil.getRandomNumberInRange(0, GameRenderer.SHADER_COUNT - 1)]);
 					}
 				} else {
 					render.stopUseShader();
@@ -31,7 +32,7 @@ public class ListenerGhostFlash {
 				}
 			}
 		} catch (Exception ex) {
-			HalloweenLuckyBlockConstants.LOGGER.catching(ex);
+			ex.printStackTrace();
 		}
 	}
 }

@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="https://github.com/MC-U-Team/Halloween-Luckyblocks/issues"
+displayURL="https://u-team.info/mods/halloween_luckyblock"
+logoFile="assets/halloween_luckyblock/textures/blocks/luckyblock.png"
+credits="LuckyCrew and Team U Team"
+authors="HyCraftHD, Nurenja, Milchbar, Redhair, Angelgaming"
+
+[[mods]]
+	modId="halloween_luckyblock"
+	version="${file.jarVersion}"
+	displayName="Halloween LuckyBlock"
+	updateJSONURL="https://api.u-team.info/update/halloween_luckyblock.json"
+	description="Cool and spooky luckyblocks for halloween."
+	
+	[[dependencies.halloween_luckyblock]]
+	    modId="forge"
+	    mandatory=true
+	    versionRange="[28.1.20,)"
+	    ordering="NONE"
+	    side="BOTH"
+	
+	[[dependencies.halloween_luckyblock]]
+	    modId="minecraft"
+	    mandatory=true
+	    versionRange="[1.14.4]"
+	    ordering="NONE"
+	    side="BOTH"
+	    
+	[[dependencies.halloween_luckyblock]]
+	    modId="uteamcore"
+	    mandatory=true
+	    versionRange="[2.7.3.132,)"
+	    ordering="NONE"
+	    side="BOTH"
