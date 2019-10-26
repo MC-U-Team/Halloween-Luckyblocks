@@ -50,7 +50,7 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 		BlockPos highpos = new BlockPos(pos.getX(), pos.getY() + 5, pos.getZ());
 		for (int i = 0; i < 20; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-6, 6), MathUtil.getRandomNumberInRange(-5, 2), MathUtil.getRandomNumberInRange(-6, 6));
-			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX(), newpos.getY(), newpos.getZ(), PumpkinUtil.getRandomPumpkin());
+			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX() + .5, newpos.getY(), newpos.getZ() + .5, PumpkinUtil.getRandomPumpkin());
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);
