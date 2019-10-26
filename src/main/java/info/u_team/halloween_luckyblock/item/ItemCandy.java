@@ -4,60 +4,52 @@ import java.util.List;
 
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItemGroups;
 import info.u_team.u_team_core.item.UItem;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.api.distmarker.*;
 
 public class ItemCandy extends UItem {
 	
 	public ItemCandy(String name) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP);
-		this.setMaxDamage(20);
-		this.setMaxStackSize(1);
+		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(20).rarity(Rarity.RARE));
 	}
 	
 	@Override
-	public EnumRarity getRarity(ItemStack stack) {
-		return EnumRarity.RARE;
-	}
-	
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-		if (!stack.hasTagCompound()) {
-			NBTTagCompound compound = new NBTTagCompound();
-			compound.setInteger("cooldown", 0);
-			stack.setTagCompound(compound);
+	public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+		if (!stack.hasTag()) {
+			CompoundNBT compound = new CompoundNBT();
+			compound.putInt("cooldown", 0);
+			stack.setTag(compound);
 		} else {
-			NBTTagCompound compound = stack.getTagCompound();
-			int i = compound.getInteger("cooldown");
+			CompoundNBT compound = stack.getTag();
+			int i = compound.getInt("cooldown");
 			if (i > 0) {
-				compound.setInteger("cooldown", i - 1);
+				compound.putInt("cooldown", i - 1);
 			}
-			stack.setTagCompound(compound);
+			stack.setTag(compound);
 		}
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand handIn) {
-		ItemStack stack = player.getHeldItem(handIn);
-		NBTTagCompound compound = stack.getTagCompound();
-		if (compound.getInteger("cooldown") == 0) {
-			compound.setInteger("cooldown", 200);
-			player.motionY = 0.88D;
+	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
+		ItemStack stack = player.getHeldItem(hand);
+		CompoundNBT compound = stack.getTag();
+		if (compound.getInt("cooldown") == 0) {
+			compound.putInt("cooldown", 200);
 			float f = player.rotationYaw * 0.017453292F;
-			player.motionX -= MathHelper.sin(f) * 2.2F;
-			player.motionZ += MathHelper.cos(f) * 2.2F;
-			stack.damageItem(1, player);
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+			player.setMotion(player.getMotion().getX() - MathHelper.sin(f) * 2.2F, 0.88D, player.getMotion().getZ() + MathHelper.cos(f) * 2.2F);
+			stack.damageItem(1, player, x -> {
+			});
+			return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.PASS, stack);
+		return new ActionResult<ItemStack>(ActionResultType.PASS, stack);
 	}
 	
 	@Override
@@ -65,16 +57,16 @@ public class ItemCandy extends UItem {
 		return !ItemStack.areItemsEqual(oldStack, newStack);
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-		if (stack.hasTagCompound()) {
-			NBTTagCompound compound = stack.getTagCompound();
-			int seconds = compound.getInteger("cooldown") / 20;
+	@OnlyIn(Dist.CLIENT)
+	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+		if (stack.hasTag()) {
+			CompoundNBT compound = stack.getTag();
+			int seconds = compound.getInt("cooldown") / 20;
 			if (seconds == 0) {
-				tooltip.add(I18n.format("item.candy.cooldown.no"));
+				tooltip.add(new TranslationTextComponent("item.candy.cooldown.no"));
 			} else {
-				tooltip.add(I18n.format("item.candy.cooldown.yes", seconds));
+				tooltip.add(new TranslationTextComponent("item.candy.cooldown.yes", seconds));
 			}
 		}
 	}
