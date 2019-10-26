@@ -1,8 +1,8 @@
 package info.u_team.halloween_luckyblock.tileentity;
 
-import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockTileEntityTypes;
+import info.u_team.halloween_luckyblock.util.*;
 import info.u_team.u_team_core.tileentity.UTileEntity;
-import info.u_team.u_team_core.util.BlockProperties;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -15,6 +15,10 @@ import net.minecraft.world.Explosion;
 public class TileEntityPumpkinBomb extends UTileEntity implements ITickableTileEntity {
 	
 	private int fuse = 120;
+	
+	public TileEntityPumpkinBomb() {
+		super(HalloweenLuckyBlockTileEntityTypes.PUMPKINBOMB);
+	}
 	
 	@Override
 	public void writeNBT(CompoundNBT compound) {
@@ -49,8 +53,7 @@ public class TileEntityPumpkinBomb extends UTileEntity implements ITickableTileE
 		BlockPos highpos = new BlockPos(pos.getX(), pos.getY() + 5, pos.getZ());
 		for (int i = 0; i < 35; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-8, 8), MathUtil.getRandomNumberInRange(1, 10), MathUtil.getRandomNumberInRange(-8, 8));
-			@SuppressWarnings("deprecation")
-			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX() + 0.5, newpos.getY(), newpos.getZ() + 0.5, (MathUtil.getRandomNumberInRange(0, 1) == 0 ? Blocks.PUMPKIN : Blocks.JACK_O_LANTERN).getDefaultState().with(, value)(MathUtil.getRandomNumberInRange(0, 3))));
+			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX() + 0.5, newpos.getY(), newpos.getZ() + 0.5, PumpkinUtil.getRandomPumpkin());
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

@@ -7,6 +7,7 @@ import info.u_team.halloween_luckyblock.HalloweenLuckyBlockConstants;
 import info.u_team.u_team_core.registry.SoundRegistry;
 import info.u_team.u_team_core.util.*;
 import net.minecraft.util.*;
+import net.minecraftforge.fml.loading.moddiscovery.ModAnnotation.EnumHolder;
 
 public class HalloweenLuckyBlockSounds {
 	
