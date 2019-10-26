@@ -16,6 +16,7 @@ public class LuckyEventGeneration extends LuckyEvent {
 		super("Generation", 3);
 	}
 	
+	// TODO Replace with vanilla things, as this is not working well anymore because of the flattening
 	@Override
 	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
 		InputStream stream = this.getClass().getResourceAsStream("/assets/" + HalloweenLuckyBlockMod.MODID + "/uschematic/" + MathUtil.getRandomNumberInRange(0, 12) + ".uschematic");
