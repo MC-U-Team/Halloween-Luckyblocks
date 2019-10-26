@@ -6,10 +6,12 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.world.*;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	
@@ -18,7 +20,12 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	}
 	
 	public EntityPumpkinGrenade(World world, LivingEntity throwerIn) {
-		super(HalloweenLuckyBlockEntities.PUMPKINGRENADE, throwerIn, world);
+		super(HalloweenLuckyBlockEntityTypes.PUMPKINGRENADE, throwerIn, world);
+	}
+	
+	@Override
+	public IPacket<?> createSpawnPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 	
 	@Override
@@ -60,5 +67,4 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	protected Item func_213885_i() {
 		return HalloweenLuckyBlockItems.PUMPKINGRENADE;
 	}
-	
 }

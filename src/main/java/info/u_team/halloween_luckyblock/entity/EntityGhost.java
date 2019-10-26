@@ -9,21 +9,27 @@ import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.*;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
-import net.minecraftforge.fml.network.PacketDistributor;
+import net.minecraftforge.fml.network.*;
 
 public class EntityGhost extends FlyingEntity implements IMob {
 	
 	public EntityGhost(World world) {
-		this(HalloweenLuckyBlockEntities.GHOST, world);
+		this(HalloweenLuckyBlockEntityTypes.GHOST, world);
 	}
 	
 	public EntityGhost(EntityType<? extends EntityGhost> type, World world) {
 		super(type, world);
 		this.experienceValue = 12;
 		this.moveController = new EntityGhost.GhostMoveHelper(this);
+	}
+	
+	@Override
+	public IPacket<?> createSpawnPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 	
 	@Override

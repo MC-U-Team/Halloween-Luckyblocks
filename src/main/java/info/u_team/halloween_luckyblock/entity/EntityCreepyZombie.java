@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.entity;
 
-import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockEntities;
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -10,18 +10,25 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.IPacket;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class EntityCreepyZombie extends MonsterEntity {
 	
 	public EntityCreepyZombie(World worldIn) {
-		this(HalloweenLuckyBlockEntities.CREEPY_ZOMBIE, worldIn);
+		this(HalloweenLuckyBlockEntityTypes.CREEPY_ZOMBIE, worldIn);
 	}
 	
 	public EntityCreepyZombie(EntityType<? extends EntityCreepyZombie> type, World worldIn) {
 		super(type, worldIn);
+	}
+	
+	@Override
+	public IPacket<?> createSpawnPacket() {
+		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 	
 	@Override
