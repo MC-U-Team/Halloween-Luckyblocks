@@ -19,6 +19,10 @@ public class EntityVampire extends AmbientEntity {
 	private static final EntityPredicate field_213813_c = (new EntityPredicate()).setDistance(4.0D).allowFriendlyFire();
 	private BlockPos spawnPosition;
 	
+	public EntityVampire(World worldIn) {
+		this(HalloweenLuckyBlockEntities.VAMPIRE, worldIn);
+	}
+	
 	public EntityVampire(EntityType<? extends EntityVampire> type, World world) {
 		super(type, world);
 		this.setIsBatHanging(true);

@@ -21,7 +21,7 @@ public class LuckyEventRainingPumkin extends LuckyEvent {
 		BlockPos highpos = new BlockPos(pos.getX(), 200, pos.getZ());
 		for (int i = 0; i < 150; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-35, 35), MathUtil.getRandomNumberInRange(-5, 20), MathUtil.getRandomNumberInRange(-35, 35));
-			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX(), newpos.getY(), newpos.getZ(), MathUtil.getRandomNumberInRange(0, 30) == 0 ? HalloweenLuckyBlockBlocks.luckyblock.getDefaultState() : PumpkinUtil.getRandomPumpkin());
+			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX(), newpos.getY(), newpos.getZ(), MathUtil.getRandomNumberInRange(0, 30) == 0 ? HalloweenLuckyBlockBlocks.LUCKYBLOCK.getDefaultState() : PumpkinUtil.getRandomPumpkin());
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

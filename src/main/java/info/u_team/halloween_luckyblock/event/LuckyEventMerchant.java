@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
-import info.u_team.u_team_core.util.MathUtil;
-import info.u_team.u_team_core.util.stack.ItemStackUtil;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.*;
+import info.u_team.halloween_luckyblock.util.MathUtil;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.village.*;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
 public class LuckyEventMerchant extends LuckyEvent {
@@ -24,100 +24,101 @@ public class LuckyEventMerchant extends LuckyEvent {
 	
 	public LuckyEventMerchant() {
 		super("Merchant", 2);
-		for (Item item : HalloweenLuckyBlockItems.scarecrow) {
+		for (Item item : HalloweenLuckyBlockItems.SCARECROW_SET.getArray()) {
 			armor.add(item);
 		}
-		for (Item item : HalloweenLuckyBlockItems.slender) {
+		for (Item item : HalloweenLuckyBlockItems.SLENDER_SET.getArray()) {
 			armor.add(item);
 		}
-		for (Item item : HalloweenLuckyBlockItems.witch) {
+		for (Item item : HalloweenLuckyBlockItems.WITCH_SET.getArray()) {
 			armor.add(item);
 		}
-		for (Item item : HalloweenLuckyBlockItems.zombie) {
+		for (Item item : HalloweenLuckyBlockItems.ZOMBIE_SET.getArray()) {
 			armor.add(item);
 		}
-		for (Item item : HalloweenLuckyBlockItems.clown) {
+		for (Item item : HalloweenLuckyBlockItems.CLOWN_SET.getArray()) {
 			armor.add(item);
 		}
 	}
 	
 	@Override
-	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
 		
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
 		
-		EntityVillager villager = new EntityVillager(world);
+		VillagerEntity villager = new VillagerEntity(EntityType.VILLAGER, world);
 		villager.setPosition(x, y, z);
-		villager.setAlwaysRenderNameTag(true);
-		villager.setCustomNameTag(playernames[MathUtil.getRandomNumberInRange(0, playernames.length - 1)]);
-		MerchantRecipeList list = villager.getRecipes(player);
-		list.clear();
-		list.addAll(getRecipes());
-		world.spawnEntity(villager);
+		villager.setCustomNameVisible(true);
+		villager.setCustomName(new StringTextComponent(playernames[MathUtil.getRandomNumberInRange(0, playernames.length - 1)]));
 		
-		ItemStack diamond = ItemStackUtil.from(Items.DIAMOND);
+		MerchantOffers offers = villager.getOffers();
+		offers.clear();
+		offers.addAll(getRecipes());
+		world.addEntity(villager);
+		
+		ItemStack diamond = new ItemStack(Items.DIAMOND);
 		diamond.setCount(MathUtil.getRandomNumberInRange(9, 25));
-		ItemStack goldingot = ItemStackUtil.from(Items.GOLD_INGOT);
+		ItemStack goldingot = new ItemStack(Items.GOLD_INGOT);
 		goldingot.setCount(MathUtil.getRandomNumberInRange(15, 64));
 		
-		EntityItem diamondentity = new EntityItem(world, x, y, z, diamond);
-		EntityItem goldingotentity = new EntityItem(world, x, y, z, goldingot);
+		ItemEntity diamondentity = new ItemEntity(world, x, y, z, diamond);
+		ItemEntity goldingotentity = new ItemEntity(world, x, y, z, goldingot);
 		
-		world.spawnEntity(diamondentity);
-		world.spawnEntity(goldingotentity);
+		world.addEntity(diamondentity);
+		world.addEntity(goldingotentity);
 		
 	}
 	
-	private ArrayList<MerchantRecipe> getRecipes() {
-		ArrayList<MerchantRecipe> list = new ArrayList<MerchantRecipe>();
+	private ArrayList<MerchantOffer> getRecipes() {
+		ArrayList<MerchantOffer> list = new ArrayList<MerchantOffer>();
 		
 		for (int i = 0; i < MathUtil.getRandomNumberInRange(5, 15); i++) {
 			int r = MathUtil.getRandomNumberInRange(0, 19);
-			MerchantRecipe re = null;
+			MerchantOffer re = null;
 			
-			ItemStack diamond = ItemStackUtil.from(Items.DIAMOND);
-			ItemStack goldingot = ItemStackUtil.from(Items.GOLD_INGOT);
+			ItemStack diamond = new ItemStack(Items.DIAMOND);
+			ItemStack goldingot = new ItemStack(Items.GOLD_INGOT);
 			
-			ItemStack ironsword = ItemStackUtil.from(Items.IRON_SWORD);
-			ItemStack diamondsword = ItemStackUtil.from(Items.DIAMOND_SWORD);
+			ItemStack ironsword = new ItemStack(Items.IRON_SWORD);
+			ItemStack diamondsword = new ItemStack(Items.DIAMOND_SWORD);
 			
 			switch (r) {
 			case 0:
 				diamond.setCount(MathUtil.getRandomNumberInRange(30, 45));
-				re = new MerchantRecipe(diamond, ItemStackUtil.from(HalloweenLuckyBlockItems.killerknive));
+				re = new MerchantOffer(diamond, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE), 10, 2, 1);
 				break;
 			case 1:
 				goldingot.setCount(MathUtil.getRandomNumberInRange(55, 64));
-				re = new MerchantRecipe(goldingot, goldingot, ItemStackUtil.from(HalloweenLuckyBlockItems.killerknive));
+				re = new MerchantOffer(goldingot, goldingot, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE), 10, 2, 1);
 				break;
 			case 2:
 				goldingot.setCount(MathUtil.getRandomNumberInRange(1, 3));
-				re = new MerchantRecipe(goldingot, ironsword);
+				re = new MerchantOffer(goldingot, ironsword, 10, 2, 1);
 				break;
 			case 3:
 			case 4:
 				diamond.setCount(MathUtil.getRandomNumberInRange(8, 15));
-				NBTTagCompound comp34 = new NBTTagCompound();
-				comp34.setBoolean("Unbreakable", true);
-				ironsword.setTagCompound(comp34);
+				CompoundNBT comp34 = new CompoundNBT();
+				comp34.putBoolean("Unbreakable", true);
+				ironsword.setTag(comp34);
 				ironsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.getRandomNumberInRange(5, 16));
 				if (MathUtil.getRandomNumberInRange(0, 4) == 0) {
 					ironsword.addEnchantment(Enchantments.FIRE_ASPECT, MathUtil.getRandomNumberInRange(1, 2));
 				}
-				re = new MerchantRecipe(diamond, ironsword);
+				re = new MerchantOffer(diamond, ironsword, 10, 2, 1);
 				break;
 			case 5:
 				goldingot.setCount(MathUtil.getRandomNumberInRange(30, 63));
-				NBTTagCompound comp5 = new NBTTagCompound();
-				comp5.setBoolean("Unbreakable", true);
-				ironsword.setTagCompound(comp5);
+				CompoundNBT comp5 = new CompoundNBT();
+				comp5.putBoolean("Unbreakable", true);
+				ironsword.setTag(comp5);
 				ironsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.getRandomNumberInRange(5, 16));
 				if (MathUtil.getRandomNumberInRange(0, 4) == 0) {
 					ironsword.addEnchantment(Enchantments.FIRE_ASPECT, MathUtil.getRandomNumberInRange(1, 2));
 				}
-				re = new MerchantRecipe(goldingot, ironsword);
+				re = new MerchantOffer(goldingot, ironsword, 10, 2, 1);
 				break;
 			case 6:
 				diamond.setCount(MathUtil.getRandomNumberInRange(15, 29));
@@ -132,7 +133,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 				if (MathUtil.getRandomNumberInRange(0, 8) == 0) {
 					diamondsword.addEnchantment(Enchantments.THORNS, MathUtil.getRandomNumberInRange(2, 4));
 				}
-				re = new MerchantRecipe(diamond, diamondsword);
+				re = new MerchantOffer(diamond, diamondsword, 10, 2, 1);
 				break;
 			case 7:
 			case 8:
@@ -147,7 +148,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 			case 17:
 			case 18:
 			case 19:
-				ItemStack armor = ItemStackUtil.from(this.armor.get(MathUtil.getRandomNumberInRange(0, this.armor.size() - 1)));
+				ItemStack armor = new ItemStack(this.armor.get(MathUtil.getRandomNumberInRange(0, this.armor.size() - 1)));
 				ItemStack inputstack;
 				switch (MathUtil.getRandomNumberInRange(0, 1)) {
 				case 0:
@@ -159,7 +160,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 					inputstack.setCount(MathUtil.getRandomNumberInRange(45, 63));
 					break;
 				}
-				re = new MerchantRecipe(inputstack, armor);
+				re = new MerchantOffer(inputstack, armor, 11, 2, 1)s;
 				break;
 			default:
 				break;

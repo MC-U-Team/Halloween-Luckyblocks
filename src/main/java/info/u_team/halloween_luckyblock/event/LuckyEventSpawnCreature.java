@@ -6,6 +6,7 @@ import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -26,10 +27,10 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 			EntityCreepyZombie zombie = new EntityCreepyZombie(world);
 			zombie.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			
-			zombie.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(HalloweenLuckyBlockItems.killerknive));
-			zombie.setItemStackToSlot(EntityEquipmentSlot.CHEST, new ItemStack(Items.DIAMOND_CHESTPLATE));
-			zombie.setDropChance(EntityEquipmentSlot.MAINHAND, 0.1F);
-			zombie.setDropChance(EntityEquipmentSlot.CHEST, 0.25F);
+			zombie.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE));
+			zombie.setItemStackToSlot(EquipmentSlotType.CHEST, new ItemStack(Items.DIAMOND_CHESTPLATE));
+			zombie.setDropChance(EquipmentSlotType.MAINHAND, 0.1F);
+			zombie.setDropChance(EquipmentSlotType.CHEST, 0.25F);
 			
 			entity = zombie;
 		} else if (i == 1) {

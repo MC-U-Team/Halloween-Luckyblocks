@@ -16,6 +16,10 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 public class EntityGhost extends FlyingEntity implements IMob {
 	
+	public EntityGhost(World world) {
+		this(HalloweenLuckyBlockEntities.GHOST, world);
+	}
+	
 	public EntityGhost(EntityType<? extends EntityGhost> type, World world) {
 		super(type, world);
 		this.experienceValue = 12;

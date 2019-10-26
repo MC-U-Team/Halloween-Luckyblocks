@@ -22,8 +22,8 @@ public class LuckyEventBlocks extends LuckyEvent {
 	}
 	
 	private void addblocks() {
-		add(HalloweenLuckyBlockBlocks.luckyblock, 1);
-		add(HalloweenLuckyBlockBlocks.pumpkinbomb, 1);
+		add(HalloweenLuckyBlockBlocks.LUCKYBLOCK, 1);
+		add(HalloweenLuckyBlockBlocks.PUMPKINBOMB, 1);
 		add(Blocks.DIAMOND_BLOCK, 2);
 		add(Blocks.EMERALD_BLOCK, 2);
 		add(Blocks.IRON_BLOCK, 5);

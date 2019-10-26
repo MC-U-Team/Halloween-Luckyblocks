@@ -1,5 +1,6 @@
 package info.u_team.halloween_luckyblock.entity;
 
+import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -14,6 +15,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityCreepyZombie extends MonsterEntity {
+	
+	public EntityCreepyZombie(World worldIn) {
+		this(HalloweenLuckyBlockEntities.CREEPY_ZOMBIE, worldIn);
+	}
 	
 	public EntityCreepyZombie(EntityType<? extends EntityCreepyZombie> type, World worldIn) {
 		super(type, worldIn);
