@@ -160,7 +160,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 					inputstack.setCount(MathUtil.getRandomNumberInRange(45, 63));
 					break;
 				}
-				re = new MerchantOffer(inputstack, armor, 11, 2, 1)s;
+				re = new MerchantOffer(inputstack, armor, 11, 2, 1);
 				break;
 			default:
 				break;
