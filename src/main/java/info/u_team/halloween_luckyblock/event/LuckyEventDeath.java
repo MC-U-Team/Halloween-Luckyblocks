@@ -24,7 +24,7 @@ public class LuckyEventDeath extends LuckyEvent {
 				e.printStackTrace();
 			}
 			world.getServer().execute(() -> {
-				world.createExplosion(null, player.posX, player.posY, player.posZ, 20.0F, false, Explosion.Mode.BREAK);
+				world.createExplosion(null, player.posX, player.posY, player.posZ, 20.0F, false, Explosion.Mode.DESTROY);
 				player.onKillCommand();
 			});
 		}).start();

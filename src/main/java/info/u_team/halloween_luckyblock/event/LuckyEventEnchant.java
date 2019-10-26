@@ -38,7 +38,7 @@ public class LuckyEventEnchant extends LuckyEvent {
 		for (BlockPos p : positions) {
 			world.setBlockState(pos.add(p), Blocks.BOOKSHELF.getDefaultState());
 		}
-		FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 10, pos.getZ(), Blocks.ENCHANTING_TABLE.getDefaultState());
+		FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX() + .5, pos.getY() + 10, pos.getZ() + .5, Blocks.ENCHANTING_TABLE.getDefaultState());
 		falling.fallTime = 1;
 		world.addEntity(falling);
 		ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.LAPIS_LAZULI, MathUtil.getRandomNumberInRange(12, 54)));
