@@ -1,13 +1,21 @@
 package info.u_team.halloween_luckyblock.init;
 
+import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.core.*;
 import info.u_team.halloween_luckyblock.event.*;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
+@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE, value = Dist.CLIENT)
 public class HalloweenLuckyBlockEvents {
 	
-	public static void init() {
-		LuckyHandler handler = new LuckyHandler();
+	@SubscribeEvent
+	public static void register(FMLCommonSetupEvent event) {
+		final LuckyHandler handler = new LuckyHandler();
 		
 		handler.add(new LuckyEventBlocks());
 		handler.add(new LuckyEventBoom());
@@ -25,5 +33,4 @@ public class HalloweenLuckyBlockEvents {
 		
 		MinecraftForge.EVENT_BUS.register(new BreakBlockListener(HalloweenLuckyBlockBlocks.LUCKYBLOCK, handler));
 	}
-	
 }

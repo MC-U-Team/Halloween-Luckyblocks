@@ -1,5 +1,6 @@
 package info.u_team.halloween_luckyblock.listener;
 
+import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import info.u_team.halloween_luckyblock.util.ArmorUtility;
 import net.minecraft.entity.Entity;
@@ -8,7 +9,10 @@ import net.minecraft.potion.*;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
+@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE)
 public class ListenerZombieArmor {
 	
 	@SubscribeEvent

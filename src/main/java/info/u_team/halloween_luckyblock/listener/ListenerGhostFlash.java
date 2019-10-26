@@ -1,12 +1,15 @@
 package info.u_team.halloween_luckyblock.listener;
 
+import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraftforge.api.distmarker.*;
 import net.minecraftforge.client.event.EntityViewRenderEvent.CameraSetup;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@OnlyIn(Dist.CLIENT)
+@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE, value = Dist.CLIENT)
 public class ListenerGhostFlash {
 	
 	public static volatile boolean flash = false;
