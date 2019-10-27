@@ -20,7 +20,6 @@ public class ListenerGhostFlash {
 	public static void on(ClientTickEvent event) {
 		try {
 			if (flash) {
-				System.out.println("AAAAA");
 				if (time == 0) {
 					time = System.currentTimeMillis();
 				}
