@@ -12,7 +12,7 @@ public class ArmorUtility {
 		for (int i = 0; i < inventory.length; ++i) {
 			if (inventory[i] != null && inventory[i].getItem() instanceof UItemArmor) {
 				UItemArmor item = (UItemArmor) inventory[i].getItem();
-				if (item.getRegistryName().getResourcePath().contains(name)) {
+				if (item.getRegistryName().contains(name)) {
 					count++;
 				}
 			}
