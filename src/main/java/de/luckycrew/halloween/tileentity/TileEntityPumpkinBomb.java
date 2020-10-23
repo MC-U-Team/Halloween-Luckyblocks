@@ -5,10 +5,9 @@ import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.util.*;
 
-public class TileEntityPumpkinBomb extends UTileEntity implements IUpdatePlayerListBox {
+public class TileEntityPumpkinBomb extends UTileEntity implements ITickable {
 	
 	private int fuse = 120;
 	
