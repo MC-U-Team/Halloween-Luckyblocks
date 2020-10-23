@@ -41,7 +41,6 @@ public class LuckyEventMerchant extends LuckyEventCustom {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(EntityPlayerMP player, World world, BlockPos pos) {
 		

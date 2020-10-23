@@ -41,7 +41,6 @@ public class LuckyEventChest extends LuckyEventCustom {
 			add(new ItemStackEntry(new ItemStack(item)), 5);
 		}
 		
-		@SuppressWarnings("unchecked")
 		Iterator<Item> it = Item.itemRegistry.iterator();
 		while (it.hasNext()) {
 			add(new ItemStackEntry(new ItemStack(it.next()), 1, 2), 1);
