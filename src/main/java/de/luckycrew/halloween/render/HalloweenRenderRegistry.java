@@ -5,7 +5,7 @@ import de.luckycrew.halloween.entity.render.*;
 import de.luckycrew.halloween.item.HalloweenItems;
 import info.u_team.u_team_core.util.registry.ClientRegistry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 
 public class HalloweenRenderRegistry {
 	
@@ -14,14 +14,10 @@ public class HalloweenRenderRegistry {
 	}
 	
 	private void entity() {
-		
-		Minecraft minecraft = Minecraft.getMinecraft();
-		RenderManager manager = minecraft.getRenderManager();
-		
-		ClientRegistry.registerEntityRenderingHandler(EntityPumpkinGrenade.class, new RenderSnowball(manager, HalloweenItems.pumpkingrenade, minecraft.getRenderItem()));
-		ClientRegistry.registerEntityRenderingHandler(EntityCreepyZombie.class, new RenderCreepyZombie(manager));
-		ClientRegistry.registerEntityRenderingHandler(EntityGhost.class, new RenderGhost(manager));
-		ClientRegistry.registerEntityRenderingHandler(EntityVampire.class, new RenderVampire(manager));
+		ClientRegistry.registerEntityRenderer(EntityPumpkinGrenade.class, manager -> new RenderSnowball<>(manager, HalloweenItems.pumpkingrenade, Minecraft.getMinecraft().getRenderItem()));
+		ClientRegistry.registerEntityRenderer(EntityCreepyZombie.class, RenderCreepyZombie::new);
+		ClientRegistry.registerEntityRenderer(EntityGhost.class, RenderGhost::new);
+		ClientRegistry.registerEntityRenderer(EntityVampire.class, RenderVampire::new);
 	}
 	
 }
