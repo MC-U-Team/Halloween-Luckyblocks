@@ -10,7 +10,7 @@ buildscript {
     }
     dependencies {
         classpath "net.minecraftforge.gradle:ForgeGradle:${config.forge.gradle}"
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.1.0"
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
 
@@ -151,6 +151,9 @@ curseforge {
     	id = config.curse.id
     	releaseType = config.curse.type
 
+		addGameVersion minecraft.version
+		addGameVersion "Forge"
+		
 		relations {
       		requiredDependency "u-team-core"
     	}
