@@ -64,7 +64,7 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	}
 	
 	@Override
-	protected Item func_213885_i() {
+	protected Item getDefaultItem() {
 		return HalloweenLuckyBlockItems.PUMPKINGRENADE;
 	}
 }
