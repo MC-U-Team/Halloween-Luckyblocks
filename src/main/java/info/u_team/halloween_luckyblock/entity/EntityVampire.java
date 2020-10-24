@@ -236,7 +236,6 @@ public class EntityVampire extends EntityAmbientCreature {
 			double d0 = 64.0D;
 			
 			if (entitylivingbase.getDistanceSq(this.vampire) < d0 * d0 && this.vampire.canEntityBeSeen(entitylivingbase)) {
-				System.out.println(ticks);
 				World world = this.vampire.world;
 				++this.ticks;
 				if (this.ticks == 390) {
