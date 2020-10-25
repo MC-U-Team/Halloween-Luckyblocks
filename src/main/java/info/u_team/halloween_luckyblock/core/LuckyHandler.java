@@ -4,11 +4,12 @@ import java.util.*;
 
 import info.u_team.halloween_luckyblock.event.*;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
-import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.player.*;
 import net.minecraft.network.play.server.SPlaySoundEffectPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyHandler {
 	
@@ -28,26 +29,28 @@ public class LuckyHandler {
 		if (!(player instanceof ServerPlayerEntity)) {
 			return;
 		}
-		final ServerPlayerEntity playermp = (ServerPlayerEntity) player;
-		final World world = playermp.getEntityWorld();
-		if (world.isRemote) {
+		
+		final ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+		final World world = serverPlayer.getEntityWorld();
+		
+		if (world.isRemote || !(world instanceof ServerWorld)) {
 			return;
 		}
+		
+		final ServerWorld serverWorld = (ServerWorld) world;
+		
 		if (events.size() == 0) {
 			return;
 		}
-		int r = getRandomNumberInRange(player.getRNG(), 0, events.size() - 1);
 		
-		LuckyEvent event = events.get(r);
-		event.execute(playermp, world, pos);
+		final int randomEntry = MathUtil.randomNumberInRange(player.getRNG(), 0, events.size() - 1);
+		
+		final LuckyEvent event = events.get(randomEntry);
+		event.execute(serverPlayer, serverWorld, pos);
 		
 		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-			playermp.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.posX, player.posY, player.posZ, 0.15F, 1.0F));
+			serverPlayer.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.randomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.getPosX(), player.getPosY(), player.getPosZ(), 0.15F, 1.0F));
 		}
-	}
-	
-	private int getRandomNumberInRange(Random random, int min, int max) {
-		return random.nextInt(max - min + 1) + min;
 	}
 	
 }
