@@ -9,7 +9,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventSpawnCreature extends LuckyEvent {
 	
@@ -18,7 +18,7 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		int i = MathUtil.getRandomNumberInRange(0, 2);
 		
 		Entity entity = null;

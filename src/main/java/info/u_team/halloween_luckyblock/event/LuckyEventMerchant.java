@@ -15,7 +15,7 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventMerchant extends LuckyEvent {
 	
@@ -53,7 +53,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		
 		int x = pos.getX();
 		int y = pos.getY();

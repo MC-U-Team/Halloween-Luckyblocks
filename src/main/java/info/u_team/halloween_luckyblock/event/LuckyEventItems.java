@@ -10,7 +10,7 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventItems extends LuckyEvent {
 	
@@ -76,7 +76,7 @@ public class LuckyEventItems extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 3); i++) {
 			ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
 			world.addEntity(item);

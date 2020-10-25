@@ -6,7 +6,7 @@ import info.u_team.halloween_luckyblock.util.MathUtil;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventSound extends LuckyEvent {
 	
@@ -15,7 +15,7 @@ public class LuckyEventSound extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		world.playSound(null, pos, HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		new Thread(() -> {
 			try {

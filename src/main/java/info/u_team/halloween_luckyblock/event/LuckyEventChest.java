@@ -10,7 +10,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LuckyEventChest extends LuckyEvent {
@@ -53,7 +53,7 @@ public class LuckyEventChest extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		world.setBlockState(pos.add(0, 1, 0), Blocks.CHEST.getDefaultState());
 		TileEntity tile = world.getTileEntity(pos.add(0, 1, 0));
 		if (tile instanceof ChestTileEntity) {

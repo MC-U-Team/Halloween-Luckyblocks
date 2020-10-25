@@ -6,7 +6,6 @@ import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventBoom extends LuckyEvent {
@@ -16,7 +15,7 @@ public class LuckyEventBoom extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();

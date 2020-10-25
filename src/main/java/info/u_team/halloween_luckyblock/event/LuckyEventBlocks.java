@@ -9,7 +9,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventBlocks extends LuckyEvent {
 	
@@ -49,7 +49,7 @@ public class LuckyEventBlocks extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 5); i++) {
 			final FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX() + .5, pos.getY() + 5 + (10 * i), pos.getZ() + .5, blocks.get(MathUtil.getRandomNumberInRange(0, blocks.size() - 1)));
 			falling.fallTime = 100;

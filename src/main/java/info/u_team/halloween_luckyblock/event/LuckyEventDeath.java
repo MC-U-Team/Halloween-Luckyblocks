@@ -4,7 +4,8 @@ import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.*;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventDeath extends LuckyEvent {
 	
@@ -13,7 +14,7 @@ public class LuckyEventDeath extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		world.playSound(null, pos, HalloweenLuckyBlockSounds.GAME_DEATH, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		new Thread(() -> {
 			try {
@@ -24,7 +25,7 @@ public class LuckyEventDeath extends LuckyEvent {
 				e.printStackTrace();
 			}
 			world.getServer().execute(() -> {
-				world.createExplosion(null, player.posX, player.posY, player.posZ, 20.0F, false, Explosion.Mode.DESTROY);
+				world.createExplosion(null, player.getPosX(), player.getPosY(), player.getPosZ(), 20.0F, false, Explosion.Mode.DESTROY);
 				player.onKillCommand();
 			});
 		}).start();

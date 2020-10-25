@@ -5,9 +5,10 @@ import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockBlocks;
 import info.u_team.halloween_luckyblock.util.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventRainingPumkin extends LuckyEvent {
 	
@@ -16,8 +17,8 @@ public class LuckyEventRainingPumkin extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
-		player.sendMessage(new TranslationTextComponent("luckyevent.rainingpumkin"));
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
+		player.sendMessage(new TranslationTextComponent("luckyevent.rainingpumkin"), Util.DUMMY_UUID);
 		BlockPos highpos = new BlockPos(pos.getX(), 200, pos.getZ());
 		for (int i = 0; i < 150; i++) {
 			BlockPos newpos = highpos.add(MathUtil.getRandomNumberInRange(-35, 35), MathUtil.getRandomNumberInRange(-5, 20), MathUtil.getRandomNumberInRange(-35, 35));

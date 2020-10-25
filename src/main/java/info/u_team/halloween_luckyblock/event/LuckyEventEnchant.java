@@ -9,7 +9,7 @@ import net.minecraft.entity.item.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventEnchant extends LuckyEvent {
 	
@@ -18,7 +18,7 @@ public class LuckyEventEnchant extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, final World world, final BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		ArrayList<BlockPos> positions = new ArrayList<BlockPos>();
 		for (int x = -2; x <= 2; x++) {
 			for (int y = 0; y <= 2; y++) {

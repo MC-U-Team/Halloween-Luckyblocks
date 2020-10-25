@@ -8,7 +8,7 @@ import info.u_team.halloween_luckyblock.util.MathUtil;
 import info.u_team.u_team_core.schematic.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventGeneration extends LuckyEvent {
 	
@@ -18,7 +18,7 @@ public class LuckyEventGeneration extends LuckyEvent {
 	
 	// TODO Replace with vanilla things, as this is not working well anymore because of the flattening
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		InputStream stream = this.getClass().getResourceAsStream("/assets/" + HalloweenLuckyBlockMod.MODID + "/uschematic/" + MathUtil.getRandomNumberInRange(0, 12) + ".uschematic");
 		USchematicLoadRegion region = new USchematicLoadRegion(world, pos);
 		region.rotate(USchematicRotation.values()[MathUtil.getRandomNumberInRange(0, USchematicRotation.values().length - 1)]);

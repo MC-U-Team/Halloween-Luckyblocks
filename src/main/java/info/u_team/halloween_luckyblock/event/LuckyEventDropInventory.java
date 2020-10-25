@@ -3,7 +3,7 @@ package info.u_team.halloween_luckyblock.event;
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventDropInventory extends LuckyEvent {
 	
@@ -12,7 +12,7 @@ public class LuckyEventDropInventory extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		player.inventory.dropAllItems();
 	}
 	

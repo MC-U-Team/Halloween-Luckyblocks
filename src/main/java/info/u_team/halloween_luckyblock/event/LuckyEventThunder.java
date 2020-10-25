@@ -6,7 +6,6 @@ import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 public class LuckyEventThunder extends LuckyEvent {
@@ -16,7 +15,7 @@ public class LuckyEventThunder extends LuckyEvent {
 	}
 	
 	@Override
-	public void execute(ServerPlayerEntity player, World world, BlockPos pos) {
+	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		
 		long time = world.getDayTime();
 		PlayerEntity other = world.getClosestPlayer(player, -1);
@@ -38,10 +37,10 @@ public class LuckyEventThunder extends LuckyEvent {
 					e.printStackTrace();
 				}
 				mainthread.execute(() -> {
-					LightningBoltEntity light1 = new LightningBoltEntity(world, player.posX, player.posY, player.posZ, false);
+					LightningBoltEntity light1 = new LightningBoltEntity(world, player.getPosX(), player.getPosY(), player.getPosZ(), false);
 					((ServerWorld) world).addLightningBolt(light1);
 					if (other != null) {
-						LightningBoltEntity light2 = new LightningBoltEntity(world, other.posX, other.posY, other.posZ, false);
+						LightningBoltEntity light2 = new LightningBoltEntity(world, other.getPosX(), other.getPosY(), other.getPosZ(), false);
 						((ServerWorld) world).addLightningBolt(light2);
 					}
 					world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.WIND, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
