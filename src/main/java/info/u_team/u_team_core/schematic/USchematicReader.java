@@ -38,26 +38,20 @@ public class USchematicReader {
 	}
 	
 	private void startLoader() {
-		Thread thread = new Thread(() -> {
-			region.getWorld().getServer().runImmediately(() -> {
-				boolean success = true;
-				long time = System.currentTimeMillis(); // Time measurement
-				
-				try {
-					region.readNBT(NBTStreamUtil.readNBTFromStream(stream));
-					
-				} catch (IOException ex) {
-					System.err.println("Error while trying to load schematic region.");
-					ex.printStackTrace();
-					success = false;
-				}
-				if (consumer != null) {
-					consumer.accept(success, System.currentTimeMillis() - time);
-				}
-			});
-		});
-		thread.setName("Schematic Loader");
-		thread.start();
+		boolean success = true;
+		long time = System.currentTimeMillis(); // Time measurement
+		
+		try {
+			region.readNBT(NBTStreamUtil.readNBTFromStream(stream));
+			
+		} catch (IOException ex) {
+			System.err.println("Error while trying to load schematic region.");
+			ex.printStackTrace();
+			success = false;
+		}
+		if (consumer != null) {
+			consumer.accept(success, System.currentTimeMillis() - time);
+		}
 	}
 	
 }
