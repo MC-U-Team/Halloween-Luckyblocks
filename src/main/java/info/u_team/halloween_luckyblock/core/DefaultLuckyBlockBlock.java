@@ -6,7 +6,7 @@ import net.minecraft.item.ItemGroup;
 
 public class DefaultLuckyBlockBlock extends UBlock {
 	
-	public DefaultLuckyBlockBlock(String name, ItemGroup group) {
-		super(name, group, Properties.create(Material.SPONGE).hardnessAndResistance(.45F, 100).lightValue(4).noDrops());
+	public DefaultLuckyBlockBlock(ItemGroup group) {
+		super(group, Properties.create(Material.SPONGE).hardnessAndResistance(.45F, 100).setLightLevel(state -> 4).noDrops());
 	}
 }
