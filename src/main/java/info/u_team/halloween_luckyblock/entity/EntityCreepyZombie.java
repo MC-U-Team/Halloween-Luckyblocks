@@ -37,7 +37,7 @@ public class EntityCreepyZombie extends MonsterEntity {
 		this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
 		this.goalSelector.addGoal(2, new CustomZombieAttackGoal(this, 1.0D, false));
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp(ZombiePigmanEntity.class));
+		this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setCallsForHelp(ZombifiedPiglinEntity.class));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillagerEntity.class, false));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolemEntity.class, true));
@@ -84,7 +84,7 @@ public class EntityCreepyZombie extends MonsterEntity {
 		boolean flag = super.attackEntityAsMob(entityIn);
 		
 		if (flag) {
-			float f = this.world.getDifficultyForLocation(new BlockPos(this)).getAdditionalDifficulty();
+			float f = this.world.getDifficultyForLocation(getPosition()).getAdditionalDifficulty();
 			
 			if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < f * 0.3F) {
 				entityIn.setFire(2 * (int) f);
@@ -145,7 +145,7 @@ public class EntityCreepyZombie extends MonsterEntity {
 		public void tick() {
 			super.tick();
 			++this.raiseArmTicks;
-			if (this.raiseArmTicks >= 5 && this.attackTick < 10) {
+			if (this.raiseArmTicks >= 5 && this.func_234041_j_() < this.func_234042_k_() / 2) {
 				this.zombie.setAggroed(true);
 			} else {
 				this.zombie.setAggroed(false);
