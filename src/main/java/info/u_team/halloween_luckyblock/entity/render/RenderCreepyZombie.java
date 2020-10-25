@@ -15,7 +15,7 @@ public class RenderCreepyZombie extends MobRenderer<EntityCreepyZombie, ModelCre
 	}
 	
 	@Override
-	protected ResourceLocation getEntityTexture(EntityCreepyZombie entity) {
+	public ResourceLocation getEntityTexture(EntityCreepyZombie entity) {
 		return new ResourceLocation(HalloweenLuckyBlockMod.MODID + ":textures/entity/creepy_zombie.png");
 	}
 	

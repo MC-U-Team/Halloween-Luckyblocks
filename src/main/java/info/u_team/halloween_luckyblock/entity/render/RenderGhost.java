@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.entity.render;
 
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.matrix.MatrixStack;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.entity.EntityGhost;
@@ -17,13 +17,13 @@ public class RenderGhost extends MobRenderer<EntityGhost, ModelGhost> {
 	}
 	
 	@Override
-	protected void preRenderCallback(EntityGhost entitylivingbaseIn, float partialTickTime) {
-		GlStateManager.scalef(1.3F, 1.3F, 1.3F);
-		GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+	protected void preRenderCallback(EntityGhost entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
+		matrixStackIn.scale(1.3F, 1.3F, 1.3F);
+		// GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F); TODO
 	}
 	
 	@Override
-	protected ResourceLocation getEntityTexture(EntityGhost entity) {
+	public ResourceLocation getEntityTexture(EntityGhost entity) {
 		return new ResourceLocation(HalloweenLuckyBlockMod.MODID + ":textures/entity/ghost.png");
 	}
 }
