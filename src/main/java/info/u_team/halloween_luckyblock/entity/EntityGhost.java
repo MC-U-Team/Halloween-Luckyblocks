@@ -12,6 +12,7 @@ import net.minecraft.entity.player.*;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.*;
 import net.minecraftforge.fml.network.*;
 
@@ -153,8 +154,8 @@ public class EntityGhost extends FlyingEntity implements IMob {
 				double d0 = 64.0D;
 				
 				if (entitylivingbase.getDistanceSq(this.ghost) < d0 * d0) {
-					double d1 = entitylivingbase.posX - this.ghost.posX;
-					double d2 = entitylivingbase.posZ - this.ghost.posZ;
+					double d1 = entitylivingbase.getPosX() - this.ghost.getPosX();
+					double d2 = entitylivingbase.getPosZ() - this.ghost.getPosZ();
 					this.ghost.renderYawOffset = this.ghost.rotationYaw = -((float) Math.atan2(d1, d2)) * 180.0F / (float) Math.PI;
 				}
 			}
@@ -176,9 +177,9 @@ public class EntityGhost extends FlyingEntity implements IMob {
 			if (!entitymovehelper.isUpdating()) {
 				return true;
 			} else {
-				double d0 = entitymovehelper.getX() - this.ghost.posX;
-				double d1 = entitymovehelper.getY() - this.ghost.posY;
-				double d2 = entitymovehelper.getZ() - this.ghost.posZ;
+				double d0 = entitymovehelper.getX() - this.ghost.getPosX();
+				double d1 = entitymovehelper.getY() - this.ghost.getPosY();
+				double d2 = entitymovehelper.getZ() - this.ghost.getPosZ();
 				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
 				return d3 < 1.0D || d3 > 3600.0D;
 			}
@@ -191,9 +192,9 @@ public class EntityGhost extends FlyingEntity implements IMob {
 		@Override
 		public void startExecuting() {
 			Random random = this.ghost.getRNG();
-			double d0 = this.ghost.posX + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
-			double d1 = this.ghost.posY + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
-			double d2 = this.ghost.posZ + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d0 = this.ghost.getPosX() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d1 = this.ghost.getPosY() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			double d2 = this.ghost.getPosZ() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
 			this.ghost.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
 		}
 	}
@@ -215,7 +216,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 			if (this.action == MovementController.Action.MOVE_TO) {
 				if (this.courseChangeCooldown-- <= 0) {
 					this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(5) + 2;
-					Vec3d vec3d = new Vec3d(this.posX - this.parentEntity.posX, this.posY - this.parentEntity.posY, this.posZ - this.parentEntity.posZ);
+					Vector3d vec3d = new Vector3d(this.posX - this.parentEntity.getPosX(), this.posY - this.parentEntity.getPosY(), this.posZ - this.parentEntity.getPosZ());
 					double d0 = vec3d.length();
 					vec3d = vec3d.normalize();
 					if (this.func_220673_a(vec3d, MathHelper.ceil(d0))) {
@@ -228,12 +229,12 @@ public class EntityGhost extends FlyingEntity implements IMob {
 			}
 		}
 		
-		private boolean func_220673_a(Vec3d p_220673_1_, int p_220673_2_) {
+		private boolean func_220673_a(Vector3d p_220673_1_, int p_220673_2_) {
 			AxisAlignedBB axisalignedbb = this.parentEntity.getBoundingBox();
 			
 			for (int i = 1; i < p_220673_2_; ++i) {
 				axisalignedbb = axisalignedbb.offset(p_220673_1_);
-				if (!this.parentEntity.world.isCollisionBoxesEmpty(this.parentEntity, axisalignedbb)) {
+				if (!this.parentEntity.world.hasNoCollisions(this.parentEntity, axisalignedbb)) {
 					return false;
 				}
 			}
