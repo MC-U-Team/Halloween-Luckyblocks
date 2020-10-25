@@ -32,11 +32,11 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	protected void onImpact(RayTraceResult result) {
 		if (!world.isRemote) {
 			if (result.getType() == Type.ENTITY) {
-				((EntityRayTraceResult) result).getEntity().attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10F);
+				((EntityRayTraceResult) result).getEntity().attackEntityFrom(DamageSource.causeThrownDamage(this, func_234616_v_()), 10F);
 			} else if (result.getType() == Type.BLOCK) {
 				BlockPos pos = ((BlockRayTraceResult) result).getPos();
 				if (pos == null) {
-					pos = new BlockPos(posX, posY, posZ);
+					pos = getPosition();
 				}
 				explode(pos);
 				remove();
