@@ -12,18 +12,18 @@ public class ItemCandyBag extends UItem {
 			.setAlwaysEdible() //
 			.hunger(4) //
 			.saturation(2) //
-			.effect(new EffectInstance(Effects.ABSORPTION, 1200, 1), 1) //
+			.effect(() -> new EffectInstance(Effects.ABSORPTION, 1200, 1), 1) //
 			.build();
 	
 	private static final Food betterFood = new Food.Builder() //
 			.setAlwaysEdible() //
 			.hunger(4) //
 			.saturation(10) //
-			.effect(new EffectInstance(Effects.ABSORPTION, 2400, 4), 1) //
-			.effect(new EffectInstance(Effects.REGENERATION, 1200, 1), 1) //
-			.effect(new EffectInstance(Effects.RESISTANCE, 600, 2), 0.9F) //
-			.effect(new EffectInstance(Effects.SPEED, 1200, 0), 1) //
-			.effect(new EffectInstance(Effects.JUMP_BOOST, 1200, 0), 1) //
+			.effect(() -> new EffectInstance(Effects.ABSORPTION, 2400, 4), 1) //
+			.effect(() -> new EffectInstance(Effects.REGENERATION, 1200, 1), 1) //
+			.effect(() -> new EffectInstance(Effects.RESISTANCE, 600, 2), 0.9F) //
+			.effect(() -> new EffectInstance(Effects.SPEED, 1200, 0), 1) //
+			.effect(() -> new EffectInstance(Effects.JUMP_BOOST, 1200, 0), 1) //
 			.build();
 	
 	private final boolean betterItem;
