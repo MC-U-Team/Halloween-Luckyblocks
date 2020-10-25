@@ -6,7 +6,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -30,8 +30,8 @@ public class ListenerKillerKniveAttack {
 		if (item == HalloweenLuckyBlockItems.KILLERKNIFE) {
 			LivingEntity base = event.getEntityLiving();
 			
-			Vec3d lookplayer = player.getLookVec();
-			Vec3d lookbase = base.getLookVec();
+			Vector3d lookplayer = player.getLookVec();
+			Vector3d lookbase = base.getLookVec();
 			
 			double differx = Math.abs(lookbase.x - lookplayer.x);
 			double differz = Math.abs(lookbase.z - lookplayer.z);
