@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 
 public class ItemTeleporter extends UItem {
 	
-	public ItemTeleporter(String name) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(5).rarity(Rarity.RARE));
+	public ItemTeleporter() {
+		super(HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(5).rarity(Rarity.RARE));
 	}
 	
 	@Override

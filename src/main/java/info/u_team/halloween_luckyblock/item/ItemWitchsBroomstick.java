@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 
 public class ItemWitchsBroomstick extends UItem {
 	
-	public ItemWitchsBroomstick(String name) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(100).rarity(Rarity.EPIC));
+	public ItemWitchsBroomstick() {
+		super(HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(100).rarity(Rarity.EPIC));
 	}
 	
 	@Override

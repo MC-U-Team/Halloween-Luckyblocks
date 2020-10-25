@@ -7,7 +7,7 @@ import net.minecraft.item.Rarity;
 
 public class ItemKillerKnive extends USwordItem {
 	
-	public ItemKillerKnive(IToolMaterial material, String name) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().rarity(Rarity.UNCOMMON), material);
+	public ItemKillerKnive(IToolMaterial material) {
+		super(HalloweenLuckyBlockItemGroups.GROUP, new Properties().rarity(Rarity.UNCOMMON), material);
 	}
 }

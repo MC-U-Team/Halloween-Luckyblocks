@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 
 public class ItemPumpkinGrenade extends UItem {
 	
-	public ItemPumpkinGrenade(String name) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxStackSize(16).rarity(Rarity.RARE));
+	public ItemPumpkinGrenade() {
+		super(HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxStackSize(16).rarity(Rarity.RARE));
 	}
 	
 	@Override
@@ -25,7 +25,7 @@ public class ItemPumpkinGrenade extends UItem {
 		
 		if (!world.isRemote) {
 			EntityPumpkinGrenade grenade = new EntityPumpkinGrenade(world, player);
-			grenade.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 0.5F);
+			grenade.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 0.5F);
 			world.addEntity(grenade);
 		}
 		return new ActionResult<ItemStack>(ActionResultType.PASS, stack);

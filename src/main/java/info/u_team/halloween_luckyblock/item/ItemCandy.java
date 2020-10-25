@@ -17,8 +17,8 @@ import net.minecraftforge.api.distmarker.*;
 
 public class ItemCandy extends UItem {
 	
-	public ItemCandy(String name) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(20).rarity(Rarity.RARE));
+	public ItemCandy() {
+		super(HalloweenLuckyBlockItemGroups.GROUP, new Properties().maxDamage(20).rarity(Rarity.RARE));
 	}
 	
 	@Override
