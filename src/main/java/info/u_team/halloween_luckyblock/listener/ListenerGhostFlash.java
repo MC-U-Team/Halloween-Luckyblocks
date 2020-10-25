@@ -25,7 +25,7 @@ public class ListenerGhostFlash {
 				}
 				GameRenderer render = Minecraft.getInstance().gameRenderer;
 				if (System.currentTimeMillis() - time < 2000) {
-					if (!render.isShaderActive()) {
+					if (render.getShaderGroup() == null) {
 						render.loadShader(GameRenderer.SHADERS_TEXTURES[MathUtil.getRandomNumberInRange(0, GameRenderer.SHADER_COUNT - 1)]);
 					}
 				} else {
