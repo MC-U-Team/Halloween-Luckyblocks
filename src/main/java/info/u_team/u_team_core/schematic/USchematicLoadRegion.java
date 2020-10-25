@@ -1,6 +1,11 @@
 package info.u_team.u_team_core.schematic;
 
+import java.util.*;
+
+import org.apache.commons.lang3.tuple.Pair;
+
 import net.minecraft.nbt.*;
+import net.minecraft.util.concurrent.TickDelayedTask;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 
@@ -58,6 +63,8 @@ public class USchematicLoadRegion {
 			centerstart();
 		}
 		
+		final List<Pair<BlockPos, USchematicEntry>> blocks = new ArrayList<>();
+		
 		int i = 0;
 		for (int x = 0; x < sizex; x++) {
 			for (int z = 0; z < sizez; z++) {
@@ -65,9 +72,35 @@ public class USchematicLoadRegion {
 					BlockPos pos = start.add(rotate(new BlockPos(x, y, z)));
 					
 					USchematicEntry entry = new USchematicEntry(list.getCompound(i++));
-					entry.setBlock(world, pos);
+					blocks.add(Pair.of(pos, entry));
+					// entry.setBlock(world, pos);
 				}
 			}
+		}
+		
+		final int split = 30;
+		final int partition = blocks.size() / split;
+		
+		for (int c = 0; c < split; c++) {
+			int capture = c;
+			world.getServer().enqueue(new TickDelayedTask(c, () -> {
+				for (int index = 0; index < partition; index++) {
+					final Pair<BlockPos, USchematicEntry> pair = blocks.get((partition * capture) + index);
+					pair.getRight().setBlock(world, pair.getLeft());
+				}
+			}));
+		}
+		
+		int splitPortionMult = split * partition;
+		int rest = blocks.size() - splitPortionMult;
+		
+		if (rest > 0) {
+			world.getServer().enqueue(new TickDelayedTask(0, () -> {
+				for (int c = 0; c < rest; c++) {
+					final Pair<BlockPos, USchematicEntry> pair = blocks.get(splitPortionMult + c);
+					pair.getRight().setBlock(world, pair.getLeft());
+				}
+			}));
 		}
 	}
 	
