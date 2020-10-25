@@ -28,8 +28,8 @@ public class ItemCandyBag extends UItem {
 	
 	private final boolean betterItem;
 	
-	public ItemCandyBag(String name, boolean betterItem) {
-		super(name, HalloweenLuckyBlockItemGroups.GROUP, new Properties().food(betterItem ? betterFood : normalFood).rarity(betterItem ? Rarity.EPIC : Rarity.RARE));
+	public ItemCandyBag(boolean betterItem) {
+		super(HalloweenLuckyBlockItemGroups.GROUP, new Properties().food(betterItem ? betterFood : normalFood).rarity(betterItem ? Rarity.EPIC : Rarity.RARE));
 		this.betterItem = betterItem;
 	}
 	
