@@ -4,6 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.datafix.fixes.BlockStateFlatteningMap;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -44,7 +45,8 @@ public class USchematicEntry {
 	}
 	
 	public void setBlock(World world, BlockPos pos) {
-		Block block = ForgeRegistries.BLOCKS.getValue(registryname);
+		Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.tryCreate(BlockStateFlatteningMap.updateName(registryname.toString())));
+		
 		if (block == null) {
 			System.err.println("Block registryname " + registryname + " in schematic was not found in minecraft!? Mods missing?");
 			block = Blocks.AIR;
