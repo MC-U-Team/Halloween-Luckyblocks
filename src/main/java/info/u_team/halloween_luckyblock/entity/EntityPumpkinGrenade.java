@@ -20,7 +20,7 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	}
 	
 	public EntityPumpkinGrenade(World world, LivingEntity throwerIn) {
-		super(HalloweenLuckyBlockEntityTypes.PUMPKINGRENADE, throwerIn, world);
+		super(HalloweenLuckyBlockEntityTypes.PUMPKIN_GRENADE, throwerIn, world);
 	}
 	
 	@Override

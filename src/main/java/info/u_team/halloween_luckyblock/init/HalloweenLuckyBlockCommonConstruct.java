@@ -10,6 +10,7 @@ public class HalloweenLuckyBlockCommonConstruct implements IModConstruct {
 	@Override
 	public void construct() {
 		BusRegister.registerMod(HalloweenLuckyBlockBlocks::registerMod);
+		BusRegister.registerMod(HalloweenLuckyBlockEntityTypes::registerMod);
 	}
 	
 }
