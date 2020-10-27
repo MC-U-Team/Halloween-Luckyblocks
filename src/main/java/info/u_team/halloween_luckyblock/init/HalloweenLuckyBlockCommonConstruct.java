@@ -11,6 +11,7 @@ public class HalloweenLuckyBlockCommonConstruct implements IModConstruct {
 	public void construct() {
 		BusRegister.registerMod(HalloweenLuckyBlockBlocks::registerMod);
 		BusRegister.registerMod(HalloweenLuckyBlockEntityTypes::registerMod);
+		BusRegister.registerMod(HalloweenLuckyBlockItems::registerMod);
 	}
 	
 }
