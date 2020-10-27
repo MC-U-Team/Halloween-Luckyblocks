@@ -5,6 +5,6 @@ import info.u_team.u_team_core.itemgroup.UItemGroup;
 
 public class HalloweenLuckyBlockItemGroups {
 	
-	public static final UItemGroup GROUP = new UItemGroup(HalloweenLuckyBlockMod.MODID, "group", () -> HalloweenLuckyBlockBlocks.LUCKYBLOCK);
+	public static final UItemGroup GROUP = new UItemGroup(HalloweenLuckyBlockMod.MODID, "group", HalloweenLuckyBlockBlocks.LUCKYBLOCK);
 	
 }
