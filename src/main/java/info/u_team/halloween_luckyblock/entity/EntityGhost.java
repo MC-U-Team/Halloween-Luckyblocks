@@ -49,26 +49,26 @@ public class EntityGhost extends FlyingEntity implements IMob {
 		}
 	}
 	
-	@Override
-	public void registerAttributes() {
-		super.registerAttributes();
-		this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
-		this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(100.0D);
-	}
+//	@Override
+//	public void registerAttributes() {
+//		super.registerAttributes();
+//		this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
+//		this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(100.0D);
+//	}
 	
 	@Override
 	protected SoundEvent getAmbientSound() {
-		return HalloweenLuckyBlockSounds.SNIVELLING;
+		return HalloweenLuckyBlockSounds.SNIVELLING.get();
 	}
 	
 	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
-		return HalloweenLuckyBlockSounds.STRANGE_LAUGHING;
+		return HalloweenLuckyBlockSounds.STRANGE_LAUGHING.get();
 	}
 	
 	@Override
 	protected SoundEvent getDeathSound() {
-		return HalloweenLuckyBlockSounds.THUNDER;
+		return HalloweenLuckyBlockSounds.THUNDER.get();
 	}
 	
 	@Override

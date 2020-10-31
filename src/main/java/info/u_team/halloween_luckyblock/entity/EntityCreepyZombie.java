@@ -44,13 +44,13 @@ public class EntityCreepyZombie extends MonsterEntity {
 		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, TurtleEntity.class, 10, true, false, TurtleEntity.TARGET_DRY_BABY));
 	}
 	
-	@Override
-	public void registerAttributes() {
-		super.registerAttributes();
-		getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30D);
-		getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.42D);
-		getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
-	}
+//	@Override
+//	public void registerAttributes() {
+//		super.registerAttributes();
+//		getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30D);
+//		getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.42D);
+//		getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
+//	}
 	
 	@Override
 	public void livingTick() {
