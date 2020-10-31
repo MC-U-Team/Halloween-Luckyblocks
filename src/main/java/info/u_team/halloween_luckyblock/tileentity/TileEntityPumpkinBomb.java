@@ -17,7 +17,7 @@ public class TileEntityPumpkinBomb extends UTickableTileEntity {
 	private int fuse = 120;
 	
 	public TileEntityPumpkinBomb() {
-		super(HalloweenLuckyBlockTileEntityTypes.PUMPKIN_BOMB);
+		super(HalloweenLuckyBlockTileEntityTypes.PUMPKIN_BOMB.get());
 	}
 	
 	@Override
