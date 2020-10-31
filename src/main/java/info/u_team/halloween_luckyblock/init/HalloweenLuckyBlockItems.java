@@ -2,7 +2,7 @@ package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.item.*;
-import info.u_team.halloween_luckyblock.util.LazySpawnEggItem;
+import info.u_team.to_u_team_core.LazySpawnEggItem;
 import info.u_team.u_team_core.item.armor.*;
 import info.u_team.u_team_core.util.registry.CommonDeferredRegister;
 import net.minecraft.item.*;

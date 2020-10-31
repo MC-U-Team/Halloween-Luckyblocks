@@ -1,6 +1,7 @@
 package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
+import info.u_team.to_u_team_core.LazySpawnEggListener;
 import info.u_team.u_team_core.api.construct.*;
 import info.u_team.u_team_core.util.registry.BusRegister;
 
@@ -19,6 +20,9 @@ public class HalloweenLuckyBlockCommonConstruct implements IModConstruct {
 		BusRegister.registerMod(HalloweenLuckyBlockTileEntityTypes::registerMod);
 		
 		BusRegister.registerForge(HalloweenLuckyBlockEvents::registerForge);
+		
+		// Remove soon (to uteamcore)
+		BusRegister.registerMod(LazySpawnEggListener::registerMod);
 	}
 	
 }
