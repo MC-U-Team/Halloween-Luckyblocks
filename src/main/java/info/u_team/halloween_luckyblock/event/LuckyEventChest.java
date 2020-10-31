@@ -5,12 +5,14 @@ import java.util.*;
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.util.*;
+import info.u_team.u_team_core.item.armor.UArmorItem;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class LuckyEventChest extends LuckyEvent {
@@ -24,20 +26,20 @@ public class LuckyEventChest extends LuckyEvent {
 	}
 	
 	private void additems() {
-		for (Item item : HalloweenLuckyBlockItems.SCARECROW_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 5);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (Item item : HalloweenLuckyBlockItems.SLENDER_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 5);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (Item item : HalloweenLuckyBlockItems.WITCH_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 5);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (Item item : HalloweenLuckyBlockItems.ZOMBIE_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 5);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (Item item : HalloweenLuckyBlockItems.CLOWN_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 5);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
 		
 		Iterator<Item> it = ForgeRegistries.ITEMS.iterator();
