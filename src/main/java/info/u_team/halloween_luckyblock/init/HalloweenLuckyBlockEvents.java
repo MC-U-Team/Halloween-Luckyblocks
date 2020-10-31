@@ -30,6 +30,6 @@ public class HalloweenLuckyBlockEvents {
 	}
 	
 	public static void registerForge(IEventBus bus) {
-		bus.register(new BreakBlockListener(HalloweenLuckyBlockBlocks.LUCKYBLOCK.get(), LUCKY_HANDLER));
+		bus.register(new BreakBlockListener(block -> block == HalloweenLuckyBlockBlocks.LUCKYBLOCK.get(), LUCKY_HANDLER));
 	}
 }
