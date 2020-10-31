@@ -4,8 +4,6 @@ import java.util.Random;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import info.u_team.halloween_luckyblock.entity.EntityGhost;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
@@ -58,13 +56,5 @@ public class ModelGhost extends SegmentedModel<EntityGhost> {
 	@Override
 	public Iterable<ModelRenderer> getParts() {
 		return parts;
-	}
-	
-	@Override
-	public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-//		matrixStackIn.push();
-//		matrixStackIn.scale(0.0F, 0.6F, 0.0F);
-		super.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-//		matrixStackIn.pop();
 	}
 }

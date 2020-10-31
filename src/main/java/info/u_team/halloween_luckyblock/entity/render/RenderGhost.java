@@ -19,7 +19,6 @@ public class RenderGhost extends MobRenderer<EntityGhost, ModelGhost> {
 	@Override
 	protected void preRenderCallback(EntityGhost entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
 		matrixStackIn.scale(1.3F, 1.3F, 1.3F);
-		// GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F); TODO
 	}
 	
 	@Override
