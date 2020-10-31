@@ -1,35 +1,35 @@
 package info.u_team.halloween_luckyblock.init;
 
-import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.core.*;
 import info.u_team.halloween_luckyblock.event.*;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
-@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.MOD)
 public class HalloweenLuckyBlockEvents {
 	
-	@SubscribeEvent
-	public static void register(FMLCommonSetupEvent event) {
-		final LuckyHandler handler = new LuckyHandler();
-		
-		handler.add(new LuckyEventBlocks());
-		handler.add(new LuckyEventBoom());
-		handler.add(new LuckyEventChest());
-		handler.add(new LuckyEventDeath());
-		handler.add(new LuckyEventDropInventory());
-		handler.add(new LuckyEventEnchant());
-		handler.add(new LuckyEventGeneration());
-		handler.add(new LuckyEventItems());
-		handler.add(new LuckyEventMerchant());
-		handler.add(new LuckyEventRainingPumkin());
-		handler.add(new LuckyEventSound());
-		handler.add(new LuckyEventSpawnCreature());
-		handler.add(new LuckyEventThunder());
-		
-		MinecraftForge.EVENT_BUS.register(new BreakBlockListener(HalloweenLuckyBlockBlocks.LUCKYBLOCK, handler));
+	private static final LuckyHandler LUCKY_HANDLER = new LuckyHandler();
+	
+	private static void setup(FMLCommonSetupEvent event) {
+		LUCKY_HANDLER.add(new LuckyEventBlocks());
+		LUCKY_HANDLER.add(new LuckyEventBoom());
+		LUCKY_HANDLER.add(new LuckyEventChest());
+		LUCKY_HANDLER.add(new LuckyEventDeath());
+		LUCKY_HANDLER.add(new LuckyEventDropInventory());
+		LUCKY_HANDLER.add(new LuckyEventEnchant());
+		LUCKY_HANDLER.add(new LuckyEventGeneration());
+		LUCKY_HANDLER.add(new LuckyEventItems());
+		LUCKY_HANDLER.add(new LuckyEventMerchant());
+		LUCKY_HANDLER.add(new LuckyEventRainingPumkin());
+		LUCKY_HANDLER.add(new LuckyEventSound());
+		LUCKY_HANDLER.add(new LuckyEventSpawnCreature());
+		LUCKY_HANDLER.add(new LuckyEventThunder());
+	}
+	
+	public static void registerMod(IEventBus bus) {
+		bus.addListener(HalloweenLuckyBlockEvents::setup);
+	}
+	
+	public static void registerForge(IEventBus bus) {
+		bus.register(new BreakBlockListener(HalloweenLuckyBlockBlocks.LUCKYBLOCK.get(), LUCKY_HANDLER));
 	}
 }
