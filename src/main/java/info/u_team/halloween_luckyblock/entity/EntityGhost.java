@@ -19,7 +19,7 @@ import net.minecraftforge.fml.network.*;
 public class EntityGhost extends FlyingEntity implements IMob {
 	
 	public EntityGhost(World world) {
-		this(HalloweenLuckyBlockEntityTypes.GHOST, world);
+		this(HalloweenLuckyBlockEntityTypes.GHOST.get(), world);
 	}
 	
 	public EntityGhost(EntityType<? extends EntityGhost> type, World world) {
@@ -119,7 +119,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 				World world = ghost.world;
 				++this.ticks;
 				if (this.ticks == 90) {
-					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.RINGLE, SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
+					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.RINGLE.get(), SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
 					entitylivingbase.attackEntityFrom(DamageSource.MAGIC, 4.0F);
 					if (!world.isRemote && entitylivingbase instanceof ServerPlayerEntity) {
 						HalloweenLuckyBlockNetwork.NETWORK.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) entitylivingbase), new MessageGhostFlash());

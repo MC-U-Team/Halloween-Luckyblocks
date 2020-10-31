@@ -19,7 +19,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public class EntityCreepyZombie extends MonsterEntity {
 	
 	public EntityCreepyZombie(World worldIn) {
-		this(HalloweenLuckyBlockEntityTypes.CREEPY_ZOMBIE, worldIn);
+		this(HalloweenLuckyBlockEntityTypes.CREEPY_ZOMBIE.get(), worldIn);
 	}
 	
 	public EntityCreepyZombie(EntityType<? extends EntityCreepyZombie> type, World worldIn) {

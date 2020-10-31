@@ -20,7 +20,7 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	}
 	
 	public EntityPumpkinGrenade(World world, LivingEntity throwerIn) {
-		super(HalloweenLuckyBlockEntityTypes.PUMPKIN_GRENADE, throwerIn, world);
+		super(HalloweenLuckyBlockEntityTypes.PUMPKIN_GRENADE.get(), throwerIn, world);
 	}
 	
 	@Override
@@ -65,6 +65,6 @@ public class EntityPumpkinGrenade extends ProjectileItemEntity {
 	
 	@Override
 	protected Item getDefaultItem() {
-		return HalloweenLuckyBlockItems.PUMPKINGRENADE;
+		return HalloweenLuckyBlockItems.PUMPKINGRENADE.get();
 	}
 }

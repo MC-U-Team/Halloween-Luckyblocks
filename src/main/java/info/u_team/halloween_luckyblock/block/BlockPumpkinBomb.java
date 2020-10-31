@@ -18,7 +18,7 @@ public class BlockPumpkinBomb extends UTileEntityBlock {
 	private static final VoxelShape SHAPE = makeCuboidShape(4, 4, 4, 12, 12, 12);
 	
 	public BlockPumpkinBomb() {
-		super(HalloweenLuckyBlockItemGroups.GROUP, Properties.create(Material.ROCK).hardnessAndResistance(-1, 100000).notSolid().noDrops(), () -> HalloweenLuckyBlockTileEntityTypes.PUMPKINBOMB);
+		super(HalloweenLuckyBlockItemGroups.GROUP, Properties.create(Material.ROCK).hardnessAndResistance(-1, 100000).notSolid().noDrops(), HalloweenLuckyBlockTileEntityTypes.PUMPKIN_BOMB);
 	}
 	
 	@Override

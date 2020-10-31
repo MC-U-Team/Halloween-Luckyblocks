@@ -27,7 +27,7 @@ public class ListenerKillerKniveAttack {
 			return;
 		}
 		Item item = stack.getItem();
-		if (item == HalloweenLuckyBlockItems.KILLERKNIFE) {
+		if (item == HalloweenLuckyBlockItems.KILLERKNIFE.get()) {
 			LivingEntity base = event.getEntityLiving();
 			
 			Vector3d lookplayer = player.getLookVec();

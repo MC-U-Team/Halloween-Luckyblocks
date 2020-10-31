@@ -49,7 +49,7 @@ public class LuckyHandler {
 		event.execute(serverPlayer, serverWorld, pos);
 		
 		if (!(event instanceof LuckyEventSound) && !(event instanceof LuckyEventDeath) && !(event instanceof LuckyEventThunder) && !(event instanceof LuckyEventChest)) {
-			serverPlayer.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.randomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, player.getPosX(), player.getPosY(), player.getPosZ(), 0.15F, 1.0F));
+			serverPlayer.connection.sendPacket(new SPlaySoundEffectPacket(HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.randomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)).get(), HalloweenLuckyBlockSounds.CATEGORY, player.getPosX(), player.getPosY(), player.getPosZ(), 0.15F, 1.0F));
 		}
 	}
 	

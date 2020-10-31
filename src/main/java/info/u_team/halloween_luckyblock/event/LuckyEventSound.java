@@ -16,7 +16,7 @@ public class LuckyEventSound extends LuckyEvent {
 	
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
-		world.playSound(null, pos, HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)), HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
+		world.playSound(null, pos, HalloweenLuckyBlockSounds.COMMON_SOUNDS.get(MathUtil.getRandomNumberInRange(0, HalloweenLuckyBlockSounds.COMMON_SOUNDS.size() - 1)).get(), HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		new Thread(() -> {
 			try {
 				synchronized (this) {
