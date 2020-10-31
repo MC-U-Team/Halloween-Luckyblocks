@@ -1,4 +1,4 @@
-package info.u_team.halloween_luckyblock.util;
+package info.u_team.to_u_team_core;
 
 import java.util.Map;
 import java.util.function.Supplier;
