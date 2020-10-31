@@ -11,7 +11,7 @@ import net.minecraftforge.api.distmarker.*;
 public class RenderCreepyZombie extends MobRenderer<EntityCreepyZombie, ModelCreepyZombie> {
 	
 	public RenderCreepyZombie(EntityRendererManager rendermanager) {
-		super(rendermanager, new ModelCreepyZombie(), 0);
+		super(rendermanager, new ModelCreepyZombie(), 0.5F);
 	}
 	
 	@Override
