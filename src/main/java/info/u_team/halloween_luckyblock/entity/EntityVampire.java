@@ -3,6 +3,8 @@ package info.u_team.halloween_luckyblock.entity;
 import info.u_team.halloween_luckyblock.init.*;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.passive.AmbientEntity;
@@ -40,6 +42,10 @@ public class EntityVampire extends AmbientEntity {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(2, new AIAttack());
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, e -> true));
+	}
+	
+	public static MutableAttribute registerAttributes() {
+		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 6.0D);
 	}
 	
 	@Override

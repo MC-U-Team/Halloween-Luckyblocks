@@ -5,6 +5,8 @@ import java.util.*;
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.network.MessageGhostFlash;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.IMob;
@@ -41,6 +43,10 @@ public class EntityGhost extends FlyingEntity implements IMob {
 		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, (p_213812_1_) -> true));
 	}
 	
+	public static MutableAttribute registerAttributes() {
+		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 10.0D).createMutableAttribute(Attributes.FOLLOW_RANGE, 100.0D);
+	}
+	
 	@Override
 	public void tick() {
 		super.tick();
@@ -48,13 +54,6 @@ public class EntityGhost extends FlyingEntity implements IMob {
 			remove();
 		}
 	}
-	
-//	@Override
-//	public void registerAttributes() {
-//		super.registerAttributes();
-//		this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0D);
-//		this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(100.0D);
-//	}
 	
 	@Override
 	protected SoundEvent getAmbientSound() {
