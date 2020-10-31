@@ -98,13 +98,13 @@ public class ModelCreepyZombie extends SegmentedModel<EntityCreepyZombie> {
 		this.leftarm.rotateAngleX = -((float) Math.PI / 2F);
 		this.rightarm.rotateAngleX -= f6 * 1.2F - f7 * 0.4F;
 		this.leftarm.rotateAngleX -= f6 * 1.2F - f7 * 0.4F;
-		this.rightarm.rotateAngleZ += MathHelper.cos(limbSwingAmount * 0.09F) * 0.05F + 0.05F;
-		this.leftarm.rotateAngleZ -= MathHelper.cos(limbSwingAmount * 0.09F) * 0.05F + 0.05F;
-		this.rightarm.rotateAngleX += MathHelper.sin(limbSwingAmount * 0.067F) * 0.05F;
-		this.leftarm.rotateAngleX -= MathHelper.sin(limbSwingAmount * 0.067F) * 0.05F;
+		this.rightarm.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+		this.leftarm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+		this.rightarm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+		this.leftarm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 		
-		this.rightleg.rotateAngleX = MathHelper.cos(ageInTicks * 0.6662F) * 1.4F * limbSwing;
-		this.leftleg.rotateAngleX = MathHelper.cos(ageInTicks * 0.6662F + (float) Math.PI) * 1.4F * limbSwing;
+		this.rightleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.leftleg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
 		this.rightleg.rotateAngleY = 0.0F;
 		this.leftleg.rotateAngleY = 0.0F;
 	}
