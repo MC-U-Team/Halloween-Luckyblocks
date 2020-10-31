@@ -1,7 +1,6 @@
 package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
-import info.u_team.halloween_luckyblock.entity.*;
 import info.u_team.halloween_luckyblock.entity.render.*;
 import info.u_team.u_team_core.util.registry.ClientRegistry;
 import net.minecraft.client.Minecraft;
@@ -17,10 +16,10 @@ public class HalloweenLuckyBlockRenderers {
 	
 	@SubscribeEvent
 	public static void register(FMLClientSetupEvent event) {
-		ClientRegistry.registerEntityRenderer(EntityCreepyZombie.class, RenderCreepyZombie::new);
-		ClientRegistry.registerEntityRenderer(EntityGhost.class, RenderGhost::new);
-		ClientRegistry.registerEntityRenderer(EntityVampire.class, RenderVampire::new);
-		ClientRegistry.registerEntityRenderer(EntityPumpkinGrenade.class, manager -> {
+		ClientRegistry.registerEntityRenderer(HalloweenLuckyBlockEntityTypes.CREEPY_ZOMBIE, RenderCreepyZombie::new);
+		ClientRegistry.registerEntityRenderer(HalloweenLuckyBlockEntityTypes.GHOST, RenderGhost::new);
+		ClientRegistry.registerEntityRenderer(HalloweenLuckyBlockEntityTypes.VAMPIRE, RenderVampire::new);
+		ClientRegistry.registerEntityRenderer(HalloweenLuckyBlockEntityTypes.PUMPKIN_GRENADE, manager -> {
 			return new SpriteRenderer<>(manager, Minecraft.getInstance().getItemRenderer());
 		});
 	}
