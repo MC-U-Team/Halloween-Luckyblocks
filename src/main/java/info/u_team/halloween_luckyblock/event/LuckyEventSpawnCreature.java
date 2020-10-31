@@ -27,7 +27,7 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 			EntityCreepyZombie zombie = new EntityCreepyZombie(world);
 			zombie.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			
-			zombie.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE));
+			zombie.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE.get()));
 			zombie.setItemStackToSlot(EquipmentSlotType.CHEST, new ItemStack(Items.DIAMOND_CHESTPLATE));
 			zombie.setDropChance(EquipmentSlotType.MAINHAND, 0.1F);
 			zombie.setDropChance(EquipmentSlotType.CHEST, 0.25F);
