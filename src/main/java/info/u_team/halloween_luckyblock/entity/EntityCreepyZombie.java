@@ -3,8 +3,8 @@ package info.u_team.halloween_luckyblock.entity;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.monster.*;
@@ -47,14 +47,12 @@ public class EntityCreepyZombie extends MonsterEntity {
 	}
 	
 	public static MutableAttribute registerAttributes() {
-		return AttributeModifierMap.createMutableAttribute() //
+		return MonsterEntity.func_234295_eP_() //
 				.createMutableAttribute(Attributes.MAX_HEALTH, 30) //
-				.createMutableAttribute(Attributes.FOLLOW_RANGE, 35) //
 				.createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.42) //
 				.createMutableAttribute(Attributes.ATTACK_DAMAGE, 6) //
-				.createMutableAttribute(Attributes.ARMOR, 2) //
-				.createMutableAttribute(Attributes.ARMOR_TOUGHNESS) //
-				.createMutableAttribute(Attributes.ATTACK_KNOCKBACK);
+				.createMutableAttribute(Attributes.FOLLOW_RANGE, 35) //
+				.createMutableAttribute(Attributes.ARMOR, 2);
 	}
 	
 	@Override
