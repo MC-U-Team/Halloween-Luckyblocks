@@ -62,9 +62,9 @@ public class ModelGhost extends SegmentedModel<EntityGhost> {
 	
 	@Override
 	public void render(MatrixStack matrixStackIn, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-		matrixStackIn.push();
-		matrixStackIn.scale(0.0F, 0.6F, 0.0F);
+//		matrixStackIn.push();
+//		matrixStackIn.scale(0.0F, 0.6F, 0.0F);
 		super.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-		matrixStackIn.pop();
+//		matrixStackIn.pop();
 	}
 }
