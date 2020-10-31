@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.*;
 import info.u_team.halloween_luckyblock.util.*;
+import info.u_team.u_team_core.item.armor.UArmorItem;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.RegistryObject;
 
 public class LuckyEventItems extends LuckyEvent {
 	
@@ -23,29 +25,29 @@ public class LuckyEventItems extends LuckyEvent {
 	}
 	
 	private void additems() {
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.CANDY)), 4);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.CANDYBAG), 1, 2), 8);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.CANDYBAG_OP)), 1);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE)), 5);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.PUMPKINGRENADE), 1, 5), 3);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.TELEPORTER)), 3);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.WITCHBROOMSTICK)), 1);
-		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockBlocks.PUMPKINBOMB), 1, 2), 2);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.CANDY.get())), 4);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.CANDYBAG.get()), 1, 2), 8);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.CANDYBAG_OP.get())), 1);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE.get())), 5);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.PUMPKINGRENADE.get()), 1, 5), 3);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.TELEPORTER.get())), 3);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.WITCHBROOMSTICK.get())), 1);
+		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockBlocks.PUMPKINBOMB.get()), 1, 2), 2);
 		
-		for (Item item : HalloweenLuckyBlockItems.SCARECROW_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 2);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (Item item : HalloweenLuckyBlockItems.SLENDER_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 2);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (Item item : HalloweenLuckyBlockItems.WITCH_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 2);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (Item item : HalloweenLuckyBlockItems.ZOMBIE_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 2);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (Item item : HalloweenLuckyBlockItems.CLOWN_SET.getArray()) {
-			add(new ItemStackEntry(new ItemStack(item)), 2);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
+			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
 		
 		add(new ItemStackEntry(new ItemStack(Blocks.STONE), 10, 64), 3);
