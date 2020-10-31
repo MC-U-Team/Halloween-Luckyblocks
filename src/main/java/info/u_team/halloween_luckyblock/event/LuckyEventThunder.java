@@ -2,6 +2,7 @@ package info.u_team.halloween_luckyblock.event;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.*;
 import net.minecraft.server.MinecraftServer;
@@ -27,7 +28,7 @@ public class LuckyEventThunder extends LuckyEvent {
 		}
 		
 		new Thread(() -> {
-			mainthread.execute(() -> world.setDayTime(110000));
+			mainthread.execute(() -> world.func_241114_a_(110000));
 			for (int i = 0; i < 8; i++) {
 				try {
 					synchronized (this) {
@@ -37,11 +38,13 @@ public class LuckyEventThunder extends LuckyEvent {
 					e.printStackTrace();
 				}
 				mainthread.execute(() -> {
-					LightningBoltEntity light1 = new LightningBoltEntity(world, player.getPosX(), player.getPosY(), player.getPosZ(), false);
-					((ServerWorld) world).addLightningBolt(light1);
+					LightningBoltEntity light1 = EntityType.LIGHTNING_BOLT.create(world);
+					light1.moveForced(player.getPositionVec());
+					world.addEntity(light1);
 					if (other != null) {
-						LightningBoltEntity light2 = new LightningBoltEntity(world, other.getPosX(), other.getPosY(), other.getPosZ(), false);
-						((ServerWorld) world).addLightningBolt(light2);
+						LightningBoltEntity light2 = EntityType.LIGHTNING_BOLT.create(world);
+						light2.moveForced(other.getPositionVec());
+						world.addEntity(light2);
 					}
 					world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.WIND, HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 					if (other != null) {
@@ -49,7 +52,7 @@ public class LuckyEventThunder extends LuckyEvent {
 					}
 				});
 			}
-			mainthread.execute(() -> world.setDayTime(time));
+			mainthread.execute(() -> world.func_241114_a_(time));
 		}).start();
 	}
 }
