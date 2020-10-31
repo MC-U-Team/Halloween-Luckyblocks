@@ -2,21 +2,18 @@ package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.tileentity.TileEntityPumpkinBomb;
-import info.u_team.u_team_core.tileentitytype.UTileEntityType.UBuilder;
-import info.u_team.u_team_core.util.registry.BaseRegistryUtil;
+import info.u_team.u_team_core.util.registry.TileEntityTypeDeferredRegister;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.RegistryObject;
 
-@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.MOD)
 public class HalloweenLuckyBlockTileEntityTypes {
 	
-	public static final TileEntityType<TileEntityPumpkinBomb> PUMPKINBOMB = UBuilder.create("pumpkinbomb", TileEntityPumpkinBomb::new, HalloweenLuckyBlockBlocks.PUMPKINBOMB).build();
+	public static final TileEntityTypeDeferredRegister TILE_ENTITY_TYPES = TileEntityTypeDeferredRegister.create(HalloweenLuckyBlockMod.MODID);
 	
-	@SubscribeEvent
-	public static void register(Register<TileEntityType<?>> event) {
-		BaseRegistryUtil.getAllGenericRegistryEntriesAndApplyNames(HalloweenLuckyBlockMod.MODID, TileEntityType.class).forEach(event.getRegistry()::register);
+	public static final RegistryObject<TileEntityType<TileEntityPumpkinBomb>> PUMPKIN_BOMB = TILE_ENTITY_TYPES.register("pumpkin_bomb", () -> TileEntityType.Builder.create(TileEntityPumpkinBomb::new, HalloweenLuckyBlockBlocks.PUMPKINBOMB.get()));
+	
+	public static void registerMod(IEventBus bus) {
+		TILE_ENTITY_TYPES.register(bus);
 	}
 }
