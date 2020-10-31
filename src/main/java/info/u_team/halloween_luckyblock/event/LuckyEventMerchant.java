@@ -5,17 +5,19 @@ import java.util.*;
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
 import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.u_team_core.item.armor.UArmorItem;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.merchant.villager.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.entity.villager.IVillagerType;
+import net.minecraft.entity.villager.VillagerType;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.RegistryObject;
 
 public class LuckyEventMerchant extends LuckyEvent {
 	
@@ -23,33 +25,33 @@ public class LuckyEventMerchant extends LuckyEvent {
 	
 	private final List<Item> armor = new ArrayList<Item>();
 	
-	private final List<IVillagerType> types = new ArrayList<IVillagerType>();
+	private final List<VillagerType> types = new ArrayList<VillagerType>();
 	
 	public LuckyEventMerchant() {
 		super("Merchant", 2);
-		for (Item item : HalloweenLuckyBlockItems.SCARECROW_SET.getArray()) {
-			armor.add(item);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
+			armor.add(item.get());
 		}
-		for (Item item : HalloweenLuckyBlockItems.SLENDER_SET.getArray()) {
-			armor.add(item);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
+			armor.add(item.get());
 		}
-		for (Item item : HalloweenLuckyBlockItems.WITCH_SET.getArray()) {
-			armor.add(item);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
+			armor.add(item.get());
 		}
-		for (Item item : HalloweenLuckyBlockItems.ZOMBIE_SET.getArray()) {
-			armor.add(item);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
+			armor.add(item.get());
 		}
-		for (Item item : HalloweenLuckyBlockItems.CLOWN_SET.getArray()) {
-			armor.add(item);
+		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
+			armor.add(item.get());
 		}
 		
-		types.add(IVillagerType.DESERT);
-		types.add(IVillagerType.JUNGLE);
-		types.add(IVillagerType.PLAINS);
-		types.add(IVillagerType.SAVANNA);
-		types.add(IVillagerType.SNOW);
-		types.add(IVillagerType.SWAMP);
-		types.add(IVillagerType.TAIGA);
+		types.add(VillagerType.DESERT);
+		types.add(VillagerType.JUNGLE);
+		types.add(VillagerType.PLAINS);
+		types.add(VillagerType.SAVANNA);
+		types.add(VillagerType.SNOW);
+		types.add(VillagerType.SWAMP);
+		types.add(VillagerType.TAIGA);
 	}
 	
 	@Override
@@ -101,11 +103,11 @@ public class LuckyEventMerchant extends LuckyEvent {
 			switch (r) {
 			case 0:
 				diamond.setCount(MathUtil.getRandomNumberInRange(30, 45));
-				re = new MerchantOffer(diamond, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE), 10, 2, 1);
+				re = new MerchantOffer(diamond, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE.get()), 10, 2, 1);
 				break;
 			case 1:
 				goldingot.setCount(MathUtil.getRandomNumberInRange(55, 64));
-				re = new MerchantOffer(goldingot, goldingot, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE), 10, 2, 1);
+				re = new MerchantOffer(goldingot, goldingot, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE.get()), 10, 2, 1);
 				break;
 			case 2:
 				goldingot.setCount(MathUtil.getRandomNumberInRange(1, 3));
