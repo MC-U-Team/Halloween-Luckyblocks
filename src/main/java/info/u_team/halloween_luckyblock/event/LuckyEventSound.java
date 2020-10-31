@@ -26,7 +26,7 @@ public class LuckyEventSound extends LuckyEvent {
 				e.printStackTrace();
 			}
 			world.getServer().execute(() -> {
-				FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 15, pos.getZ(), HalloweenLuckyBlockBlocks.LUCKYBLOCK.getDefaultState());
+				FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 15, pos.getZ(), HalloweenLuckyBlockBlocks.LUCKYBLOCK.get().getDefaultState());
 				falling.fallTime = 100;
 				falling.shouldDropItem = false;
 				falling.setHurtEntities(true);
