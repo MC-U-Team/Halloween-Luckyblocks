@@ -7,6 +7,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import net.minecraft.nbt.*;
 import net.minecraft.util.concurrent.TickDelayedTask;
 import net.minecraft.util.math.*;
+import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.World;
 
 /**
@@ -107,16 +108,16 @@ public class USchematicLoadRegion {
 	private void centerstart() {
 		switch (rotation) {
 		case ROTATION_0:
-			start = start.subtract(new Vec3i(sizex / 2, 0, sizez / 2));
+			start = start.subtract(new Vector3i(sizex / 2, 0, sizez / 2));
 			break;
 		case ROTATION_90:
-			start = start.subtract(new Vec3i(-sizez / 2, 0, sizex / 2));
+			start = start.subtract(new Vector3i(-sizez / 2, 0, sizex / 2));
 			break;
 		case ROTATION_180:
-			start = start.subtract(new Vec3i(-sizex / 2, 0, -sizez / 2));
+			start = start.subtract(new Vector3i(-sizex / 2, 0, -sizez / 2));
 			break;
 		case ROTATION_270:
-			start = start.subtract(new Vec3i(sizez / 2, 0, -sizex / 2));
+			start = start.subtract(new Vector3i(sizez / 2, 0, -sizex / 2));
 			break;
 		}
 	}

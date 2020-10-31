@@ -61,7 +61,7 @@ public class USchematicEntry {
 			nbt.putInt("x", pos.getX());
 			nbt.putInt("y", pos.getY());
 			nbt.putInt("z", pos.getZ());
-			tileentity.read(nbt);
+			tileentity.read(state, nbt);
 		}
 	}
 	
