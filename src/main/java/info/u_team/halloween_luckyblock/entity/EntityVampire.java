@@ -97,7 +97,7 @@ public class EntityVampire extends AmbientEntity {
 	}
 	
 	public void setIsBatHanging(boolean isHanging) {
-		byte b0 = this.dataManager.get(HANGING).byteValue();
+		final byte b0 = this.dataManager.get(HANGING).byteValue();
 		
 		if (isHanging) {
 			this.dataManager.set(HANGING, Byte.valueOf((byte) (b0 | 1)));
@@ -121,8 +121,8 @@ public class EntityVampire extends AmbientEntity {
 	@Override
 	protected void updateAITasks() {
 		super.updateAITasks();
-		BlockPos blockpos = getPosition();
-		BlockPos blockpos1 = blockpos.up();
+		final BlockPos blockpos = getPosition();
+		final BlockPos blockpos1 = blockpos.up();
 		if (this.getIsBatHanging()) {
 			if (this.world.getBlockState(blockpos1).isNormalCube(this.world, blockpos)) {
 				if (this.rand.nextInt(200) == 0) {
@@ -146,14 +146,14 @@ public class EntityVampire extends AmbientEntity {
 				this.spawnPosition = new BlockPos(this.getPosX() + this.rand.nextInt(7) - this.rand.nextInt(7), this.getPosY() + this.rand.nextInt(6) - 2.0D, this.getPosZ() + this.rand.nextInt(7) - this.rand.nextInt(7));
 			}
 			
-			double d0 = this.spawnPosition.getX() + 0.5D - this.getPosX();
-			double d1 = this.spawnPosition.getY() + 0.1D - this.getPosY();
-			double d2 = this.spawnPosition.getZ() + 0.5D - this.getPosZ();
-			Vector3d vec3d = this.getMotion();
-			Vector3d vec3d1 = vec3d.add((Math.signum(d0) * 0.5D - vec3d.x) * 0.1F, (Math.signum(d1) * 0.7F - vec3d.y) * 0.1F, (Math.signum(d2) * 0.5D - vec3d.z) * 0.1F);
+			final double d0 = this.spawnPosition.getX() + 0.5D - this.getPosX();
+			final double d1 = this.spawnPosition.getY() + 0.1D - this.getPosY();
+			final double d2 = this.spawnPosition.getZ() + 0.5D - this.getPosZ();
+			final Vector3d vec3d = this.getMotion();
+			final Vector3d vec3d1 = vec3d.add((Math.signum(d0) * 0.5D - vec3d.x) * 0.1F, (Math.signum(d1) * 0.7F - vec3d.y) * 0.1F, (Math.signum(d2) * 0.5D - vec3d.z) * 0.1F);
 			this.setMotion(vec3d1);
-			float f = (float) (MathHelper.atan2(vec3d1.z, vec3d1.x) * (180F / (float) Math.PI)) - 90.0F;
-			float f1 = MathHelper.wrapDegrees(f - this.rotationYaw);
+			final float f = (float) (MathHelper.atan2(vec3d1.z, vec3d1.x) * (180F / (float) Math.PI)) - 90.0F;
+			final float f1 = MathHelper.wrapDegrees(f - this.rotationYaw);
 			this.moveForward = 0.5F;
 			this.rotationYaw += f1;
 			if (this.rand.nextInt(100) == 0 && this.world.getBlockState(blockpos1).isNormalCube(this.world, blockpos1)) {
@@ -209,12 +209,12 @@ public class EntityVampire extends AmbientEntity {
 	
 	@Override
 	public boolean canSpawn(IWorld worldIn, SpawnReason spawnReasonIn) {
-		BlockPos blockpos = new BlockPos(this.getPosX(), this.getBoundingBox().minY, this.getPosZ());
+		final BlockPos blockpos = new BlockPos(this.getPosX(), this.getBoundingBox().minY, this.getPosZ());
 		if (blockpos.getY() >= this.world.getSeaLevel()) {
 			return false;
 		} else {
-			int i = this.world.getLight(blockpos);
-			int j = 7;
+			final int i = this.world.getLight(blockpos);
+			final int j = 7;
 			return i > this.rand.nextInt(j) ? false : super.canSpawn(worldIn, spawnReasonIn);
 		}
 	}
@@ -226,7 +226,7 @@ public class EntityVampire extends AmbientEntity {
 	
 	public class AIAttack extends Goal {
 		
-		private EntityVampire vampire = EntityVampire.this;
+		private final EntityVampire vampire = EntityVampire.this;
 		public int ticks;
 		
 		@Override
@@ -245,15 +245,15 @@ public class EntityVampire extends AmbientEntity {
 		
 		@Override
 		public void tick() {
-			LivingEntity entitylivingbase = this.vampire.getAttackTarget();
-			double d0 = 64.0D;
+			final LivingEntity entitylivingbase = this.vampire.getAttackTarget();
+			final double d0 = 64.0D;
 			
 			if (entitylivingbase.getDistanceSq(this.vampire) < d0 * d0 && this.vampire.canEntityBeSeen(entitylivingbase)) {
-				World world = this.vampire.world;
+				final World world = this.vampire.world;
 				++this.ticks;
 				if (this.ticks == 390) {
 					world.playSound(null, vampire.getPosition(), HalloweenLuckyBlockSounds.HAPPY_HALLOWEEN.get(), SoundCategory.NEUTRAL, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
-					FallingBlockEntity falling = new FallingBlockEntity(world, entitylivingbase.getPosX(), entitylivingbase.getPosY() + 5, entitylivingbase.getPosZ(), HalloweenLuckyBlockBlocks.PUMPKINBOMB.get().getDefaultState());
+					final FallingBlockEntity falling = new FallingBlockEntity(world, entitylivingbase.getPosX(), entitylivingbase.getPosY() + 5, entitylivingbase.getPosZ(), HalloweenLuckyBlockBlocks.PUMPKINBOMB.get().getDefaultState());
 					falling.fallTime = 100;
 					falling.shouldDropItem = false;
 					falling.setHurtEntities(false);

@@ -18,9 +18,9 @@ public class LuckyEventThunder extends LuckyEvent {
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		
-		long time = world.getDayTime();
-		PlayerEntity other = world.getClosestPlayer(player, -1);
-		MinecraftServer mainthread = player.world.getServer();
+		final long time = world.getDayTime();
+		final PlayerEntity other = world.getClosestPlayer(player, -1);
+		final MinecraftServer mainthread = player.world.getServer();
 		
 		world.playSound(null, player.getPosition(), HalloweenLuckyBlockSounds.THUNDER.get(), HalloweenLuckyBlockSounds.CATEGORY, 1.0F, 1.0F);
 		if (other != null) {
@@ -34,15 +34,15 @@ public class LuckyEventThunder extends LuckyEvent {
 					synchronized (this) {
 						wait(500);
 					}
-				} catch (InterruptedException e) {
+				} catch (final InterruptedException e) {
 					e.printStackTrace();
 				}
 				mainthread.execute(() -> {
-					LightningBoltEntity light1 = EntityType.LIGHTNING_BOLT.create(world);
+					final LightningBoltEntity light1 = EntityType.LIGHTNING_BOLT.create(world);
 					light1.moveForced(player.getPositionVec());
 					world.addEntity(light1);
 					if (other != null) {
-						LightningBoltEntity light2 = EntityType.LIGHTNING_BOLT.create(world);
+						final LightningBoltEntity light2 = EntityType.LIGHTNING_BOLT.create(world);
 						light2.moveForced(other.getPositionVec());
 						world.addEntity(light2);
 					}

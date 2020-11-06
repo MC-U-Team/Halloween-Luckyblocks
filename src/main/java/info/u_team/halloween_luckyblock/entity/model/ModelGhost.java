@@ -14,8 +14,8 @@ import net.minecraftforge.api.distmarker.*;
 @OnlyIn(Dist.CLIENT)
 public class ModelGhost extends SegmentedModel<EntityGhost> {
 	
-	private ModelRenderer body;
-	private ModelRenderer[] tentacles = new ModelRenderer[9];
+	private final ModelRenderer body;
+	private final ModelRenderer[] tentacles = new ModelRenderer[9];
 	
 	private final ImmutableList<ModelRenderer> parts;
 	
@@ -23,18 +23,18 @@ public class ModelGhost extends SegmentedModel<EntityGhost> {
 		
 		final Builder<ModelRenderer> builder = ImmutableList.builder();
 		
-		byte b0 = -16;
+		final byte b0 = -16;
 		this.body = new ModelRenderer(this, 0, 0);
 		this.body.addBox(-8.0F, -8.0F, -8.0F, 16, 16, 16);
 		this.body.rotationPointY += 24 + b0;
 		builder.add(body);
-		Random random = new Random(1660L);
+		final Random random = new Random(1660L);
 		
 		for (int i = 0; i < this.tentacles.length; ++i) {
 			this.tentacles[i] = new ModelRenderer(this, 0, 0);
-			float f = ((i % 3 - i / 3 % 2 * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-			float f1 = (i / 3 / 2.0F * 2.0F - 1.0F) * 5.0F;
-			int j = random.nextInt(7) + 8;
+			final float f = ((i % 3 - i / 3 % 2 * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+			final float f1 = (i / 3 / 2.0F * 2.0F - 1.0F) * 5.0F;
+			final int j = random.nextInt(7) + 8;
 			this.tentacles[i].addBox(-1.0F, 0.0F, -1.0F, 2, j, 2);
 			this.tentacles[i].rotationPointX = f;
 			this.tentacles[i].rotationPointZ = f1;

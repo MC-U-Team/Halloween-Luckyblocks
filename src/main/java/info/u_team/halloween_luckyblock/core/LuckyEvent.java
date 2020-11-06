@@ -6,8 +6,8 @@ import net.minecraft.world.server.ServerWorld;
 
 public abstract class LuckyEvent {
 	
-	private String name;
-	private int count;
+	private final String name;
+	private final int count;
 	
 	public LuckyEvent(String name, int count) {
 		this.name = name;

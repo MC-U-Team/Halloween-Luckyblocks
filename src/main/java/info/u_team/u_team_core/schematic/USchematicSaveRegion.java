@@ -13,9 +13,9 @@ import net.minecraft.world.World;
  */
 public class USchematicSaveRegion {
 	
-	private World world;
-	private BlockPos min, max;
-	private int sizex, sizey, sizez, count;
+	private final World world;
+	private final BlockPos min, max;
+	private final int sizex, sizey, sizez, count;
 	
 	public USchematicSaveRegion(World world, BlockPos pos1, BlockPos pos2) {
 		this.world = world;
@@ -56,7 +56,7 @@ public class USchematicSaveRegion {
 	}
 	
 	public CompoundNBT saveNBT() {
-		CompoundNBT root = new CompoundNBT();
+		final CompoundNBT root = new CompoundNBT();
 		
 		root.putInt("sizex", getSizeX());
 		root.putInt("sizey", getSizeY());
@@ -69,12 +69,12 @@ public class USchematicSaveRegion {
 	}
 	
 	private ListNBT saveBlocks() {
-		ListNBT list = new ListNBT();
+		final ListNBT list = new ListNBT();
 		for (int x = min.getX(); x <= max.getX(); x++) {
 			for (int z = min.getZ(); z <= max.getZ(); z++) {
 				for (int y = min.getY(); y <= max.getY(); y++) {
-					BlockPos pos = new BlockPos(x, y, z);
-					USchematicEntry entry = new USchematicEntry(world, pos);
+					final BlockPos pos = new BlockPos(x, y, z);
+					final USchematicEntry entry = new USchematicEntry(world, pos);
 					list.add(entry.getTag());
 				}
 			}

@@ -11,14 +11,14 @@ import net.minecraftforge.api.distmarker.*;
 @OnlyIn(Dist.CLIENT)
 public class ModelCreepyZombie extends SegmentedModel<EntityCreepyZombie> {
 	
-	private ModelRenderer headright;
-	private ModelRenderer headleft;
-	private ModelRenderer brain;
-	private ModelRenderer body;
-	private ModelRenderer rightarm;
-	private ModelRenderer leftarm;
-	private ModelRenderer rightleg;
-	private ModelRenderer leftleg;
+	private final ModelRenderer headright;
+	private final ModelRenderer headleft;
+	private final ModelRenderer brain;
+	private final ModelRenderer body;
+	private final ModelRenderer rightarm;
+	private final ModelRenderer leftarm;
+	private final ModelRenderer rightleg;
+	private final ModelRenderer leftleg;
 	
 	public ModelCreepyZombie() {
 		textureWidth = 64;
@@ -88,8 +88,8 @@ public class ModelCreepyZombie extends SegmentedModel<EntityCreepyZombie> {
 	
 	@Override
 	public void setRotationAngles(EntityCreepyZombie entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		float f6 = MathHelper.sin(this.swingProgress * (float) Math.PI);
-		float f7 = MathHelper.sin((1.0F - (1.0F - this.swingProgress) * (1.0F - this.swingProgress)) * (float) Math.PI);
+		final float f6 = MathHelper.sin(this.swingProgress * (float) Math.PI);
+		final float f7 = MathHelper.sin((1.0F - (1.0F - this.swingProgress) * (1.0F - this.swingProgress)) * (float) Math.PI);
 		this.rightarm.rotateAngleZ = 0.0F;
 		this.leftarm.rotateAngleZ = 0.0F;
 		this.rightarm.rotateAngleY = -(0.1F - f6 * 0.6F);

@@ -19,7 +19,7 @@ import net.minecraft.world.World;
  */
 public class USchematicLoadRegion {
 	
-	private World world;
+	private final World world;
 	private BlockPos start;
 	
 	private int sizex, sizey, sizez;
@@ -70,9 +70,9 @@ public class USchematicLoadRegion {
 		for (int x = 0; x < sizex; x++) {
 			for (int z = 0; z < sizez; z++) {
 				for (int y = 0; y < sizey; y++) {
-					BlockPos pos = start.add(rotate(new BlockPos(x, y, z)));
+					final BlockPos pos = start.add(rotate(new BlockPos(x, y, z)));
 					
-					USchematicEntry entry = new USchematicEntry(list.getCompound(i++));
+					final USchematicEntry entry = new USchematicEntry(list.getCompound(i++));
 					blocks.add(Pair.of(pos, entry));
 					// entry.setBlock(world, pos);
 				}
@@ -83,7 +83,7 @@ public class USchematicLoadRegion {
 		final int partition = blocks.size() / split;
 		
 		for (int c = 0; c < split; c++) {
-			int capture = c;
+			final int capture = c;
 			world.getServer().enqueue(new TickDelayedTask(c, () -> {
 				for (int index = 0; index < partition; index++) {
 					final Pair<BlockPos, USchematicEntry> pair = blocks.get((partition * capture) + index);
@@ -92,8 +92,8 @@ public class USchematicLoadRegion {
 			}));
 		}
 		
-		int splitPortionMult = split * partition;
-		int rest = blocks.size() - splitPortionMult;
+		final int splitPortionMult = split * partition;
+		final int rest = blocks.size() - splitPortionMult;
 		
 		if (rest > 0) {
 			world.getServer().enqueue(new TickDelayedTask(0, () -> {
@@ -123,9 +123,9 @@ public class USchematicLoadRegion {
 	}
 	
 	private BlockPos rotate(BlockPos pos) {
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
+		final int x = pos.getX();
+		final int y = pos.getY();
+		final int z = pos.getZ();
 		
 		switch (rotation) {
 		case ROTATION_0:

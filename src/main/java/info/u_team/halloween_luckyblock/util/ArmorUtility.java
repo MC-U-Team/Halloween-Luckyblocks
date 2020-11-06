@@ -13,7 +13,7 @@ public class ArmorUtility {
 			if (itemstack.isEmpty()) {
 				return false;
 			}
-			Item item = itemstack.getItem();
+			final Item item = itemstack.getItem();
 			return item instanceof UArmorItem && item.getRegistryName().getPath().contains(name);
 		}).count();
 	}

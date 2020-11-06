@@ -29,19 +29,19 @@ public class LuckyEventMerchant extends LuckyEvent {
 	
 	public LuckyEventMerchant() {
 		super("Merchant", 2);
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
 			armor.add(item.get());
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
 			armor.add(item.get());
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
 			armor.add(item.get());
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
 			armor.add(item.get());
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
 			armor.add(item.get());
 		}
 		
@@ -57,11 +57,11 @@ public class LuckyEventMerchant extends LuckyEvent {
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
+		final int x = pos.getX();
+		final int y = pos.getY();
+		final int z = pos.getZ();
 		
-		VillagerEntity villager = new VillagerEntity(EntityType.VILLAGER, world);
+		final VillagerEntity villager = new VillagerEntity(EntityType.VILLAGER, world);
 		
 		villager.setVillagerData(villager.getVillagerData().withType(types.get(MathUtil.randomNumberInRange(0, types.size() - 1))).withProfession(VillagerProfession.NITWIT));
 		
@@ -69,18 +69,18 @@ public class LuckyEventMerchant extends LuckyEvent {
 		villager.setCustomNameVisible(true);
 		villager.setCustomName(new StringTextComponent(playernames[MathUtil.randomNumberInRange(0, playernames.length - 1)]));
 		
-		MerchantOffers offers = villager.getOffers();
+		final MerchantOffers offers = villager.getOffers();
 		offers.clear();
 		offers.addAll(getRecipes());
 		world.addEntity(villager);
 		
-		ItemStack diamond = new ItemStack(Items.DIAMOND);
+		final ItemStack diamond = new ItemStack(Items.DIAMOND);
 		diamond.setCount(MathUtil.randomNumberInRange(9, 25));
-		ItemStack goldingot = new ItemStack(Items.GOLD_INGOT);
+		final ItemStack goldingot = new ItemStack(Items.GOLD_INGOT);
 		goldingot.setCount(MathUtil.randomNumberInRange(15, 64));
 		
-		ItemEntity diamondentity = new ItemEntity(world, x, y, z, diamond);
-		ItemEntity goldingotentity = new ItemEntity(world, x, y, z, goldingot);
+		final ItemEntity diamondentity = new ItemEntity(world, x, y, z, diamond);
+		final ItemEntity goldingotentity = new ItemEntity(world, x, y, z, goldingot);
 		
 		world.addEntity(diamondentity);
 		world.addEntity(goldingotentity);
@@ -88,17 +88,17 @@ public class LuckyEventMerchant extends LuckyEvent {
 	}
 	
 	private ArrayList<MerchantOffer> getRecipes() {
-		ArrayList<MerchantOffer> list = new ArrayList<MerchantOffer>();
+		final ArrayList<MerchantOffer> list = new ArrayList<MerchantOffer>();
 		
 		for (int i = 0; i < MathUtil.randomNumberInRange(5, 15); i++) {
-			int r = MathUtil.randomNumberInRange(0, 19);
+			final int r = MathUtil.randomNumberInRange(0, 19);
 			MerchantOffer re = null;
 			
-			ItemStack diamond = new ItemStack(Items.DIAMOND);
-			ItemStack goldingot = new ItemStack(Items.GOLD_INGOT);
+			final ItemStack diamond = new ItemStack(Items.DIAMOND);
+			final ItemStack goldingot = new ItemStack(Items.GOLD_INGOT);
 			
-			ItemStack ironsword = new ItemStack(Items.IRON_SWORD);
-			ItemStack diamondsword = new ItemStack(Items.DIAMOND_SWORD);
+			final ItemStack ironsword = new ItemStack(Items.IRON_SWORD);
+			final ItemStack diamondsword = new ItemStack(Items.DIAMOND_SWORD);
 			
 			switch (r) {
 			case 0:
@@ -116,7 +116,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 			case 3:
 			case 4:
 				diamond.setCount(MathUtil.randomNumberInRange(8, 15));
-				CompoundNBT comp34 = new CompoundNBT();
+				final CompoundNBT comp34 = new CompoundNBT();
 				comp34.putBoolean("Unbreakable", true);
 				ironsword.setTag(comp34);
 				ironsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.randomNumberInRange(5, 16));
@@ -127,7 +127,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 				break;
 			case 5:
 				goldingot.setCount(MathUtil.randomNumberInRange(30, 63));
-				CompoundNBT comp5 = new CompoundNBT();
+				final CompoundNBT comp5 = new CompoundNBT();
 				comp5.putBoolean("Unbreakable", true);
 				ironsword.setTag(comp5);
 				ironsword.addEnchantment(Enchantments.SHARPNESS, MathUtil.randomNumberInRange(5, 16));
@@ -164,7 +164,7 @@ public class LuckyEventMerchant extends LuckyEvent {
 			case 17:
 			case 18:
 			case 19:
-				ItemStack armor = new ItemStack(this.armor.get(MathUtil.randomNumberInRange(0, this.armor.size() - 1)));
+				final ItemStack armor = new ItemStack(this.armor.get(MathUtil.randomNumberInRange(0, this.armor.size() - 1)));
 				ItemStack inputstack;
 				switch (MathUtil.randomNumberInRange(0, 1)) {
 				case 0:

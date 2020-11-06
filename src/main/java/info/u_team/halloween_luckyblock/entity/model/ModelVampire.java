@@ -11,22 +11,22 @@ import net.minecraftforge.api.distmarker.*;
 @OnlyIn(Dist.CLIENT)
 public class ModelVampire extends SegmentedModel<EntityVampire> {
 	
-	private ModelRenderer batHead;
-	private ModelRenderer batBody;
-	private ModelRenderer batRightWing;
-	private ModelRenderer batLeftWing;
-	private ModelRenderer batOuterRightWing;
-	private ModelRenderer batOuterLeftWing;
+	private final ModelRenderer batHead;
+	private final ModelRenderer batBody;
+	private final ModelRenderer batRightWing;
+	private final ModelRenderer batLeftWing;
+	private final ModelRenderer batOuterRightWing;
+	private final ModelRenderer batOuterLeftWing;
 	
 	public ModelVampire() {
 		this.textureWidth = 64;
 		this.textureHeight = 64;
 		this.batHead = new ModelRenderer(this, 0, 0);
 		this.batHead.addBox(-3.0F, -3.0F, -3.0F, 6, 6, 6);
-		ModelRenderer ModelRenderer = new ModelRenderer(this, 24, 0);
+		final ModelRenderer ModelRenderer = new ModelRenderer(this, 24, 0);
 		ModelRenderer.addBox(-4.0F, -6.0F, -2.0F, 3, 4, 1);
 		this.batHead.addChild(ModelRenderer);
-		ModelRenderer ModelRenderer1 = new ModelRenderer(this, 24, 0);
+		final ModelRenderer ModelRenderer1 = new ModelRenderer(this, 24, 0);
 		ModelRenderer1.mirror = true;
 		ModelRenderer1.addBox(1.0F, -6.0F, -2.0F, 3, 4, 1);
 		this.batHead.addChild(ModelRenderer1);

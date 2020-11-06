@@ -5,10 +5,10 @@ import net.minecraft.item.ItemStack;
 
 public class ItemStackEntry {
 	
-	private ItemStack stack;
+	private final ItemStack stack;
 	
-	private int min;
-	private int max;
+	private final int min;
+	private final int max;
 	
 	public ItemStackEntry(ItemStack stack, int min, int max) {
 		this.stack = stack;
@@ -21,7 +21,7 @@ public class ItemStackEntry {
 	}
 	
 	public ItemStack getItemStack() {
-		ItemStack copy = stack.copy();
+		final ItemStack copy = stack.copy();
 		copy.setCount(MathUtil.randomNumberInRange(min, max));
 		return copy;
 	}

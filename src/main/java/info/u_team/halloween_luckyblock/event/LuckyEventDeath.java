@@ -21,7 +21,7 @@ public class LuckyEventDeath extends LuckyEvent {
 				synchronized (this) {
 					wait(8500);
 				}
-			} catch (InterruptedException e) {
+			} catch (final InterruptedException e) {
 				e.printStackTrace();
 			}
 			world.getServer().execute(() -> {

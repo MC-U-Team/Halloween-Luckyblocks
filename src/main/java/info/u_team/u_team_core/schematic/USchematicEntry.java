@@ -18,18 +18,18 @@ import net.minecraftforge.registries.ForgeRegistries;
  */
 public class USchematicEntry {
 	
-	private ResourceLocation registryname;
-	private int meta;
+	private final ResourceLocation registryname;
+	private final int meta;
 	private CompoundNBT nbt;
 	
 	public USchematicEntry(World world, BlockPos pos) {
-		BlockState state = world.getBlockState(pos);
-		Block block = state.getBlock();
+		final BlockState state = world.getBlockState(pos);
+		final Block block = state.getBlock();
 		
 		registryname = ForgeRegistries.BLOCKS.getKey(block);
 		meta = 0; // placeholder. We have no meta data naymore
 		
-		TileEntity tileentity = world.getTileEntity(pos);
+		final TileEntity tileentity = world.getTileEntity(pos);
 		if (tileentity != null) {
 			tileentity.write(nbt = new CompoundNBT());
 			nbt.remove("x"); // We don't need the old location
@@ -52,10 +52,10 @@ public class USchematicEntry {
 			block = Blocks.AIR;
 		}
 		
-		BlockState state = block.getDefaultState();
+		final BlockState state = block.getDefaultState();
 		world.setBlockState(pos, state);
 		
-		TileEntity tileentity = world.getTileEntity(pos);
+		final TileEntity tileentity = world.getTileEntity(pos);
 		
 		if (tileentity != null && nbt != null) {
 			nbt.putInt("x", pos.getX());
@@ -66,7 +66,7 @@ public class USchematicEntry {
 	}
 	
 	public CompoundNBT getTag() {
-		CompoundNBT entry = new CompoundNBT();
+		final CompoundNBT entry = new CompoundNBT();
 		
 		entry.putString("name", registryname.toString());
 		entry.putInt("meta", meta);

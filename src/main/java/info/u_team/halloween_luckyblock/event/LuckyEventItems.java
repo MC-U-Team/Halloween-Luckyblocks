@@ -17,7 +17,7 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class LuckyEventItems extends LuckyEvent {
 	
-	private ArrayList<ItemStackEntry> stacks;
+	private final ArrayList<ItemStackEntry> stacks;
 	
 	public LuckyEventItems() {
 		super("Items", 6);
@@ -35,19 +35,19 @@ public class LuckyEventItems extends LuckyEvent {
 		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockItems.WITCHBROOMSTICK.get())), 1);
 		add(new ItemStackEntry(new ItemStack(HalloweenLuckyBlockBlocks.PUMPKINBOMB.get()), 1, 2), 2);
 		
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 2);
 		}
 		
@@ -81,7 +81,7 @@ public class LuckyEventItems extends LuckyEvent {
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		for (int i = 0; i < MathUtil.randomNumberInRange(1, 3); i++) {
-			ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.randomNumberInRange(0, stacks.size() - 1)).getItemStack());
+			final ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.randomNumberInRange(0, stacks.size() - 1)).getItemStack());
 			world.addEntity(item);
 		}
 	}

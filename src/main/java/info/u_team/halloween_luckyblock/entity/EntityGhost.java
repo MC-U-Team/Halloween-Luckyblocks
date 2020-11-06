@@ -92,7 +92,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 	
 	class AIAttack extends Goal {
 		
-		private EntityGhost ghost = EntityGhost.this;
+		private final EntityGhost ghost = EntityGhost.this;
 		public int ticks;
 		
 		@Override
@@ -111,11 +111,11 @@ public class EntityGhost extends FlyingEntity implements IMob {
 		
 		@Override
 		public void tick() {
-			LivingEntity entitylivingbase = this.ghost.getAttackTarget();
-			double d0 = 64.0D;
+			final LivingEntity entitylivingbase = this.ghost.getAttackTarget();
+			final double d0 = 64.0D;
 			
 			if (entitylivingbase.getDistanceSq(this.ghost) < d0 * d0 && this.ghost.canEntityBeSeen(entitylivingbase)) {
-				World world = ghost.world;
+				final World world = ghost.world;
 				++this.ticks;
 				if (this.ticks == 90) {
 					world.playSound(null, entitylivingbase.getPosition(), HalloweenLuckyBlockSounds.RINGLE.get(), SoundCategory.HOSTILE, 1.0F, ((world.rand.nextFloat() * 0.8F) + 0.6F));
@@ -133,7 +133,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 	
 	class AILookAround extends Goal {
 		
-		private EntityGhost ghost = EntityGhost.this;
+		private final EntityGhost ghost = EntityGhost.this;
 		
 		public AILookAround() {
 			this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
@@ -149,12 +149,12 @@ public class EntityGhost extends FlyingEntity implements IMob {
 			if (this.ghost.getAttackTarget() == null) {
 				this.ghost.renderYawOffset = this.ghost.rotationYaw = -((float) Math.atan2(this.ghost.getMotion().getX(), this.ghost.getMotion().getZ())) * 180.0F / (float) Math.PI;
 			} else {
-				LivingEntity entitylivingbase = this.ghost.getAttackTarget();
-				double d0 = 64.0D;
+				final LivingEntity entitylivingbase = this.ghost.getAttackTarget();
+				final double d0 = 64.0D;
 				
 				if (entitylivingbase.getDistanceSq(this.ghost) < d0 * d0) {
-					double d1 = entitylivingbase.getPosX() - this.ghost.getPosX();
-					double d2 = entitylivingbase.getPosZ() - this.ghost.getPosZ();
+					final double d1 = entitylivingbase.getPosX() - this.ghost.getPosX();
+					final double d2 = entitylivingbase.getPosZ() - this.ghost.getPosZ();
 					this.ghost.renderYawOffset = this.ghost.rotationYaw = -((float) Math.atan2(d1, d2)) * 180.0F / (float) Math.PI;
 				}
 			}
@@ -163,7 +163,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 	
 	class AIRandomFly extends Goal {
 		
-		private EntityGhost ghost = EntityGhost.this;
+		private final EntityGhost ghost = EntityGhost.this;
 		
 		public AIRandomFly() {
 			this.setMutexFlags(EnumSet.of(Goal.Flag.MOVE));
@@ -171,15 +171,15 @@ public class EntityGhost extends FlyingEntity implements IMob {
 		
 		@Override
 		public boolean shouldExecute() {
-			MovementController entitymovehelper = this.ghost.getMoveHelper();
+			final MovementController entitymovehelper = this.ghost.getMoveHelper();
 			
 			if (!entitymovehelper.isUpdating()) {
 				return true;
 			} else {
-				double d0 = entitymovehelper.getX() - this.ghost.getPosX();
-				double d1 = entitymovehelper.getY() - this.ghost.getPosY();
-				double d2 = entitymovehelper.getZ() - this.ghost.getPosZ();
-				double d3 = d0 * d0 + d1 * d1 + d2 * d2;
+				final double d0 = entitymovehelper.getX() - this.ghost.getPosX();
+				final double d1 = entitymovehelper.getY() - this.ghost.getPosY();
+				final double d2 = entitymovehelper.getZ() - this.ghost.getPosZ();
+				final double d3 = d0 * d0 + d1 * d1 + d2 * d2;
 				return d3 < 1.0D || d3 > 3600.0D;
 			}
 		}
@@ -190,10 +190,10 @@ public class EntityGhost extends FlyingEntity implements IMob {
 		
 		@Override
 		public void startExecuting() {
-			Random random = this.ghost.getRNG();
-			double d0 = this.ghost.getPosX() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
-			double d1 = this.ghost.getPosY() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
-			double d2 = this.ghost.getPosZ() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			final Random random = this.ghost.getRNG();
+			final double d0 = this.ghost.getPosX() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			final double d1 = this.ghost.getPosY() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+			final double d2 = this.ghost.getPosZ() + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
 			this.ghost.getMoveHelper().setMoveTo(d0, d1, d2, 1.0D);
 		}
 	}
@@ -216,7 +216,7 @@ public class EntityGhost extends FlyingEntity implements IMob {
 				if (this.courseChangeCooldown-- <= 0) {
 					this.courseChangeCooldown += this.parentEntity.getRNG().nextInt(5) + 2;
 					Vector3d vec3d = new Vector3d(this.posX - this.parentEntity.getPosX(), this.posY - this.parentEntity.getPosY(), this.posZ - this.parentEntity.getPosZ());
-					double d0 = vec3d.length();
+					final double d0 = vec3d.length();
 					vec3d = vec3d.normalize();
 					if (this.func_220673_a(vec3d, MathHelper.ceil(d0))) {
 						this.parentEntity.setMotion(this.parentEntity.getMotion().add(vec3d.scale(speed)));

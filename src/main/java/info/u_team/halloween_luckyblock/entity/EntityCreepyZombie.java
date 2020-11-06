@@ -60,7 +60,7 @@ public class EntityCreepyZombie extends MonsterEntity {
 		if (this.isAlive()) {
 			boolean flag = false;
 			if (flag) {
-				ItemStack itemstack = this.getItemStackFromSlot(EquipmentSlotType.HEAD);
+				final ItemStack itemstack = this.getItemStackFromSlot(EquipmentSlotType.HEAD);
 				if (!itemstack.isEmpty()) {
 					if (itemstack.isDamageable()) {
 						itemstack.setDamage(itemstack.getDamage() + this.rand.nextInt(2));
@@ -84,10 +84,10 @@ public class EntityCreepyZombie extends MonsterEntity {
 	
 	@Override
 	public boolean attackEntityAsMob(Entity entityIn) {
-		boolean flag = super.attackEntityAsMob(entityIn);
+		final boolean flag = super.attackEntityAsMob(entityIn);
 		
 		if (flag) {
-			float f = this.world.getDifficultyForLocation(getPosition()).getAdditionalDifficulty();
+			final float f = this.world.getDifficultyForLocation(getPosition()).getAdditionalDifficulty();
 			
 			if (this.getHeldItemMainhand().isEmpty() && this.isBurning() && this.rand.nextFloat() < f * 0.3F) {
 				entityIn.setFire(2 * (int) f);

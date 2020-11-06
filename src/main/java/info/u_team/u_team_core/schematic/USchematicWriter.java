@@ -14,8 +14,8 @@ import info.u_team.u_team_core.util.io.NBTStreamUtil;
  */
 public class USchematicWriter {
 	
-	private USchematicSaveRegion region;
-	private OutputStream stream;
+	private final USchematicSaveRegion region;
+	private final OutputStream stream;
 	private BiConsumer<Boolean, Long> consumer;
 	
 	public USchematicWriter(USchematicSaveRegion region, File file) throws IOException {
@@ -38,13 +38,13 @@ public class USchematicWriter {
 	}
 	
 	private void startSaver() {
-		Thread thread = new Thread(() -> {
+		final Thread thread = new Thread(() -> {
 			boolean success = true;
-			long time = System.currentTimeMillis(); // Time measurement
+			final long time = System.currentTimeMillis(); // Time measurement
 			
 			try {
 				NBTStreamUtil.writeNBTToStream(region.saveNBT(), stream);
-			} catch (IOException ex) {
+			} catch (final IOException ex) {
 				System.err.println("Error while trying to save schematic region.");
 				ex.printStackTrace();
 				success = false;

@@ -17,24 +17,24 @@ public class ListenerKillerKniveAttack {
 	
 	@SubscribeEvent
 	public static void on(LivingAttackEvent event) {
-		Entity entity = event.getSource().getImmediateSource();
+		final Entity entity = event.getSource().getImmediateSource();
 		if (entity == null || !(entity instanceof ServerPlayerEntity)) {
 			return;
 		}
-		ServerPlayerEntity player = (ServerPlayerEntity) entity;
-		ItemStack stack = player.inventory.getCurrentItem();
+		final ServerPlayerEntity player = (ServerPlayerEntity) entity;
+		final ItemStack stack = player.inventory.getCurrentItem();
 		if (stack == null || stack.getItem() == null) {
 			return;
 		}
-		Item item = stack.getItem();
+		final Item item = stack.getItem();
 		if (item == HalloweenLuckyBlockItems.KILLERKNIFE.get()) {
-			LivingEntity base = event.getEntityLiving();
+			final LivingEntity base = event.getEntityLiving();
 			
-			Vector3d lookplayer = player.getLookVec();
-			Vector3d lookbase = base.getLookVec();
+			final Vector3d lookplayer = player.getLookVec();
+			final Vector3d lookbase = base.getLookVec();
 			
-			double differx = Math.abs(lookbase.x - lookplayer.x);
-			double differz = Math.abs(lookbase.z - lookplayer.z);
+			final double differx = Math.abs(lookbase.x - lookplayer.x);
+			final double differz = Math.abs(lookbase.z - lookplayer.z);
 			
 			if (differx < 0.4 && differz < 0.4) {
 				base.onKillCommand();

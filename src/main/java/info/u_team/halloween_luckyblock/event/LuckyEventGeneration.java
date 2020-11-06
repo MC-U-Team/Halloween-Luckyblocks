@@ -19,13 +19,13 @@ public class LuckyEventGeneration extends LuckyEvent {
 	// TODO Replace with vanilla things, as this is not working well anymore because of the flattening
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
-		InputStream stream = this.getClass().getResourceAsStream("/assets/" + HalloweenLuckyBlockMod.MODID + "/uschematic/" + MathUtil.randomNumberInRange(0, 12) + ".uschematic");
-		USchematicLoadRegion region = new USchematicLoadRegion(world, pos);
+		final InputStream stream = this.getClass().getResourceAsStream("/assets/" + HalloweenLuckyBlockMod.MODID + "/uschematic/" + MathUtil.randomNumberInRange(0, 12) + ".uschematic");
+		final USchematicLoadRegion region = new USchematicLoadRegion(world, pos);
 		region.rotate(USchematicRotation.values()[MathUtil.randomNumberInRange(0, USchematicRotation.values().length - 1)]);
 		try {
-			USchematicReader reader = new USchematicReader(region, stream);
+			final USchematicReader reader = new USchematicReader(region, stream);
 			reader.start();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
 		new LuckyEventItems().execute(player, world, pos);

@@ -19,12 +19,12 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 	
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
-		int i = MathUtil.randomNumberInRange(0, 2);
+		final int i = MathUtil.randomNumberInRange(0, 2);
 		
 		Entity entity = null;
 		
 		if (i == 0) {
-			EntityCreepyZombie zombie = new EntityCreepyZombie(world);
+			final EntityCreepyZombie zombie = new EntityCreepyZombie(world);
 			zombie.setPosition(pos.getX(), pos.getY(), pos.getZ());
 			
 			zombie.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(HalloweenLuckyBlockItems.KILLERKNIFE.get()));
@@ -34,12 +34,12 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 			
 			entity = zombie;
 		} else if (i == 1) {
-			EntityGhost ghost = new EntityGhost(world);
+			final EntityGhost ghost = new EntityGhost(world);
 			ghost.setPosition(pos.getX(), pos.getY() + 2, pos.getZ());
 			
 			entity = ghost;
 		} else if (i == 2) {
-			EntityVampire vampire = new EntityVampire(world);
+			final EntityVampire vampire = new EntityVampire(world);
 			vampire.setPosition(pos.getX(), pos.getY() + 2, pos.getZ());
 			
 			entity = vampire;

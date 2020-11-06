@@ -17,15 +17,15 @@ public class ListenerZombieArmor {
 	
 	@SubscribeEvent
 	public static void on(LivingUpdateEvent event) {
-		Entity entity = event.getEntityLiving();
+		final Entity entity = event.getEntityLiving();
 		if (!(entity instanceof PlayerEntity)) {
 			return;
 		}
-		PlayerEntity player = (PlayerEntity) entity;
+		final PlayerEntity player = (PlayerEntity) entity;
 		if (player.abilities.isCreativeMode) {
 			return;
 		}
-		int count = ArmorUtility.getArmorBaseCount(player, "zombie");
+		final int count = ArmorUtility.getArmorBaseCount(player, "zombie");
 		if (count > 0) {
 			player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 2, 0, false, false));
 			if (player.world.rand.nextInt(500) == 0) {

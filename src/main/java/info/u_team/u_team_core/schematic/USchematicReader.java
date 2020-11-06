@@ -14,8 +14,8 @@ import info.u_team.u_team_core.util.io.NBTStreamUtil;
  */
 public class USchematicReader {
 	
-	private USchematicLoadRegion region;
-	private InputStream stream;
+	private final USchematicLoadRegion region;
+	private final InputStream stream;
 	private BiConsumer<Boolean, Long> consumer;
 	
 	public USchematicReader(USchematicLoadRegion region, File file) throws IOException {
@@ -39,12 +39,12 @@ public class USchematicReader {
 	
 	private void startLoader() {
 		boolean success = true;
-		long time = System.currentTimeMillis(); // Time measurement
+		final long time = System.currentTimeMillis(); // Time measurement
 		
 		try {
 			region.readNBT(NBTStreamUtil.readNBTFromStream(stream));
 			
-		} catch (IOException ex) {
+		} catch (final IOException ex) {
 			System.err.println("Error while trying to load schematic region.");
 			ex.printStackTrace();
 			success = false;

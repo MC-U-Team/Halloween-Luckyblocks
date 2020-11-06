@@ -19,9 +19,9 @@ public class ItemTeleporter extends UItem {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-		BlockRayTraceResult result = (BlockRayTraceResult) WorldUtil.rayTraceServerSide(player, 50.0D);
+		final BlockRayTraceResult result = (BlockRayTraceResult) WorldUtil.rayTraceServerSide(player, 50.0D);
 		
-		ItemStack stack = player.getHeldItem(hand);
+		final ItemStack stack = player.getHeldItem(hand);
 		
 		if (result == null || result.getPos() == null || world.getBlockState(result.getPos()).getBlock() == Blocks.AIR) {
 			if (!world.isRemote) {
@@ -29,7 +29,7 @@ public class ItemTeleporter extends UItem {
 			}
 			return new ActionResult<ItemStack>(ActionResultType.PASS, stack);
 		}
-		BlockPos pos = result.getPos();
+		final BlockPos pos = result.getPos();
 		player.setLocationAndAngles(pos.getX(), pos.getY() + 1, pos.getZ(), player.rotationYaw, player.rotationPitch);
 		stack.damageItem(1, player, x -> {
 		});

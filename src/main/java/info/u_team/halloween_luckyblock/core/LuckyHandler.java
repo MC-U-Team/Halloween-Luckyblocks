@@ -13,7 +13,7 @@ import net.minecraft.world.server.ServerWorld;
 
 public class LuckyHandler {
 	
-	private ArrayList<LuckyEvent> events = new ArrayList<LuckyEvent>();
+	private final ArrayList<LuckyEvent> events = new ArrayList<LuckyEvent>();
 	
 	public void add(LuckyEvent event) {
 		addList(event);

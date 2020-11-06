@@ -20,10 +20,10 @@ public class LuckyEventRainingPumkin extends LuckyEvent {
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		player.sendMessage(new TranslationTextComponent("luckyevent.rainingpumkin"), Util.DUMMY_UUID);
-		BlockPos highpos = new BlockPos(pos.getX(), 200, pos.getZ());
+		final BlockPos highpos = new BlockPos(pos.getX(), 200, pos.getZ());
 		for (int i = 0; i < 150; i++) {
-			BlockPos newpos = highpos.add(MathUtil.randomNumberInRange(-35, 35), MathUtil.randomNumberInRange(-5, 20), MathUtil.randomNumberInRange(-35, 35));
-			FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX() + .5, newpos.getY(), newpos.getZ() + .5, MathUtil.randomNumberInRange(0, 30) == 0 ? HalloweenLuckyBlockBlocks.LUCKYBLOCK.get().getDefaultState() : PumpkinUtil.getRandomPumpkin());
+			final BlockPos newpos = highpos.add(MathUtil.randomNumberInRange(-35, 35), MathUtil.randomNumberInRange(-5, 20), MathUtil.randomNumberInRange(-35, 35));
+			final FallingBlockEntity falling = new FallingBlockEntity(world, newpos.getX() + .5, newpos.getY(), newpos.getZ() + .5, MathUtil.randomNumberInRange(0, 30) == 0 ? HalloweenLuckyBlockBlocks.LUCKYBLOCK.get().getDefaultState() : PumpkinUtil.getRandomPumpkin());
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

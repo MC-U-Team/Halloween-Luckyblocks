@@ -22,11 +22,11 @@ public class LuckyEventSound extends LuckyEvent {
 				synchronized (this) {
 					wait(5000);
 				}
-			} catch (InterruptedException e) {
+			} catch (final InterruptedException e) {
 				e.printStackTrace();
 			}
 			world.getServer().execute(() -> {
-				FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 15, pos.getZ(), HalloweenLuckyBlockBlocks.LUCKYBLOCK.get().getDefaultState());
+				final FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX(), pos.getY() + 15, pos.getZ(), HalloweenLuckyBlockBlocks.LUCKYBLOCK.get().getDefaultState());
 				falling.fallTime = 100;
 				falling.shouldDropItem = false;
 				falling.setHurtEntities(true);

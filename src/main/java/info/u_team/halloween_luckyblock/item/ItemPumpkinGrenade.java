@@ -16,7 +16,7 @@ public class ItemPumpkinGrenade extends UItem {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-		ItemStack stack = player.getHeldItem(hand);
+		final ItemStack stack = player.getHeldItem(hand);
 		if (!player.abilities.isCreativeMode) {
 			stack.shrink(1);
 		}
@@ -24,7 +24,7 @@ public class ItemPumpkinGrenade extends UItem {
 		world.playSound(null, player.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 0.6F, 0.4F / (random.nextFloat() * 3F + 5F));
 		
 		if (!world.isRemote) {
-			EntityPumpkinGrenade grenade = new EntityPumpkinGrenade(world, player);
+			final EntityPumpkinGrenade grenade = new EntityPumpkinGrenade(world, player);
 			grenade.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 0.5F);
 			world.addEntity(grenade);
 		}

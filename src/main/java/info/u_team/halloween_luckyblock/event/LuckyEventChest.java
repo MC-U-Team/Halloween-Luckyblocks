@@ -18,7 +18,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class LuckyEventChest extends LuckyEvent {
 	
-	private ArrayList<ItemStackEntry> stacks;
+	private final ArrayList<ItemStackEntry> stacks;
 	
 	public LuckyEventChest() {
 		super("Chest", 3);
@@ -27,23 +27,23 @@ public class LuckyEventChest extends LuckyEvent {
 	}
 	
 	private void additems() {
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SCARECROW_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.SLENDER_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.WITCH_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.ZOMBIE_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
-		for (RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
+		for (final RegistryObject<? extends UArmorItem> item : HalloweenLuckyBlockItems.CLOWN_SET) {
 			add(new ItemStackEntry(new ItemStack(item.get())), 5);
 		}
 		
-		Iterator<Item> it = ForgeRegistries.ITEMS.iterator();
+		final Iterator<Item> it = ForgeRegistries.ITEMS.iterator();
 		while (it.hasNext()) {
 			add(new ItemStackEntry(new ItemStack(it.next()), 1, 2), 1);
 		}
@@ -58,9 +58,9 @@ public class LuckyEventChest extends LuckyEvent {
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
 		world.setBlockState(pos.add(0, 1, 0), Blocks.CHEST.getDefaultState());
-		TileEntity tile = world.getTileEntity(pos.add(0, 1, 0));
+		final TileEntity tile = world.getTileEntity(pos.add(0, 1, 0));
 		if (tile instanceof ChestTileEntity) {
-			ChestTileEntity chest = (ChestTileEntity) tile;
+			final ChestTileEntity chest = (ChestTileEntity) tile;
 			for (int i = 0; i < chest.getSizeInventory(); i++) {
 				if (MathUtil.randomNumberInRange(0, MathUtil.randomNumberInRange(0, 3)) == 0) {
 					chest.setInventorySlotContents(i, stacks.get(MathUtil.randomNumberInRange(0, stacks.size() - 1)).getItemStack());
