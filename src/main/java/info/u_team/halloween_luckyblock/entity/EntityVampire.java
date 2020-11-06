@@ -112,7 +112,7 @@ public class EntityVampire extends AmbientEntity {
 		
 		if (this.getIsBatHanging()) {
 			this.setMotion(Vector3d.ZERO);
-			setRawPosition(getPosX(), (double) MathHelper.floor(getPosY()) + 1.0D - (double) this.getHeight(), getPosZ());
+			setRawPosition(getPosX(), MathHelper.floor(getPosY()) + 1.0D - this.getHeight(), getPosZ());
 		} else {
 			this.setMotion(this.getMotion().mul(1.0D, 0.6D, 1.0D));
 		}
@@ -126,7 +126,7 @@ public class EntityVampire extends AmbientEntity {
 		if (this.getIsBatHanging()) {
 			if (this.world.getBlockState(blockpos1).isNormalCube(this.world, blockpos)) {
 				if (this.rand.nextInt(200) == 0) {
-					this.rotationYawHead = (float) this.rand.nextInt(360);
+					this.rotationYawHead = this.rand.nextInt(360);
 				}
 				
 				if (this.world.getClosestPlayer(field_213813_c, this) != null) {
@@ -143,16 +143,16 @@ public class EntityVampire extends AmbientEntity {
 			}
 			
 			if (this.spawnPosition == null || this.rand.nextInt(30) == 0 || this.spawnPosition.withinDistance(this.getPositionVec(), 2.0D)) {
-				this.spawnPosition = new BlockPos(this.getPosX() + (double) this.rand.nextInt(7) - (double) this.rand.nextInt(7), this.getPosY() + (double) this.rand.nextInt(6) - 2.0D, this.getPosZ() + (double) this.rand.nextInt(7) - (double) this.rand.nextInt(7));
+				this.spawnPosition = new BlockPos(this.getPosX() + this.rand.nextInt(7) - this.rand.nextInt(7), this.getPosY() + this.rand.nextInt(6) - 2.0D, this.getPosZ() + this.rand.nextInt(7) - this.rand.nextInt(7));
 			}
 			
-			double d0 = (double) this.spawnPosition.getX() + 0.5D - this.getPosX();
-			double d1 = (double) this.spawnPosition.getY() + 0.1D - this.getPosY();
-			double d2 = (double) this.spawnPosition.getZ() + 0.5D - this.getPosZ();
+			double d0 = this.spawnPosition.getX() + 0.5D - this.getPosX();
+			double d1 = this.spawnPosition.getY() + 0.1D - this.getPosY();
+			double d2 = this.spawnPosition.getZ() + 0.5D - this.getPosZ();
 			Vector3d vec3d = this.getMotion();
-			Vector3d vec3d1 = vec3d.add((Math.signum(d0) * 0.5D - vec3d.x) * (double) 0.1F, (Math.signum(d1) * (double) 0.7F - vec3d.y) * (double) 0.1F, (Math.signum(d2) * 0.5D - vec3d.z) * (double) 0.1F);
+			Vector3d vec3d1 = vec3d.add((Math.signum(d0) * 0.5D - vec3d.x) * 0.1F, (Math.signum(d1) * 0.7F - vec3d.y) * 0.1F, (Math.signum(d2) * 0.5D - vec3d.z) * 0.1F);
 			this.setMotion(vec3d1);
-			float f = (float) (MathHelper.atan2(vec3d1.z, vec3d1.x) * (double) (180F / (float) Math.PI)) - 90.0F;
+			float f = (float) (MathHelper.atan2(vec3d1.z, vec3d1.x) * (180F / (float) Math.PI)) - 90.0F;
 			float f1 = MathHelper.wrapDegrees(f - this.rotationYaw);
 			this.moveForward = 0.5F;
 			this.rotationYaw += f1;
@@ -219,6 +219,7 @@ public class EntityVampire extends AmbientEntity {
 		}
 	}
 	
+	@Override
 	protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
 		return sizeIn.height / 2.0F;
 	}

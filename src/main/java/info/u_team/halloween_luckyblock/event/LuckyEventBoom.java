@@ -24,7 +24,7 @@ public class LuckyEventBoom extends LuckyEvent {
 		float offy = MathUtil.randomNumberInRange(0.5F, 1.5F);
 		float offz = MathUtil.randomNumberInRange(0.3F, 1F);
 		
-		((ServerWorld) world).spawnParticle(ParticleTypes.CRIT, x, y, z, 200, offx, offy, offz, .000001);
+		world.spawnParticle(ParticleTypes.CRIT, x, y, z, 200, offx, offy, offz, .000001);
 		
 		world.addEntity(new TNTEntity(world, x, y, z, player));
 	}

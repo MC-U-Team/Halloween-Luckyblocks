@@ -48,7 +48,7 @@ public class ModelGhost extends SegmentedModel<EntityGhost> {
 	@Override
 	public void setRotationAngles(EntityGhost entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		for (int i = 0; i < this.tentacles.length; ++i) {
-			this.tentacles[i].rotateAngleX = 0.2F * MathHelper.sin(ageInTicks * 0.3F + (float) i) + 0.4F;
+			this.tentacles[i].rotateAngleX = 0.2F * MathHelper.sin(ageInTicks * 0.3F + i) + 0.4F;
 		}
 		
 	}

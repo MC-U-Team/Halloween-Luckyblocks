@@ -19,7 +19,7 @@ public class ItemWitchsBroomstick extends UItem {
 		ItemStack stack = player.getHeldItem(hand);
 		float f = player.rotationYaw * 0.017453292F;
 		
-		player.setMotion(player.getMotion().getX() - (MathHelper.sin(f) * 0.42F), 0.6, player.getMotion().getZ() + (double) (MathHelper.cos(f) * 0.42F));
+		player.setMotion(player.getMotion().getX() - (MathHelper.sin(f) * 0.42F), 0.6, player.getMotion().getZ() + MathHelper.cos(f) * 0.42F);
 		
 		player.fallDistance = 0;
 		
