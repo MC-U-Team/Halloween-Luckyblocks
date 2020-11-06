@@ -1,6 +1,5 @@
 package info.u_team.halloween_luckyblock.listener;
 
-import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;
 import info.u_team.halloween_luckyblock.util.ArmorUtility;
 import net.minecraft.entity.Entity;
@@ -8,15 +7,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.*;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.eventbus.api.IEventBus;
 
-@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE)
 public class ListenerZombieArmor {
 	
-	@SubscribeEvent
-	public static void on(LivingUpdateEvent event) {
+	private static void onLivingUpdate(LivingUpdateEvent event) {
 		final Entity entity = event.getEntityLiving();
 		if (!(entity instanceof PlayerEntity)) {
 			return;
@@ -32,5 +27,9 @@ public class ListenerZombieArmor {
 				player.world.playSound(null, player.getPosition(), SoundEvents.ENTITY_ZOMBIE_AMBIENT, HalloweenLuckyBlockSounds.CATEGORY, 0.2F, 1.0F);
 			}
 		}
+	}
+	
+	public static void registerForge(IEventBus bus) {
+		bus.addListener(ListenerZombieArmor::onLivingUpdate);
 	}
 }

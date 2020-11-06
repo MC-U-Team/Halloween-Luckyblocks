@@ -1,6 +1,5 @@
 package info.u_team.halloween_luckyblock.listener;
 
-import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -8,15 +7,11 @@ import net.minecraft.item.*;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.eventbus.api.IEventBus;
 
-@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE)
 public class ListenerKillerKniveAttack {
 	
-	@SubscribeEvent
-	public static void on(LivingAttackEvent event) {
+	private static void onLivingAttack(LivingAttackEvent event) {
 		final Entity entity = event.getSource().getImmediateSource();
 		if (entity == null || !(entity instanceof ServerPlayerEntity)) {
 			return;
@@ -43,5 +38,9 @@ public class ListenerKillerKniveAttack {
 				});
 			}
 		}
+	}
+	
+	public static void registerForge(IEventBus bus) {
+		bus.addListener(ListenerKillerKniveAttack::onLivingAttack);
 	}
 }

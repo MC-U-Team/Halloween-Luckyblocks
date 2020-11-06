@@ -1,23 +1,17 @@
 package info.u_team.halloween_luckyblock.listener;
 
-import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.eventbus.api.IEventBus;
 
-@EventBusSubscriber(modid = HalloweenLuckyBlockMod.MODID, bus = Bus.FORGE, value = Dist.CLIENT)
 public class ListenerGhostFlash {
 	
 	public static volatile boolean flash = false;
 	private static long time = 0;
 	
-	@SubscribeEvent
-	public static void on(ClientTickEvent event) {
+	private static void onClientTick(ClientTickEvent event) {
 		try {
 			if (flash) {
 				if (time == 0) {
@@ -37,5 +31,9 @@ public class ListenerGhostFlash {
 		} catch (final Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public static void registerForge(IEventBus bus) {
+		bus.addListener(ListenerGhostFlash::onClientTick);
 	}
 }
