@@ -1,5 +1,6 @@
 package info.u_team.halloween_luckyblock.util;
 
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.item.ItemStack;
 
 public class ItemStackEntry {

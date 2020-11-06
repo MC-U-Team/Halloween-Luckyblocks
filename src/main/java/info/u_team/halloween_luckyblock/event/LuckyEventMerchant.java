@@ -4,8 +4,8 @@ import java.util.*;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockItems;
-import info.u_team.halloween_luckyblock.util.MathUtil;
 import info.u_team.u_team_core.item.armor.UArmorItem;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;

@@ -1,7 +1,7 @@
 package info.u_team.halloween_luckyblock.event;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
-import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.particles.ParticleTypes;

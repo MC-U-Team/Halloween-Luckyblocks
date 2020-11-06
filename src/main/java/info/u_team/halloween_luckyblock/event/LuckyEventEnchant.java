@@ -3,7 +3,7 @@ package info.u_team.halloween_luckyblock.event;
 import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
-import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.*;
 import net.minecraft.entity.player.ServerPlayerEntity;

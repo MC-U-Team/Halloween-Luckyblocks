@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.core;
 
-import java.util.function.*;
+import java.util.function.Predicate;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;

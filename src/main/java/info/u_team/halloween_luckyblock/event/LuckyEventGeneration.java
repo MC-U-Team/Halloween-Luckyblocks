@@ -4,8 +4,8 @@ import java.io.InputStream;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
-import info.u_team.halloween_luckyblock.util.MathUtil;
 import info.u_team.u_team_core.schematic.*;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;

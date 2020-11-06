@@ -1,6 +1,6 @@
 package info.u_team.halloween_luckyblock.core;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.event.*;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockSounds;

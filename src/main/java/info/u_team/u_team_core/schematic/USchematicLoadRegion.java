@@ -6,7 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.nbt.*;
 import net.minecraft.util.concurrent.TickDelayedTask;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.World;
 

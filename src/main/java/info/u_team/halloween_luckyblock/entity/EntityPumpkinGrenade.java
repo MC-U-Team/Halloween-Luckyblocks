@@ -1,7 +1,8 @@
 package info.u_team.halloween_luckyblock.entity;
 
 import info.u_team.halloween_luckyblock.init.*;
-import info.u_team.halloween_luckyblock.util.*;
+import info.u_team.halloween_luckyblock.util.PumpkinUtil;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;

@@ -1,7 +1,7 @@
 package info.u_team.halloween_luckyblock.listener;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
-import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraftforge.api.distmarker.Dist;

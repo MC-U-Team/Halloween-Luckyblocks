@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import info.u_team.halloween_luckyblock.core.LuckyEvent;
 import info.u_team.halloween_luckyblock.init.HalloweenLuckyBlockBlocks;
-import info.u_team.halloween_luckyblock.util.MathUtil;
+import info.u_team.u_team_core.util.MathUtil;
 import net.minecraft.block.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
