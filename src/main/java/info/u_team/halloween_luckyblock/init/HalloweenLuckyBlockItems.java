@@ -2,7 +2,7 @@ package info.u_team.halloween_luckyblock.init;
 
 import info.u_team.halloween_luckyblock.HalloweenLuckyBlockMod;
 import info.u_team.halloween_luckyblock.item.*;
-import info.u_team.to_u_team_core.LazySpawnEggItem;
+import info.u_team.u_team_core.item.USpawnEggItem;
 import info.u_team.u_team_core.item.armor.*;
 import info.u_team.u_team_core.util.registry.CommonDeferredRegister;
 import net.minecraft.item.*;
@@ -30,9 +30,9 @@ public class HalloweenLuckyBlockItems {
 	public static final ArmorSet ZOMBIE_SET = ArmorSetCreator.create(ITEMS, "zombie", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.ZOMBIE);
 	public static final ArmorSet CLOWN_SET = ArmorSetCreator.create(ITEMS, "clown", HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockArmorMaterials.CLOWN);
 	
-	public static final RegistryObject<SpawnEggItem> CREEPY_ZOMBIE_SPAWN_EGG = ITEMS.register("creepy_zombie_spawn_egg", () -> new LazySpawnEggItem(HalloweenLuckyBlockEntityTypes.CREEPY_ZOMBIE, 0x2ecc71, 0xe67e22, new Properties().group(HalloweenLuckyBlockItemGroups.GROUP)));
-	public static final RegistryObject<SpawnEggItem> VAMPIRE_SPAWN_EGG = ITEMS.register("vampire_spawn_egg", () -> new LazySpawnEggItem(HalloweenLuckyBlockEntityTypes.VAMPIRE, 0x686c72, 0x000000, new Properties().group(HalloweenLuckyBlockItemGroups.GROUP)));
-	public static final RegistryObject<SpawnEggItem> GHOST_SPAWN_EGG = ITEMS.register("ghost_spawn_egg", () -> new LazySpawnEggItem(HalloweenLuckyBlockEntityTypes.GHOST, 0x797a74, 0xffffff, new Properties().group(HalloweenLuckyBlockItemGroups.GROUP)));
+	public static final RegistryObject<SpawnEggItem> CREEPY_ZOMBIE_SPAWN_EGG = ITEMS.register("creepy_zombie_spawn_egg", () -> new USpawnEggItem(HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockEntityTypes.CREEPY_ZOMBIE, 0x2ecc71, 0xe67e22));
+	public static final RegistryObject<SpawnEggItem> VAMPIRE_SPAWN_EGG = ITEMS.register("vampire_spawn_egg", () -> new USpawnEggItem(HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockEntityTypes.VAMPIRE, 0x686c72, 0x000000));
+	public static final RegistryObject<SpawnEggItem> GHOST_SPAWN_EGG = ITEMS.register("ghost_spawn_egg", () -> new USpawnEggItem(HalloweenLuckyBlockItemGroups.GROUP, new Properties(), HalloweenLuckyBlockEntityTypes.GHOST, 0x797a74, 0xffffff));
 	
 	public static void registerMod(IEventBus bus) {
 		ITEMS.register(bus);
