@@ -28,7 +28,7 @@ public class LuckyEventThunder extends LuckyEvent {
 		}
 		
 		new Thread(() -> {
-			mainthread.execute(() -> world.func_241114_a_(110000));
+			mainthread.execute(() -> world.setDayTime(110000));
 			for (int i = 0; i < 8; i++) {
 				try {
 					synchronized (this) {
@@ -52,7 +52,7 @@ public class LuckyEventThunder extends LuckyEvent {
 					}
 				});
 			}
-			mainthread.execute(() -> world.func_241114_a_(time));
+			mainthread.execute(() -> world.setDayTime(time));
 		}).start();
 	}
 }
