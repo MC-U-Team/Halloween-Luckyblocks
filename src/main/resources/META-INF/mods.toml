@@ -10,14 +10,13 @@ authors="HyCraftHD, Nurenja, Milchbar, Redhair, Angelgaming"
 [[mods]]
 	modId="halloween_luckyblock"
 	version="${file.jarVersion}"
-	displayName="Halloween LuckyBlock"
-	updateJSONURL="https://api.u-team.info/update/halloween_luckyblock.json"
+	displayName="Halloween LuckyBlock"	updateJSONURL="https://api.u-team.info/update/halloween_luckyblock.json"
 	description="Cool and spooky luckyblocks for halloween."
 	
 	[[dependencies.halloween_luckyblock]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[34.1.19,)"
+	    versionRange="[34.1.42,)"
 	    ordering="NONE"
 	    side="BOTH"
 	
@@ -31,6 +30,6 @@ authors="HyCraftHD, Nurenja, Milchbar, Redhair, Angelgaming"
 	[[dependencies.halloween_luckyblock]]
 	    modId="uteamcore"
 	    mandatory=true
-	    versionRange="[3.1.10.183,)"
+	    versionRange="[3.1.12.185,)"
 	    ordering="NONE"
 	    side="BOTH"
