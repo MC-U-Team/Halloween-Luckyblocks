@@ -80,8 +80,8 @@ public class LuckyEventItems extends LuckyEvent {
 	
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
-		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 3); i++) {
-			ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
+		for (int i = 0; i < MathUtil.randomNumberInRange(1, 3); i++) {
+			ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stacks.get(MathUtil.randomNumberInRange(0, stacks.size() - 1)).getItemStack());
 			world.addEntity(item);
 		}
 	}

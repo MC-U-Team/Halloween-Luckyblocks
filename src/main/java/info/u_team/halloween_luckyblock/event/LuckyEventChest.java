@@ -62,8 +62,8 @@ public class LuckyEventChest extends LuckyEvent {
 		if (tile instanceof ChestTileEntity) {
 			ChestTileEntity chest = (ChestTileEntity) tile;
 			for (int i = 0; i < chest.getSizeInventory(); i++) {
-				if (MathUtil.getRandomNumberInRange(0, MathUtil.getRandomNumberInRange(0, 3)) == 0) {
-					chest.setInventorySlotContents(i, stacks.get(MathUtil.getRandomNumberInRange(0, stacks.size() - 1)).getItemStack());
+				if (MathUtil.randomNumberInRange(0, MathUtil.randomNumberInRange(0, 3)) == 0) {
+					chest.setInventorySlotContents(i, stacks.get(MathUtil.randomNumberInRange(0, stacks.size() - 1)).getItemStack());
 				}
 			}
 			chest.tick();

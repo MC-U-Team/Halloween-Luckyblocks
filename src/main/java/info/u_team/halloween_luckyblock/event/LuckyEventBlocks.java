@@ -50,8 +50,8 @@ public class LuckyEventBlocks extends LuckyEvent {
 	
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
-		for (int i = 0; i < MathUtil.getRandomNumberInRange(1, 5); i++) {
-			final FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX() + .5, pos.getY() + 5 + (10 * i), pos.getZ() + .5, blocks.get(MathUtil.getRandomNumberInRange(0, blocks.size() - 1)));
+		for (int i = 0; i < MathUtil.randomNumberInRange(1, 5); i++) {
+			final FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX() + .5, pos.getY() + 5 + (10 * i), pos.getZ() + .5, blocks.get(MathUtil.randomNumberInRange(0, blocks.size() - 1)));
 			falling.fallTime = 100;
 			falling.shouldDropItem = false;
 			falling.setHurtEntities(true);

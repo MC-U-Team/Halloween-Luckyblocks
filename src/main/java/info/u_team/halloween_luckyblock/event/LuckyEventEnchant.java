@@ -41,11 +41,11 @@ public class LuckyEventEnchant extends LuckyEvent {
 		FallingBlockEntity falling = new FallingBlockEntity(world, pos.getX() + .5, pos.getY() + 10, pos.getZ() + .5, Blocks.ENCHANTING_TABLE.getDefaultState());
 		falling.fallTime = 1;
 		world.addEntity(falling);
-		ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.LAPIS_LAZULI, MathUtil.getRandomNumberInRange(12, 54)));
+		ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY() + 10, pos.getZ(), new ItemStack(Items.LAPIS_LAZULI, MathUtil.randomNumberInRange(12, 54)));
 		world.addEntity(item);
 		for (int i = 0; i < 20; i++) {
-			ExperienceOrbEntity xp = new ExperienceOrbEntity(world, pos.getX(), pos.getY(), pos.getZ(), MathUtil.getRandomNumberInRange(1, 5));
-			xp.setMotion(MathUtil.getRandomNumberInRange(-0.5, 0.5), MathUtil.getRandomNumberInRange(0.2, 0.6), MathUtil.getRandomNumberInRange(-0.5, 0.5));
+			ExperienceOrbEntity xp = new ExperienceOrbEntity(world, pos.getX(), pos.getY(), pos.getZ(), MathUtil.randomNumberInRange(1, 5));
+			xp.setMotion(MathUtil.randomNumberInRange(-0.5, 0.5), MathUtil.randomNumberInRange(0.2, 0.6), MathUtil.randomNumberInRange(-0.5, 0.5));
 			world.addEntity(xp);
 		}
 		player.addExperienceLevel(10);

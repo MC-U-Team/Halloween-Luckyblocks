@@ -22,7 +22,7 @@ public class ItemStackEntry {
 	
 	public ItemStack getItemStack() {
 		ItemStack copy = stack.copy();
-		copy.setCount(MathUtil.getRandomNumberInRange(min, max));
+		copy.setCount(MathUtil.randomNumberInRange(min, max));
 		return copy;
 	}
 	

@@ -19,7 +19,7 @@ public class LuckyEventSpawnCreature extends LuckyEvent {
 	
 	@Override
 	public void execute(ServerPlayerEntity player, ServerWorld world, BlockPos pos) {
-		int i = MathUtil.getRandomNumberInRange(0, 2);
+		int i = MathUtil.randomNumberInRange(0, 2);
 		
 		Entity entity = null;
 		
